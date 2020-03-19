@@ -1,0 +1,274 @@
+[
+    {
+        "_id": "f751d10c-0e3e-43c9-b8a5-85f29b8807dd",
+        "name": "Bluezoom",
+        "email": "aboath0@surveymonkey.com",
+        "imgUrl": "http://dummyimage.com/124x204.bmp/5fa2dd/ffffff",
+        "subjects": [
+            "Beauty",
+            "Automotive",
+            "Clothing",
+            "Health",
+            "Books"
+        ],
+        "customersCount": 419126281,
+        "marketValue": 929104981
+    },
+    {
+        "_id": "c7162158-e70e-4a66-8f56-d29d6ffe2fe0",
+        "name": "Latz",
+        "email": "dmatchett1@foxnews.com",
+        "imgUrl": "http://dummyimage.com/170x162.png/ff4444/ffffff",
+        "subjects": [
+            "Baby",
+            "Sports",
+            "Clothing"
+        ],
+        "customersCount": 538111556,
+        "marketValue": 893146576
+    },
+    {
+        "_id": "e92e6df6-357d-4851-9284-1afbf0896e0c",
+        "name": "Kwideo",
+        "email": "bdukes2@cloudflare.com",
+        "imgUrl": "http://dummyimage.com/227x229.bmp/cc0000/ffffff",
+        "subjects": [
+            "Health",
+            "Sports",
+            "Sports",
+            "Computers"
+        ],
+        "customersCount": 474088004,
+        "marketValue": 290445900
+    },
+    {
+        "_id": "248379c9-a5aa-42ed-9b22-bba80e95dbb6",
+        "name": "Twitterwire",
+        "email": "swraggs3@sourceforge.net",
+        "imgUrl": "http://dummyimage.com/128x161.bmp/dddddd/000000",
+        "subjects": [
+            "Automotive",
+            "Baby"
+        ],
+        "customersCount": 616675302,
+        "marketValue": 614336902
+    },
+    {
+        "_id": "486c1b2a-c3e5-44c7-8351-10b8563978ce",
+        "name": "Rooxo",
+        "email": "tkupke4@webnode.com",
+        "imgUrl": "http://dummyimage.com/141x138.png/ff4444/ffffff",
+        "subjects": [
+            "Movies",
+            "Computers"
+        ],
+        "customersCount": 295725598,
+        "marketValue": 111448809
+    },
+    {
+        "_id": "a4988b9f-94a5-4d59-b329-d9b34a39a16b",
+        "name": "Browsecat",
+        "email": "msmowton5@wisc.edu",
+        "imgUrl": "http://dummyimage.com/168x250.jpg/cc0000/ffffff",
+        "subjects": [
+            "Electronics",
+            "Books",
+            "Health"
+        ],
+        "customersCount": 51640297,
+        "marketValue": 448024899
+    },
+    {
+        "_id": "1014a81a-0edf-4d7a-9da5-05c75384bc8a",
+        "name": "Latz",
+        "email": "ncronshaw6@google.it",
+        "imgUrl": "http://dummyimage.com/105x154.jpg/5fa2dd/ffffff",
+        "subjects": [
+            "Electronics",
+            "Garden",
+            "Books"
+        ],
+        "customersCount": 677159703,
+        "marketValue": 803725152
+    },
+    {
+        "_id": "7810e6ff-e0ee-4123-a01b-885806500133",
+        "name": "Fivespan",
+        "email": "sbrigman7@narod.ru",
+        "imgUrl": "http://dummyimage.com/145x157.bmp/cc0000/ffffff",
+        "subjects": [
+            "Electronics",
+            "Outdoors",
+            "Beauty",
+            "Beauty"
+        ],
+        "customersCount": 410768172,
+        "marketValue": 243637096
+    },
+    {
+        "_id": "3782ecf8-5dff-44dd-992c-d7bc7e40ddce",
+        "name": "Tekfly",
+        "email": "hshillabear8@webs.com",
+        "imgUrl": "http://dummyimage.com/170x214.png/ff4444/ffffff",
+        "subjects": [
+            "Books",
+            "Automotive"
+        ],
+        "customersCount": 704695161,
+        "marketValue": 560506039
+    },
+    {
+        "_id": "75bc8ebc-257f-40a5-ac10-6fa3f0240242",
+        "name": "Camido",
+        "email": "aandrzej9@freewebs.com",
+        "imgUrl": "http://dummyimage.com/152x189.png/dddddd/000000",
+        "subjects": [
+            "Health",
+            "Industrial"
+        ],
+        "customersCount": 818710881,
+        "marketValue": 86666919
+    },
+    {
+        "_id": "27d978c6-7e28-4f5b-b65c-2b1589d93b2b",
+        "name": "Kwinu",
+        "email": "mskatchera@engadget.com",
+        "imgUrl": "http://dummyimage.com/103x220.jpg/5fa2dd/ffffff",
+        "subjects": [
+            "Outdoors",
+            "Music",
+            "Music",
+            "Music",
+            "Outdoors"
+        ],
+        "customersCount": 922445313,
+        "marketValue": 975051649
+    },
+    {
+        "_id": "21e84223-876d-4809-9c77-57afbbfaccf7",
+        "name": "Shufflester",
+        "email": "rkremerb@slate.com",
+        "imgUrl": "http://dummyimage.com/139x122.bmp/dddddd/000000",
+        "subjects": [
+            "Jewelery",
+            "Health",
+            "Home"
+        ],
+        "customersCount": 281259514,
+        "marketValue": 560058237
+    },
+    {
+        "_id": "d1df6d7c-9813-4504-ab5a-af95af6b6a1d",
+        "name": "Jabbercube",
+        "email": "acamplejohnc@i2i.jp",
+        "imgUrl": "http://dummyimage.com/179x135.bmp/dddddd/000000",
+        "subjects": [
+            "Tools",
+            "Books",
+            "Toys",
+            "Books",
+            "Kids"
+        ],
+        "customersCount": 510946967,
+        "marketValue": 730128179
+    },
+    {
+        "_id": "b3fb4139-1ab5-4327-8871-4bf5ea2e1838",
+        "name": "Shuffletag",
+        "email": "pwildtd@xinhuanet.com",
+        "imgUrl": "http://dummyimage.com/165x184.bmp/5fa2dd/ffffff",
+        "subjects": [
+            "Garden",
+            "Kids",
+            "Industrial",
+            "Industrial"
+        ],
+        "customersCount": 655331547,
+        "marketValue": 723186578
+    },
+    {
+        "_id": "b5f6fbb2-1faa-45ff-ae38-edfeb6f30683",
+        "name": "Jamia",
+        "email": "rperronie@oakley.com",
+        "imgUrl": "http://dummyimage.com/116x240.bmp/cc0000/ffffff",
+        "subjects": [
+            "Tools",
+            "Health",
+            "Computers",
+            "Books"
+        ],
+        "customersCount": 209434580,
+        "marketValue": 189749935
+    },
+    {
+        "_id": "e99ff2d5-856c-4e68-b85a-ab58d3c46b93",
+        "name": "Roodel",
+        "email": "cmaugerf@zdnet.com",
+        "imgUrl": "http://dummyimage.com/240x166.jpg/dddddd/000000",
+        "subjects": [
+            "Health",
+            "Home",
+            "Outdoors",
+            "Health",
+            "Computers"
+        ],
+        "customersCount": 946057555,
+        "marketValue": 399801283
+    },
+    {
+        "_id": "647bafa8-deec-4057-8f3c-beb96c6e1359",
+        "name": "Midel",
+        "email": "jcroneeng@eepurl.com",
+        "imgUrl": "http://dummyimage.com/188x215.bmp/cc0000/ffffff",
+        "subjects": [
+            "Outdoors",
+            "Jewelery",
+            "Computers"
+        ],
+        "customersCount": 844095470,
+        "marketValue": 629894585
+    },
+    {
+        "_id": "c2ba9cc3-56d8-4513-9804-904ae8e38891",
+        "name": "Buzzster",
+        "email": "mpykermanh@wordpress.org",
+        "imgUrl": "http://dummyimage.com/169x204.png/cc0000/ffffff",
+        "subjects": [
+            "Shoes",
+            "Computers",
+            "Toys",
+            "Toys",
+            "Home"
+        ],
+        "customersCount": 548379562,
+        "marketValue": 390754868
+    },
+    {
+        "_id": "230226c9-3f5f-48bd-b558-b9c8c015335f",
+        "name": "Jayo",
+        "email": "rmooringi@kickstarter.com",
+        "imgUrl": "http://dummyimage.com/121x188.png/cc0000/ffffff",
+        "subjects": [
+            "Computers",
+            "Computers",
+            "Electronics"
+        ],
+        "customersCount": 330287862,
+        "marketValue": 192410052
+    },
+    {
+        "_id": "31577d27-59c7-4fe2-8b6b-df5e54dcb05b",
+        "name": "Babbleblab",
+        "email": "rtrevinoj@intel.com",
+        "imgUrl": "http://dummyimage.com/164x141.png/ff4444/ffffff",
+        "subjects": [
+            "Industrial",
+            "Home",
+            "Shoes",
+            "Grocery",
+            "Tools"
+        ],
+        "customersCount": 917235613,
+        "marketValue": 683452762
+    }
+]
