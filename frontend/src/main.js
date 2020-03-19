@@ -4,7 +4,11 @@ import "./registerServiceWorker";
 import router from "./router";
 import store from "./store";
 
+// const brandService = require('./services/brand.service.js');
+// window.query = brandService.query;
+
 Vue.config.productionTip = false;
+
 
 new Vue({
   router,
