@@ -37,7 +37,6 @@ async function add(campaign) {
     campaign.createdAt = Date.now();
     await gCampaigns.unshift(campaign);
     await storageService.store(KEY, gCampaigns)
-
     return Promise.resolve(campaign);
 }
 
