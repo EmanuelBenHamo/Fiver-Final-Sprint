@@ -5,9 +5,7 @@ export default {
         offers: null
     },
     getters:{
-        getOffers(state){
-            return state.offers
-        }
+        
     },
     mutations:{
         setOffers(state, {offers}){
@@ -24,6 +22,7 @@ export default {
                 type: 'setOffers',
                 offers
             })
+            return offers
         }
     }
 }

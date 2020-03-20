@@ -30,8 +30,8 @@ export default {
     },
     methods:{
         async loadOffers(){
-           await this.$store.dispatch('loadOffers');
-           this.offers = this.$store.getters.getOffers;
+           const offers = await this.$store.dispatch('loadOffers');
+           this.offers = offers;
         }
     },  
     components: {
