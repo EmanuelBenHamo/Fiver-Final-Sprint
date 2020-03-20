@@ -5,6 +5,7 @@ import campaignCreate from "../views/campaign-create.vue";
 import campaignDetails from "../views/campaign-details.vue";
 import backofficePage from "../views/backoffice-page.vue";
 import offerList from "../cmps/offer-list.vue";
+import influencerDetails from "../views/influencer-details.vue";
 
 Vue.use(VueRouter);
 
@@ -25,12 +26,17 @@ const routes = [
     component: campaignDetails
   },
   {
+    path:"/influencer/:id",
+    name: "influencer-details",
+    component: influencerDetails
+  },
+  {
     path: "/backoffice/",
     name: "backoffice-page",
     component: backofficePage,
     children: [
       {
-        path: "offer",
+        path: "offer/",
         name: "offer-list",
         component: offerList
       }
