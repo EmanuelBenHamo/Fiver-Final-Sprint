@@ -2,7 +2,7 @@ const fs = require('fs');
 
 import storageService from './storage.service.js';
 
-const KEY = 'offers'
+const KEY = 'offers';
 
 var gOffers = _getOffersFromStorage();
 

@@ -1,22 +1,38 @@
 <template>
 <section class="offer-list-container">
   <h1>Offer List</h1>
-    <offer-preview ></offer-preview>
+  <div class="offers-topbar flex space-between">
+      <span>Product</span>
+      <span>Dates</span>
+      <span>Status</span>
+  </div>
+  
+    <offer-preview
+    v-for="offer in offers"
+    :key="offer._id"
+    :offer="offer" />
+ 
 </section>
 </template>
 
 <script>
 import offerPreview from './offer-preview.vue';
+import offerService from '../services/offer.service.js';
 export default {
     name: 'offer-list',
+    data(){
+        return{
+            offers: null
+        }
+    },
     created(){
         this.getOffers()
     },
     methods:{
-        // getOffers(){
-
-        // }
-    },
+        async getOffers(){
+          this.offers = await offerService.query();
+        }
+    },  
     components: {
         offerPreview
     }
@@ -24,5 +40,9 @@ export default {
 </script>
 
 <style>
-
+.offers-topbar{
+    width: 90%;
+    border: 2px solid gray;
+    padding: 10px;
+}
 </style>

@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import offerService from '../services/offer.service.js';
+
 export default {
     name: 'backoffice-page',
     created(){
