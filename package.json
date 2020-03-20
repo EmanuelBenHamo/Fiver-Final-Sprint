@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/EmanuelBenHamo/Fiver-Final-Sprint/issues"
   },
-  "homepage": "https://github.com/EmanuelBenHamo/Fiver-Final-Sprint#readme"
+  "homepage": "https://github.com/EmanuelBenHamo/Fiver-Final-Sprint#readme",
+  "dependencies": {
+    "fs": "0.0.1-security"
+  }
 }

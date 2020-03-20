@@ -86,7 +86,7 @@ export default {
   methods: {
     async submit() {
       this.$store.dispatch({
-        type: "submitCampaign",
+        type: "addCampaign",
         campaign: this.campaign
       });
       this.getEmptyCampaign();

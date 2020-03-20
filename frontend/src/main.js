@@ -3,7 +3,9 @@ import App from "./App.vue";
 import "./registerServiceWorker";
 import router from "./router";
 import store from "./store";
+import './filters/filters.js'
 
+import './styles/global.scss'
 // const brandService = require('./services/brand.service.js');
 // window.query = brandService.query;
 

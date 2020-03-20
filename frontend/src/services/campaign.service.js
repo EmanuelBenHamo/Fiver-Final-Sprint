@@ -1,14 +1,14 @@
 const fs = require('fs');
 
-var gCampaigns = require('../data/campaigns.json');
+var gCampaigns = require('../../data/campaigns.json');
+
 
 function query(filterBy = {}) {
     return Promise.resolve(gCampaigns);
 }
 
 function getById(id) {
-    const campaign = gCampaigns.find(campaign => campaign._id === id);
-
+    const campaign = gCampaigns.find(campaign => campaign._id === +id);
     return campaign;
 }
 
@@ -39,14 +39,36 @@ function update(campaign) {
     return Promise.resolve(campaign);
 }
 
+function getEmptyCampaign() {
+    const campaign = {
+        name: "",
+        product: "",
+        startDate: "",
+        endDate: "",
+        budget: 0,
+        description: "",
+        audience: {
+          minAge: 0,
+          maxAge: 0,
+          targets: [],
+          gender: {
+            menOnly: false,
+            womenOnly: false
+          }
+        }
+      };
+      return campaign;
+    }
+
 module.exports = {
     query,
     getById,
     remove,
     add,
-    update
+    update,
+    getEmptyCampaign
 }
 
 function _saveCampaignsToFile() {
-    fs.writeFileSync('../data/campaigns.json', JSON.stringify(gCampaigns, null, 2));
+    // fs.writeFileSync('../data/campaigns.json', JSON.stringify(gCampaigns, null, 2));
 }

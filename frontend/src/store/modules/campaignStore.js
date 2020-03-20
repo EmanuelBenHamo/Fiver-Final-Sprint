@@ -1,4 +1,4 @@
-import campaignService from "../../services/campaignService.js";
+import campaignService from "../../services/campaign.service.js";
 
 export default {
   state: {
@@ -6,12 +6,15 @@ export default {
   },
   getters: {},
   actions: {
-    submitCampaign(context, { campaign }) {
-      var savedCampign = campaignService.saveCampaign(campaign);
+    addCampaign(context, { campaign }) {
+      var savedCampign = campaignService.add(campaign);
       console.log("Campaign has been saved!", savedCampign);
     },
     getEmptyCampaign() {
       return campaignService.getEmptyCampaign();
+    },
+    getcampaignById(context, { campaignId }){
+      return campaignService.getById(campaignId)
     }
   },
   modules: {}
