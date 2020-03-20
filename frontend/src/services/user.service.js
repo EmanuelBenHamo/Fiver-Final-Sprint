@@ -1,9 +1,8 @@
 import storageService from './storage.service.js';
 
-const gLoggedInUser;
-
 const USERS_KEY = 'users';
 var gUsers = loadUsers();
+const gLoggedInUser;
 
 async function loadUsers() {
     gUsers = storageService.load(USERS_KEY);
@@ -29,7 +28,7 @@ async function login(credentials) {
 async function logout() {
     gLoggedInUser = null;
 
-    return;
+    return gLoggedInUser;
 }
 
 async function getLoggedInUser() {
@@ -48,6 +47,8 @@ async function signUp(credentials) {
 
     gUsers.unshift(gUsers);
     storageService.store(USERS_KEY, gUsers);
+    gLoggedInUser = user;
+    return gLoggedInUser;
 }
 
 export default {
