@@ -26,11 +26,12 @@ export default {
         }
     },
     created(){
-        this.getOffers()
+        this.loadOffers()
     },
     methods:{
-        async getOffers(){
-          this.offers = await offerService.query();
+        async loadOffers(){
+           await this.$store.dispatch('loadOffers');
+           this.offers = this.$store.getters.getOffers;
         }
     },  
     components: {

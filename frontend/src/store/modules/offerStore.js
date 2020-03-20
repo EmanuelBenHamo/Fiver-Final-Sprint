@@ -1,14 +1,29 @@
 import offerService from '../../services/offer.service.js';
 
 export default {
-    state:{},
+    state:{
+        offers: null
+    },
+    getters:{
+        getOffers(state){
+            return state.offers
+        }
+    },
     mutations:{
-        
+        setOffers(state, {offers}){
+            state.offers = offers
+        }
     },
     actions: {
         async sendOffer(context ,{campaign}){
             return await offerService.createOffer(campaign)
-            // TODO- create an offer format
+        },
+        async loadOffers(context){
+            const offers = await offerService.query();
+            context.commit({
+                type: 'setOffers',
+                offers
+            })
         }
     }
 }
