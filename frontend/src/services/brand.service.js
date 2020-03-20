@@ -8,7 +8,6 @@ function query() {
 
 function getById(id) {
     const brand = gBrands.find(brand => brand._id === id);
-
     return brand;
 }
 
@@ -17,7 +16,6 @@ function remove(id) {
 
     gBrands.splice(idx, 1);
     _saveBrandsToFile();
-
     return Promise.resolve();
 }
 

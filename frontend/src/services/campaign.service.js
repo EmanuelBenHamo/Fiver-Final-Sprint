@@ -6,10 +6,9 @@ const KEY = 'Campaigns'
 
 var gCampaigns = _getCampaignsFromStorage();
 
-
-function _getCampaignsFromStorage(){
+function _getCampaignsFromStorage() {
     var campaigns = storageService.load(KEY);
-    if(!campaigns){
+    if (!campaigns) {
         campaigns = require('../../data/campaigns.json');
         storageService.store(KEY, campaigns)
     }
@@ -33,7 +32,7 @@ async function remove(id) {
 }
 
 async function add(campaign) {
-    campaign._id =  Math.floor(Math.random() * 1000000 + 10000);
+    campaign._id = Math.floor(Math.random() * 1000000 + 10000);
     campaign.createdAt = Date.now();
     await gCampaigns.unshift(campaign);
     await storageService.store(KEY, gCampaigns)
@@ -60,17 +59,17 @@ function getEmptyCampaign() {
         budget: 0,
         description: "",
         audience: {
-          minAge: 0,
-          maxAge: 0,
-          targets: [],
-          gender: {
-            menOnly: false,
-            womenOnly: false
-          }
+            minAge: 0,
+            maxAge: 0,
+            targets: [],
+            gender: {
+                menOnly: false,
+                womenOnly: false
+            }
         }
-      };
-      return campaign;
-    }
+    };
+    return campaign;
+}
 
 export default {
     query,
