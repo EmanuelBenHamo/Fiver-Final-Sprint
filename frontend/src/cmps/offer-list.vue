@@ -1,5 +1,5 @@
 <template>
-<section class="offer-list-container">
+<section class="offer-list-container" v-if="offers">
   <h1>Offer List</h1>
   <div class="offers-topbar flex space-between">
       <span>Product</span>
@@ -26,11 +26,12 @@ export default {
         }
     },
     created(){
-        this.getOffers()
+        this.loadOffers()
     },
     methods:{
-        async getOffers(){
-          this.offers = await offerService.query();
+        async loadOffers(){
+           const offers = await this.$store.dispatch('loadOffers');
+           this.offers = offers;
         }
     },  
     components: {
