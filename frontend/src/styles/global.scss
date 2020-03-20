@@ -6,14 +6,9 @@
 @import './basics/helpers';
 @import './basics/layout';
 @import './basics/buttons';
-
-
 // VIEWS
-
-
-
-
 // CMPS
 @import './cmps/campaign-details';
 @import './cmps/campaign-create';
-
+@import './cmps/campaign-list';
+@import './cmps/campaign-preview';
