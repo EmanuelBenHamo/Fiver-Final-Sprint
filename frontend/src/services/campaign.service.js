@@ -1,30 +1,42 @@
 const fs = require('fs');
 
-var gCampaigns = require('../../data/campaigns.json');
+import storageService from './storage.service.js';
 
+const KEY = 'Campaigns'
+
+var gCampaigns = _getCampaignsFromStorage();
+
+
+function _getCampaignsFromStorage(){
+    var campaigns = storageService.load(KEY);
+    if(!campaigns){
+        campaigns = require('../../data/campaigns.json');
+        storageService.store(KEY, campaigns)
+    }
+    return campaigns
+}
 
 function query(filterBy = {}) {
     return Promise.resolve(gCampaigns);
 }
 
-function getById(id) {
-    const campaign = gCampaigns.find(campaign => campaign._id === +id);
+async function getById(id) {
+    const campaign = await gCampaigns.find(campaign => campaign._id === +id);
     return campaign;
 }
 
-function remove(id) {
+async function remove(id) {
     const idx = gCampaigns.findIndex(campaign => campaign._id === id);
-
-    gCampaigns.splice(idx, 1);
-    _saveCampaignsToFile();
-
-    return Promise.resolve();
+    await gCampaigns.splice(idx, 1);
+    await storageService.store(KEY, gCampaigns)
+    return;
 }
 
-function add(campaign) {
+async function add(campaign) {
+    campaign._id =  Math.floor(Math.random() * 1000000 + 10000);
     campaign.createdAt = Date.now();
-    gCampaigns.unshift(campaign);
-    _saveCampaignsToFile();
+    await gCampaigns.unshift(campaign);
+    await storageService.store(KEY, gCampaigns)
 
     return Promise.resolve(campaign);
 }
@@ -34,7 +46,7 @@ function update(campaign) {
 
     campaign.updatedAt = Date.now();
     gCampaigns.splice(idx, 1, campaign);
-    _saveCampaignsToFile();
+    storageService.store(KEY, gCampaigns)
 
     return Promise.resolve(campaign);
 }
@@ -60,7 +72,7 @@ function getEmptyCampaign() {
       return campaign;
     }
 
-module.exports = {
+export default {
     query,
     getById,
     remove,
@@ -69,6 +81,6 @@ module.exports = {
     getEmptyCampaign
 }
 
-function _saveCampaignsToFile() {
-    // fs.writeFileSync('../data/campaigns.json', JSON.stringify(gCampaigns, null, 2));
-}
+// function _saveCampaignsToFile() {
+//     fs.writeFileSync('../data/campaigns.json', JSON.stringify(gCampaigns, null, 2));
+// }

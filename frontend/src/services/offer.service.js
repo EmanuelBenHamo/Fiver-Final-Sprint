@@ -1,9 +1,23 @@
 const fs = require('fs');
 
-var gOffers = require('../../data/offers.json');
+import storageService from './storage.service.js';
 
-function query(filterBy = {}) {
-    return Promise.resolve(gOffers);
+const KEY = 'offers'
+
+var gOffers = _getOffersFromStorage();
+
+
+function _getOffersFromStorage(){
+    var offers = storageService.load(KEY);
+    if(!offers){
+        offers = require('../../data/offers.json');
+        storageService.store(KEY, offers)
+    }
+    return offers
+}
+
+async function query(filterBy = {}) {
+    return await gOffers;
 }
 
 function getById(id) {
@@ -16,37 +30,54 @@ function remove(id) {
     const idx = gOffers.findIndex(offer => offer._id === id);
 
     gOffers.splice(idx, 1);
-    _saveOffersToFile();
-
+    storageService.store(KEY, gOffers)
     return Promise.resolve();
 }
 
-function add(offer) {
-    offer.createdAt = Date.now();
+async function add(offer) {
     gOffers.unshift(offer);
-    _saveOffersToFile();
-
-    return Promise.resolve(offer);
+    console.log('Offer has been added', offer);
+    storageService.store(KEY, gOffers)
+    return await offer;
 }
 
 function update(offer) {
     const idx = gOffers.findIndex(currOffer => currOffer._id === offer._id);
-
+    
     offer.updatedAt = Date.now();
     gOffers.splice(idx, 1, offer);
-    _saveOffersToFile();
-
+    storageService.store(KEY, gOffers);
     return Promise.resolve(offer);
 }
 
-module.exports = {
+async function createOffer(campaign) {
+    const newOffer = {
+        _id: Math.floor(Math.random() * 1000000 + 10000),
+        status: 'Pendeing',
+        description: campaign.description,
+        miniCampaign: {
+            id: campaign._id,
+            product: campaign.product,
+            startDate: campaign.startDate,
+            endDate: campaign.endDate,
+        },
+        miniInfluencer: {
+            // TODO - Add the current influencer's details
+        },
+        createdAt: Date.now()
+    };
+    return await add(newOffer);
+}
+
+export default {
     query,
     getById,
     remove,
     add,
-    update
+    update,
+    createOffer
 }
 
-function _saveOffersToFile() {
-    fs.writeFileSync('data/offers.json', JSON.stringify(gOffers, null, 2));
-}
+// function _saveOffersToFile() {
+//     fs.writeFileSync('data/offers.json', JSON.stringify(gOffers, null, 2));
+// }

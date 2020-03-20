@@ -70,7 +70,7 @@ export default {
     async sendOffer() {
       const sentOffer = await this.$store.dispatch({
         type: 'sendOffer',
-        offer : 'Make an offer'
+        campaign : this.currCampaign
       })
     }
   }
