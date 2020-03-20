@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-var gOffers = require('../data/offers.json');
+var gOffers = require('../../data/offers.json');
 
 function query(filterBy = {}) {
     return Promise.resolve(gOffers);

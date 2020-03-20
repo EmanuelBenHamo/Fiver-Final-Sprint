@@ -26,6 +26,7 @@
       </ul>
       <h4>Gender: {{gender}}</h4>
     </div>
+    <button @click="sendOffer" class="btn">Send an Offer</button>
   </section>
 </template>
 
@@ -61,21 +62,21 @@ export default {
   methods: {
     async getcampaignById() {
       const campaign = await this.$store.dispatch({
-        type: "getcampaignById",
+        type: 'getcampaignById',
         campaignId: this.campaignId
       });
       this.currCampaign = campaign;
+    },
+    async sendOffer() {
+      const sentOffer = await this.$store.dispatch({
+        type: 'sendOffer',
+        offer : 'Make an offer'
+      })
     }
   }
 };
 </script>
 
 <style>
-.campaign-container {
-    position: relative;
-}
-img {
-  position: absolute;
-  right: 0;
-}
+
 </style>

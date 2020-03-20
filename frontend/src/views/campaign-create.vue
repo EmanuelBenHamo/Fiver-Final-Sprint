@@ -1,5 +1,5 @@
 <template>
-  <section class="campaign-create-container">
+  <section class="campaign-create-container text-center">
     <h1>Create a Campaign</h1>
     <div class="campaing-info">
       <label
@@ -22,8 +22,6 @@
           v-model="campaign.description"
           placeholder="Say something about your campaign..."
       /></label>
-    </div>
-    <div class="target-audience">
       <label
         >Minimum Age<input type="number" v-model="campaign.audience.minAge"
       /></label>
@@ -55,7 +53,7 @@
         /><label>Women</label>
       </div>
     </div>
-    <button @click="submit">Save</button>
+    <button @click="submit" class="btn">Save</button>
   </section>
 </template>
 
@@ -102,14 +100,5 @@ export default {
 </script>
 
 <style scoped>
-.campaign-create-container > * {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  max-width: 50%;
-  margin: auto;
-}
-label {
-  margin: 10px 0;
-}
+
 </style>

@@ -1,0 +1,14 @@
+.campaign-create-container {
+
+    .campaing-info{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        max-width: 50%;
+        margin: auto;
+    }
+ 
+    label {
+        margin: 15px 0;
+    }
+}

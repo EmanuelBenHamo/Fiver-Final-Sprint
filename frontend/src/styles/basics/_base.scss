@@ -5,7 +5,6 @@
 html{
     font-family: Avenir, Helvetica, Arial, sans-serif;
     color: $clr1;
-    // color: 
 }
 
 body {
@@ -25,4 +24,20 @@ button{
     all: unset
 }
 
+input{
+    margin: 0 10px;
+    border-radius: 0.5rem;
+    padding-left:0.5rem;
+    border: 1px solid lighten($clr1, 50%);
+}
+
+textarea{
+    margin: 0 10px;
+    border-radius: 0.5rem;
+    padding-left:0.5rem;
+    border: 1px solid lighten($clr1, 50%);
+    resize: none;
+    height: 100px;
+    
+}
 
