@@ -1,6 +1,5 @@
 <template>
   <section class="brand-list">
-      <h1>Brands</h1>
     <brand-preview v-for="brand in brandsForDisplay" :key="brand._id" :brand="brand" />
   </section>
 </template>
