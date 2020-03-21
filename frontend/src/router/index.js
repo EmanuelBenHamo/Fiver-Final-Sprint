@@ -7,7 +7,7 @@ import brandList from '../cmps/brand-list.vue'
 import campaignList from '../cmps/campaign-list.vue'
 import backofficePage from "../views/backoffice-page.vue";
 import offerList from "../cmps/offer-list.vue";
-import influencerList from "../cmps/campaign-list.vue"
+import influencerList from "../cmps/influencer-list.vue"
 import influencerDetails from "../views/influencer-details.vue";
 // import brandDetails from "../views/brand-details.vue"
 

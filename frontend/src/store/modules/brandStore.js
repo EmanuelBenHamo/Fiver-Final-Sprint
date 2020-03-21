@@ -17,7 +17,6 @@ export default {
     actions: {
         async loadBrands(context) {
             const brands = await brandService.query()
-            console.log(brands)
             context.commit({ type: 'setBrands', brands })
         },
         addbrand(context, { brand }) {
