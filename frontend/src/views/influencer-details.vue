@@ -1,18 +1,21 @@
 <template>
-<section class="influencer-details-container" v-if="currInfluencer">
-  <h1>Influencer Details</h1>
-  <h2>{{currInfluencer.firstName}} {{currInfluencer.lastName}}</h2>
-  <h3>Date Of Birth: {{currInfluencer.dateOfBirth | date}}</h3>
-  <h2 class="gender">{{gender}}</h2>
-  <h3>{{currInfluencer.email}}</h3>
-  <img :src="currInfluencer.imgUrl" alt="Profile Picture">
-  <ul class="tags clean-list">
-    Tags:
-    <li v-for="(tag, idx) in currInfluencer.tags" :key="idx" >{{tag}}</li>
-  </ul>
-  <div class="insagram flex">
+<section class="influencer-details-container flex column" v-if="currInfluencer">
+  <div class="influencer-details flex space-around">
+  <div class="influencer-info">
+    <h2>{{currInfluencer.firstName}} {{currInfluencer.lastName}}</h2>
+    <h3>Date Of Birth: {{currInfluencer.dateOfBirth | date}}</h3>
+    <h2 :class="`fa fa-${gender} fa-lg`"></h2>
+    <h3>{{currInfluencer.email}}</h3>
+    <img :src="currInfluencer.imgUrl" alt="Profile Picture">
+    
+    <ul class="tags clean-list">
+      Tags:
+      <li v-for="(tag, idx) in currInfluencer.tags" :key="idx" >{{tag}}</li>
+    </ul>
+  </div>
+  <div class="socials flex column">
     <ul class="social-info clean-list" v-for="(social, idx) in currInfluencer.socials" :key="idx">
-      <li>{{social.type}}</li>
+      <li><span :class="`fa fa-${social.type}`"></span>{{social.type}}</li>
       <li>Men: {{social.menFollowers}}</li>
       <li>Women: {{social.womenFollowers}}</li>
       <li>Posts: {{social.posts}}</li>
@@ -21,23 +24,24 @@
       <li>Post Price: {{social.pricePerPost}}</li>
     </ul>
   </div>
-  <div class="campaign-offer flex">
-  <button  
-    @click="isMakingOffer = !isMakingOffer"
-    class="make-offer btn">
-    Make an Offer
-  </button>
-  <select 
-    v-if="isMakingOffer"
-    @change="sendOffer($event)"
-    class="campaign-list">
-      <option 
-        v-for="campaign in campaigns"
-        :key="campaign._id"
-        :value="campaign._id">
-        {{campaign.name}}
-      </option>
-  </select>
+  </div>
+  <div class="campaign-offer flex justify-center">
+    <button  
+      @click="isMakingOffer = !isMakingOffer"
+      class="make-offer btn">
+      Make an Offer
+    </button>
+    <select 
+      v-if="isMakingOffer"
+      @change="sendOffer($event)"
+      class="campaign-list">
+        <option 
+          v-for="campaign in campaigns"
+          :key="campaign._id"
+          :value="campaign._id">
+          {{campaign.name}}
+        </option>
+    </select>
   </div>
 </section>
 </template>
@@ -55,7 +59,7 @@ export default {
   },
   computed:{
     gender(){
-      return (this.currInfluencer.gender === "Male") ?'♂': '♀';
+      return (this.currInfluencer.gender === "Male") ?'mars': 'venus';
        },
     loggedInUser(){
       return this.$store.getters.loggedInUser
@@ -97,5 +101,8 @@ export default {
 .gender{
   font-weight: bolder;
   font-family: fantasy;
+}
+.social-info span{
+  font-size: 2rem;
 }
 </style>

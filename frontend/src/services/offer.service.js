@@ -50,16 +50,16 @@ function update(offer) {
     return Promise.resolve(offer);
 }
 
-async function createOffer(payload) {
+async function createOffer({campaign, influencer}) {
     const newOffer = {
         _id: Math.floor(Math.random() * 1000000 + 10000),
         status: 'Pendeing',
-        description: payload.campaign.description,
+        description: campaign.description,
         miniCampaign: {
-            id: payload.campaign._id,
-            product: payload.campaign.product,
-            startDate: payload.campaign.startDate,
-            endDate: payload.campaign.endDate,
+            id: campaign._id,
+            product: campaign.product,
+            startDate: campaign.startDate,
+            endDate: campaign.endDate,
         },
         miniInfluencer: {
             // TODO - Add the current influencer's details

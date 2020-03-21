@@ -111,7 +111,7 @@ export default {
         })
         campaign.startDate = new Date(+campaign.startDate).toISOString().slice(0,10)  ;
         campaign.endDate = new Date(+campaign.endDate).toISOString().slice(0,10)  ;
-      this.campaign = JSON.parse(JSON.stringify(campaign))
+        this.campaign = JSON.parse(JSON.stringify(campaign))
     },
     async getTemplateCampaigns() {
       const templateCampaigns = await this.$store.dispatch('loadCampaigns');
