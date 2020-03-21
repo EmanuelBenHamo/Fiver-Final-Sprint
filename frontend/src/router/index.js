@@ -23,10 +23,21 @@ const routes = [
     component: campaignCreate
   },
   {
+    path: "/brand",
+    name: "brand",
+    component: brandList
+},
+{
+    path: "/campaign",
+    name: "campaign",
+    component: campaignList
+},
+  {
     path: "/campaign/:id",
     name: "campaign-details",
     component: campaignDetails
   },
+  
   {
     path:"/influencer/:id",
     name: "influencer-details",
