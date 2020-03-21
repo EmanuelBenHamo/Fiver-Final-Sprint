@@ -1,9 +1,11 @@
 <template>
-  <section class="main-app"></section>
-  <!-- <list :items="itemsList" v-if="itemsList"></list> -->
+  <section class="main-app">
+    <list v-if="itemsList" :itemsList="itemsList" :userType="this.loggedInUser.type" />
+  </section>
 </template>
-
 <script>
+import influencerService from "../services/influencer.service.js";
+import campaignService from "../services/campaign.service.js";
 export default {
   name: "main-app",
   data() {
@@ -14,11 +16,17 @@ export default {
   },
   created() {
     this.loggedInUser = this.$store.getters.loggedInUser;
-    if (this.loggedInUser.type === "influencer") {
-        // set items list to be campaigns list
-    } else if (this.loggedInUser.type === "brand") {
-        // set items list to be influencers list
+    getItemsListByUserType();
+  },
+  methods: {
+    async getItemsListByUserType() {
+      this.itemsList = await this.$store.dispatch({
+        type: "getUserItems"
+      });
     }
+  },
+  components: {
+    list
   }
 };
 </script>
