@@ -27,16 +27,20 @@ function remove(id) {
     const idx = gBrands.findIndex(brand => brand._id === id);
 
     gBrands.splice(idx, 1);
-    _saveBrandsToFile();
+    storageService.store(KEY, gBrands)
     return Promise.resolve();
 }
 
-function add(brand) {
+async function add(brand) {
     brand.createdAt = Date.now();
+    console.log('Before', brand);
+    brand = _setBrandInfo(brand)
+    console.log('After', brand);
+    
     gBrands.unshift(brand);
-    _saveBrandsToFile();
+    storageService.store(KEY, gBrands)
 
-    return Promise.resolve(brand);
+    return await brand;
 }
 
 function update(brand) {
@@ -44,7 +48,7 @@ function update(brand) {
 
     brand.updatedAt = Date.now();
     gBrands.splice(idx, 1, brand);
-    _saveBrandsToFile();
+    storageService.store(KEY, gBrands)
 
     return Promise.resolve(brand);
 }
@@ -57,6 +61,12 @@ export default {
     update
 }
 
-function _saveBrandsToFile() {
-    fs.writeFileSync('../../data/brands.json', JSON.stringify(gBrands, null, 2));
+function _setBrandInfo(brand){
+    brand.customerCount = _randomInt(1000000, 1000000000) 
+    brand.marketValue = _randomInt(1000000, 10000000000) 
+    return brand
+}
+
+function _randomInt(min , max){
+    return Math.floor(Math.random() * (max - min + 1) + min)
 }

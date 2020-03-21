@@ -1,6 +1,6 @@
 <template>
   <section class="influencer-create-container flex column" >
-    <h1>Create an Influencer</h1>
+    <h1>Signup as an Influencer</h1>
     <label>First Name: <input type="text" v-model="user.firstName"></label>
     <label>Last Name: <input type="text" v-model="user.lastName"></label>
     <label>Email <input type="email" v-model="user.email"></label>
@@ -39,8 +39,8 @@ export default {
     methods:{
         async saveUser(){
             const savedUser = await this.$store.dispatch({
-                type: 'saveInfluencer',
-                user: this.user
+                type: 'addnfluencer',
+                influencer: this.user
             })
             console.log('Saved!', savedUser);
         }

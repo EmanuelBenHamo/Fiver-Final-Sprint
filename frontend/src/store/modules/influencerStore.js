@@ -8,8 +8,8 @@ export default {
         async getInfluencerById(context, {influencerId}){
             return await influencerService.getById(influencerId)
         },
-        async saveInfluencer(context, {user}){
-            return await influencerService.add(user)
+        async addInfluencer(context, {influencer}){
+            return await influencerService.add(influencer)
         }
     }
 }
