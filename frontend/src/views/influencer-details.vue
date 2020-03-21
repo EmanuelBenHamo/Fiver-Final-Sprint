@@ -2,7 +2,7 @@
 <section class="influencer-details-container flex column" v-if="currInfluencer">
   <div class="influencer-details flex space-around">
   <div class="influencer-info">
-    <h2>{{currInfluencer.firstName}} {{currInfluencer.lastName}}</h2>
+    <h2>{{fullname}}</h2>
     <h3>Date Of Birth: {{currInfluencer.dateOfBirth | date}}</h3>
     <h2 :class="`fa fa-${gender} fa-lg`"></h2>
     <h3>{{currInfluencer.email}}</h3>
@@ -63,6 +63,9 @@ export default {
        },
     loggedInUser(){
       return this.$store.getters.loggedInUser
+    },
+    fullname(){
+      return this.currInfluencer.firstName + ' ' + this.currInfluencer.lastName;
     }
   },
   created() {

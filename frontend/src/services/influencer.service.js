@@ -20,7 +20,7 @@ function query(filterBy = {}) {
 }
 
 async function getById(id) {
-    return await gInfluencers.find(influencer => influencer._id === id);
+    return gInfluencers.find(influencer => influencer._id === id);
 
 }
 
@@ -28,17 +28,17 @@ function remove(id) {
     const idx = gInfluencers.findIndex(influencer => influencer._id === id);
 
     gInfluencers.splice(idx, 1);
-    _saveInfluencersToFile();
+    storageService.store(KEY, gInfluencers)
 
     return Promise.resolve();
 }
 
-function add(influencer) {
+async function add(influencer) {
     influencer.createdAt = Date.now();
     gInfluencers.unshift(influencer);
-    _saveInfluencersToFile();
+    await storageService.store(KEY, gInfluencers)
 
-    return Promise.resolve(influencer);
+    return influencer
 }
 
 function update(influencer) {
@@ -46,7 +46,7 @@ function update(influencer) {
 
     influencer.updatedAt = Date.now();
     gInfluencers.splice(idx, 1, influencer);
-    _saveInfluencersToFile();
+    storageService.store(KEY, gInfluencers)
 
     return Promise.resolve(influencer);
 }
@@ -57,8 +57,4 @@ export default {
     remove,
     add,
     update
-}
-
-function _saveInfluencersToFile() {
-    fs.writeFileSync('../data/influencers.json', JSON.stringify(gInfluencers, null, 2));
 }
