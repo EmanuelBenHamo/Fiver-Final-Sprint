@@ -17,12 +17,14 @@ export default {
   actions: {
     async login(context, payload) {
       const credentials = payload.credentials;
+
       const loggedInUser = await userService.login(credentials);
       context.commit({
         type: 'setLoggedInUser',
         loggedInUser
       });
       return loggedInUser;
+
     },
     async logout(context) {
       await userService.logout();
