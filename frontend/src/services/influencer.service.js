@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-var gInfluencers = require('../data/influencers.json');
+var gInfluencers = require('../../data/influencers.json');
 
 function query(filterBy = {}) {
     return Promise.resolve(gInfluencers);
