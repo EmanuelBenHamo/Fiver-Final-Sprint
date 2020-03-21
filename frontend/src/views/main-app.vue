@@ -24,7 +24,7 @@ export default {
       });
       console.log(this.itemsList);
     } else if (this.loggedInUser.type === "brand") {
-      this.itemsList = influencerService.query()
+      influencerService.query()
             .then(res => {
               this.itemsList = res;
             });
