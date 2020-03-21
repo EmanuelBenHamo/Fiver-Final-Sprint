@@ -21,23 +21,24 @@ function query(filterBy = {}) {
 
 async function getById(id) {
     return await gInfluencers.find(influencer => influencer._id === id);
-
 }
 
 function remove(id) {
     const idx = gInfluencers.findIndex(influencer => influencer._id === id);
 
     gInfluencers.splice(idx, 1);
-    _saveInfluencersToFile();
+    storageService.store(KEY, gInfluencers)
 
     return Promise.resolve();
 }
 
 function add(influencer) {
     influencer.createdAt = Date.now();
+    influencer = _setSocialInfo(influencer)
     gInfluencers.unshift(influencer);
-    _saveInfluencersToFile();
-
+    storageService.store(KEY, gInfluencers)
+    console.log('An influencer Have been added', influencer);
+    
     return Promise.resolve(influencer);
 }
 
@@ -46,7 +47,7 @@ function update(influencer) {
 
     influencer.updatedAt = Date.now();
     gInfluencers.splice(idx, 1, influencer);
-    _saveInfluencersToFile();
+    storageService.store(KEY, gInfluencers)
 
     return Promise.resolve(influencer);
 }
@@ -59,6 +60,23 @@ export default {
     update
 }
 
-function _saveInfluencersToFile() {
-    fs.writeFileSync('../data/influencers.json', JSON.stringify(gInfluencers, null, 2));
+function _setSocialInfo(influencer){
+    influencer.socials.map(social => {
+        console.log('social', social);
+             var currSocial = {
+                type : social,
+                menFollowers : _randomInt(10000, 10000000),
+                womenFollowers : _randomInt(10000, 10000000),
+                posts :_randomInt(1000, 1000000),
+                stories : _randomInt(1000, 1000000),
+                avgAge: _randomInt(16, 60),
+            }
+        })
+        
+        console.log('THE INFLUENCER AFTER CHANGE',influencer    );
+    // return influencer
+}
+
+function _randomInt(min , max){
+    return Math.floor(Math.random() * (max - min + 1) + min)
 }

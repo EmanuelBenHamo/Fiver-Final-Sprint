@@ -8,6 +8,8 @@ import campaignList from '../cmps/campaign-list.vue'
 import backofficePage from "../views/backoffice-page.vue";
 import offerList from "../cmps/offer-list.vue";
 import influencerDetails from "../views/influencer-details.vue";
+import influencerCreate from "../views/influencer-create.vue";
+import brandCreate from "../views/brand-create.vue";
 
 Vue.use(VueRouter);
 
@@ -27,6 +29,11 @@ const routes = [
     name: "brand",
     component: brandList
 },
+  {
+    path: "/brand/create",
+    name: "brand-create",
+    component: brandCreate
+},
 {
     path: "/campaign",
     name: "campaign",
@@ -36,6 +43,11 @@ const routes = [
     path: "/campaign/:id",
     name: "campaign-details",
     component: campaignDetails
+  },
+  {
+    path:"/influencer/create",
+    name: "influencer-create",
+    component: influencerCreate
   },
   
   {
