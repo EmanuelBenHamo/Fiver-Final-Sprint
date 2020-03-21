@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import influencerService from '../services/influencer.service.js';
-import campaignService from '../services/campaign.service.js';
+import influencerService from "../services/influencer.service.js";
+import campaignService from "../services/campaign.service.js";
 export default {
   name: "main-app",
   data() {
@@ -18,10 +18,13 @@ export default {
   },
   created() {
     this.loggedInUser = this.$store.getters.loggedInUser;
-    if (this.loggedInUser.type === "influencer") {
-        this.itemsList = await campaignService.query();
-    } else if (this.loggedInUser.type === "brand") {
-        this.itemsList = await influencerService.query();
+    getItemsListByUserType();
+  },
+  methods: {
+    async getItemsListByUserType() {
+      this.itemsList = await this.$store.dispatch({
+        type: "getUserItems"
+      });
     }
   }
 };
