@@ -1,13 +1,14 @@
 <template>
   <section class="brand-preview">
-    <h1 class="brand-name">{{brand.name}}</h1>
-    <p class="brand-type"><span>Customers:</span>{{brand.customersCount}}</p>
-    <p class="in-stock"><span><Customers></Customers>:</span>{{brand.marketValue}}</p>
-    <div class="preview-btns">
+    <h1>{{brand.name}}</h1>
+    <img :src="brand.imgUrl" alt="Brand Logo" />
+    <ul class="tags clean-list">
+      <li v-for="(subject, idx) in brand.subjects" :key="idx">{{subject}}</li>
+    </ul>
+    <p><span>Customers:</span>{{brand.customersCount}}</p>
       <router-link :to="'/brandDetails/' + brand._id">
-        <button class="brand-details-btn">Details</button>
+        <button class="btn">Details</button>
       </router-link>
-    </div>
   </section>
 </template>
 <script>
