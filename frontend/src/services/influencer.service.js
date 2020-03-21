@@ -1,5 +1,3 @@
-const fs = require('fs');
-
 import storageService from './storage.service.js';
 
 const KEY = 'influencers';
@@ -32,14 +30,13 @@ function remove(id) {
     return Promise.resolve();
 }
 
-function add(influencer) {
+async function add(influencer) {
     influencer.createdAt = Date.now();
     influencer = _setSocialInfo(influencer)
     gInfluencers.unshift(influencer);
     storageService.store(KEY, gInfluencers)
-    console.log('An influencer Have been added', influencer);
     
-    return Promise.resolve(influencer);
+    return await influencer;
 }
 
 function update(influencer) {
@@ -61,7 +58,7 @@ export default {
 }
 
 function _setSocialInfo(influencer){
-    influencer.socials.map(social => {
+    influencer.socials = influencer.socials.map(social => {
         console.log('social', social);
              var currSocial = {
                 type : social,
@@ -69,12 +66,11 @@ function _setSocialInfo(influencer){
                 womenFollowers : _randomInt(10000, 10000000),
                 posts :_randomInt(1000, 1000000),
                 stories : _randomInt(1000, 1000000),
-                avgAge: _randomInt(16, 60),
+                avgAge: _randomInt(16, 50),
             }
+            return currSocial
         })
-        
-        console.log('THE INFLUENCER AFTER CHANGE',influencer    );
-    // return influencer
+    return influencer
 }
 
 function _randomInt(min , max){
