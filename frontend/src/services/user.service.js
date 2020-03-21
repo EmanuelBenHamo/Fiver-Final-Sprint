@@ -51,7 +51,7 @@ async function update(user) {
     const idx = gUsers.findIndex(currUser => currUser._id === user._id);
     gUsers.splice(idx, 1, user);
 
-    return user;
+   return user;
 }
 
 async function remove(id) {

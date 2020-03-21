@@ -26,8 +26,8 @@ export default {
         getEmptyInfluencer() {
             return influencerService.getEmptyInfluencer();
         },
-        getInfluencerById(context, { influencerId }) {
-            return influencerService.getById(influencerId)
+        async getInfluencerById(context, { influencerId }) {
+            return await influencerService.getById(influencerId)
         }
     },
     modules: {}

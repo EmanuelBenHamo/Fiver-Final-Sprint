@@ -34,10 +34,12 @@ function remove(id) {
     return Promise.resolve();
 }
 
-async function add(offer) {
+async function add(payload) {
+
+    var offer = await _createOffer(payload)
     gOffers.unshift(offer);
-    console.log('Offer has been added', offer);
     storageService.store(KEY, gOffers)
+    
     return await offer;
 }
 
@@ -50,7 +52,7 @@ function update(offer) {
     return Promise.resolve(offer);
 }
 
-async function createOffer(campaign) {
+async function _createOffer({campaign, influencer}) {
     const newOffer = {
         _id: Math.floor(Math.random() * 1000000 + 10000),
         status: 'Pendeing',
@@ -66,7 +68,7 @@ async function createOffer(campaign) {
         },
         createdAt: Date.now()
     };
-    return await add(newOffer);
+    return newOffer;
 }
 
 export default {
@@ -75,7 +77,6 @@ export default {
     remove,
     add,
     update,
-    createOffer
 }
 
 // function _saveOffersToFile() {

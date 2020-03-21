@@ -54,6 +54,16 @@
       </div>
     </div>
     <button @click="submit" class="btn">Save</button>
+
+    <button @click="getTemplateCampaigns" class="btn">Choose Template</button>
+    <select
+    v-if="templateCampaigns && templateCampaigns.length" 
+    @change="setTemplateCampaign($event)">
+      <option 
+        v-for="template in templateCampaigns"
+        :key="template._id"
+        :value="template._id">{{template.name}}</option>
+    </select>
   </section>
 </template>
 
@@ -78,7 +88,8 @@ export default {
             womenOnly: false
           }
         }
-      }
+      },
+      templateCampaigns: []
     };
   },
   methods: {
@@ -88,12 +99,23 @@ export default {
         campaign: this.campaign
       });
       this.getEmptyCampaign();
-      
     },
-  
     async getEmptyCampaign() {      
       const emptyCampaign = await this.$store.dispatch('getEmptyCampaign')
       this.campaign = emptyCampaign;
+    },
+    async setTemplateCampaign(ev){
+     var campaign = await this.$store.dispatch({
+        type: 'getcampaignById',
+        campaignId:ev.target.value
+        })
+        campaign.startDate = new Date(+campaign.startDate).toISOString().slice(0,10)  ;
+        campaign.endDate = new Date(+campaign.endDate).toISOString().slice(0,10)  ;
+        this.campaign = JSON.parse(JSON.stringify(campaign))
+    },
+    async getTemplateCampaigns() {
+      const templateCampaigns = await this.$store.dispatch('loadCampaigns');
+      this.templateCampaigns = templateCampaigns.slice(4, 7)
     }
   }
 };

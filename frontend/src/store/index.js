@@ -5,7 +5,7 @@ import userStore from "./modules/userStore.js";
 import campaignStore from "./modules/campaignStore.js";
 import offerStore from "./modules/offerStore.js";
 import brandStore from "./modules/brandStore.js";
-import influencerStore from "./modules/influencerStore.js"
+import influencerStore from "./modules/influencerStore.js";
 
 Vue.use(Vuex);
 
