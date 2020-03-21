@@ -20,8 +20,8 @@ export default {
             context.commit({ type: 'setCampaigns', campaigns })
         },
         addCampaign(context, { campaign }) {
-            var savedCampign = campaignService.add(campaign);
-            console.log("Campaign has been saved!", savedCampign);
+            var savedCampaign = campaignService.add(campaign);
+            console.log("Campaign has been saved!", savedCampaign);
         },
         getEmptyCampaign() {
             return campaignService.getEmptyCampaign();

@@ -7,7 +7,7 @@
         <h4>Start date:{{campaign.startDate | date}}</h4>
         <h4>End date:{{campaign.endDate |date}}</h4>
         <router-link :to="'/campaign/' + campaign._id">
-            <button class="campaign-details-btn">Details</button>
+            <button class="btn">Details</button>
       </router-link>
   </section>
 </template>
@@ -18,6 +18,5 @@ export default {
       type: Object
     }
   },
-  methods: {},
 };
 </script>

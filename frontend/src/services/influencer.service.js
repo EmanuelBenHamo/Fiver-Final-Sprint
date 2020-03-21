@@ -8,7 +8,6 @@ function query(filterBy = {}) {
 
 function getById(id) {
     const influencer = gInfluencers.find(influencer => influencer._id === id);
-
     return influencer;
 }
 
