@@ -10,7 +10,7 @@
         <input type="radio" value="woman" v-model="user.gender">
         <label>Woman</label>
     </div>
-    <input type="url"><button class="btn">Uplaod Img</button>
+    <input type="file" @change="uploadImg($event)">
     <!-- Support Claudinary -->
     <label>Tags</label>
     <!-- Add multypile tags choises -->
@@ -22,11 +22,13 @@
     </div>
     <label>Price per post <input type="number" v-model="user.pricePerPost"> </label>
     <button @click="saveUser" class="btn">Save</button>
+   
     <pre>{{user}}</pre>
   </section>
 </template>
 
 <script>
+import CloudinaryService from '../services/CloudinaryService.js';
 export default {
     name: 'influencer-create',
     data(){
@@ -39,11 +41,17 @@ export default {
     methods:{
         async saveUser(){
             const savedUser = await this.$store.dispatch({
-                type: 'addnfluencer',
+                type: 'addInfluencer',
                 influencer: this.user
             })
             console.log('Saved!', savedUser);
-        }
+        },
+        async uploadImg(ev) {
+      // Cloudinary upload img  
+      const res = await CloudinaryService.uploadImg(ev);
+      const { url } = res;
+      this.user.imgUrl = url;
+    }
     }
 }
 </script>

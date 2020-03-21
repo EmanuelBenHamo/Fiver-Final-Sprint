@@ -32,6 +32,7 @@ function remove(id) {
 }
 
 async function add(brand) {
+    brand._id = influencer._id = _randomInt(10000, 10000000)
     brand.createdAt = Date.now();
     console.log('Before', brand);
     brand = _setBrandInfo(brand)

@@ -31,6 +31,7 @@ function remove(id) {
 }
 
 async function add(influencer) {
+    influencer._id = _randomInt(10000, 10000000) + ''
     influencer.createdAt = Date.now();
     influencer = _setSocialInfo(influencer)
     gInfluencers.unshift(influencer);

@@ -3,7 +3,7 @@
       <h1>signup as a Brand</h1>
       <label>Name: <input type="text" v-model="user.lastName"></label>
       <label>Email <input type="email" v-model="user.email"></label>
-       <input type="url"><button class="btn">Uplaod Img</button>
+       <input type="file" @change="uploadImg($event)">
     <!-- Support Claudinary -->
         <label>Subjects</label>
     <!-- Add multypile subjects choises -->
@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import CloudinaryService from '../services/CloudinaryService.js';
 export default {
     name: 'brand-create',
     data(){
@@ -27,7 +28,13 @@ export default {
                 brand: this.user
             })
             console.log('Saved!', savedUser);
-        }
+        },
+        async uploadImg(ev) {
+      // Cloudinary upload img  
+      const res = await CloudinaryService.uploadImg(ev);
+      const { url } = res;
+      this.user.imgUrl = url;
+    } 
     } 
 
 }
