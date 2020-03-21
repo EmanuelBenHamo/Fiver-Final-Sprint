@@ -37,7 +37,7 @@ async function add(influencer) {
     gInfluencers.unshift(influencer);
     storageService.store(KEY, gInfluencers)
     
-    return await influencer;
+    return influencer;
 }
 
 function update(influencer) {

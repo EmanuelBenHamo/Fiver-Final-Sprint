@@ -1,15 +1,16 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import homePage from "../views/home-page.vue";
+import mainApp from "../views/main-app.vue";
+import loginPage from "../views/login-page.vue";
 import campaignCreate from "../views/campaign-create.vue";
 import campaignDetails from "../views/campaign-details.vue";
-import brandList from '../cmps/brand-list.vue'
-import campaignList from '../cmps/campaign-list.vue'
 import backofficePage from "../views/backoffice-page.vue";
 import offerList from "../cmps/offer-list.vue";
 import influencerDetails from "../views/influencer-details.vue";
 import influencerCreate from "../views/influencer-create.vue";
 import brandCreate from "../views/brand-create.vue";
+import mainApp from "../views/main-app.vue";
 
 Vue.use(VueRouter);
 
@@ -24,6 +25,16 @@ const routes = [
     name: "campaign-create",
     component: campaignCreate
   },
+  {
+    path: "/app",
+    name: "main-app",
+    component: mainApp
+},
+{
+    path: "/login",
+    name: "login-page",
+    component: loginPage
+},
   {
     path: "/brand",
     name: "brand",
@@ -67,7 +78,7 @@ const routes = [
       }
     ]
   }
-];
+]
 
 const router = new VueRouter({
     mode: "history",

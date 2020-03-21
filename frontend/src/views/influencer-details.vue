@@ -2,9 +2,9 @@
 <section class="influencer-details-container flex column" v-if="currInfluencer">
   <div class="influencer-details flex space-around">
   <div class="influencer-info">
-    <h2>{{currInfluencer.firstName}} {{currInfluencer.lastName}}</h2>
+    <h2>{{fullname}}</h2>
     <h3>Date Of Birth: {{currInfluencer.dateOfBirth | date}}</h3>
-    <h2 :class="`fa fa-${gender} fa-lg`"></h2>
+    <h2 :class="`fa fa-${genderIcon} fa-lg`"></h2>
     <h3>{{currInfluencer.email}}</h3>
     <img :src="currInfluencer.imgUrl" alt="Profile Picture">
     
@@ -58,11 +58,14 @@ export default {
     };
   },
   computed:{
-    gender(){
+    genderIcon(){
       return (this.currInfluencer.gender === "Male") ?'mars': 'venus';
        },
     loggedInUser(){
       return this.$store.getters.loggedInUser
+    },
+    fullname(){
+      return this.currInfluencer.firstName + ' ' + this.currInfluencer.lastName;
     }
   },
   created() {

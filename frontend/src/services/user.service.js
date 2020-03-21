@@ -2,13 +2,26 @@ import storageService from './storage.service.js';
 
 const USERS_KEY = 'users';
 
-var gUsers = loadUsers();
+var gUsers = _loadUsers();
 var gLoggedInUser;
 
-async function loadUsers() {
-    gUsers = storageService.load(USERS_KEY);
+async function query(userType) {
+    return gUsers.filter(user.type === userType);
+}
 
-    return gUsers;
+async function signUp(credentials) {
+    const { username, password, type } = credentials;
+
+    if (_isUsernameTaken(username)) {
+        throw new Error('username already taken');
+    }
+
+    const user = { username, password, type };
+    user._id = _makeId();
+    _add(user);
+    gLoggedInUser = user;
+
+    return gLoggedInUser;
 }
 
 async function login(credentials) {
@@ -34,28 +47,42 @@ async function getLoggedInUser() {
     return gLoggedInUser;
 }
 
-async function signUp(credentials) {
-    const { username, password, type } = credentials;
+async function update(user) {
+    const idx = gUsers.findIndex(currUser => currUser._id === user._id);
+    gUsers.splice(idx, 1, user);
 
-    if (_isUsernameTaken(username)) {
-        throw new Error('username already taken');
-    }
+   return user;
+}
 
-    const user = { username, password, type };
-    user._id = _makeId();
-    // should be the actual influencer / brand _id
-
-    gUsers.unshift(user);
-    storageService.store(USERS_KEY, gUsers);
-    gLoggedInUser = user;
-    return gLoggedInUser;
+async function remove(id) {
+    const idx = gUsers.findIndex(currUser => currUser._id === user._id);
+    gUsers.splice(idx, 1);
 }
 
 export default {
+    query,
     signUp,
     login,
     logout,
-    getLoggedInUser
+    getLoggedInUser,
+    update,
+    remove
+}
+
+async function _loadUsers() {
+    gUsers = storageService.load(USERS_KEY);
+    
+    if (!gUsers) {
+        let influencers = require('../../data/influencers.json');
+        let brands = require('../../data/brands.json');
+        gUsers = [...brands, ...influencers];
+        storageService.store(USERS_KEY, gUsers);
+    }
+}
+
+async function _add(user) {
+    gUsers.unshift(user);
+    storageService.store(USERS_KEY, gUsers);
 }
 
 function _isUsernameTaken(username) {

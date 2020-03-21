@@ -15,8 +15,7 @@ export default {
     actions: {
         async sendOffer(context ,payload){
             console.log('Payload', payload);
-            
-            return await offerService.createOffer(payload)
+            return await offerService.add(payload)
         },
         async loadOffers(context){
             const offers = await offerService.query();
