@@ -1,15 +1,27 @@
 const fs = require('fs');
 
-var gInfluencers = require('../data/influencers.json');
+import storageService from './storage.service.js';
 
+const KEY = 'influencers';
+
+var gInfluencers = _getInfluencersFromStorage();
+
+
+function _getInfluencersFromStorage(){
+    var influencers = storageService.load(KEY);
+    if(!influencers){
+        influencers = require('../../data/influencers.json');
+        storageService.store(KEY, influencers)
+    }
+    return influencers
+}
 function query(filterBy = {}) {
     return Promise.resolve(gInfluencers);
 }
 
-function getById(id) {
-    const influencer = gInfluencers.find(influencer => influencer._id === id);
+async function getById(id) {
+    return await gInfluencers.find(influencer => influencer._id === id);
 
-    return influencer;
 }
 
 function remove(id) {
@@ -39,7 +51,7 @@ function update(influencer) {
     return Promise.resolve(influencer);
 }
 
-module.exports = {
+export default {
     query,
     getById,
     remove,
