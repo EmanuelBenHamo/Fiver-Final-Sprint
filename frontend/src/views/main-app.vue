@@ -1,11 +1,12 @@
 <template>
   <section class="main-app">
-    <list v-if="itemsList" :itemsList="itemsList" :userType="this.loggedInUser.type" />
+    <items-list v-if="itemsList" :itemsList="itemsList" :userType="this.loggedInUser.type" />
   </section>
 </template>
 <script>
 import influencerService from "../services/influencer.service.js";
 import campaignService from "../services/campaign.service.js";
+import itemsList from '../cmps/items-list.vue';
 export default {
   name: "main-app",
   data() {
@@ -26,7 +27,7 @@ export default {
     }
   },
   components: {
-    list
+    itemsList
   }
 };
 </script>

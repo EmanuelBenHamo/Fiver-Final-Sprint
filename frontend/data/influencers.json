@@ -1,6 +1,9 @@
 [
     {
         "_id": "fee23f2e-0153-4b0e-8076-91393fd89e35",
+        "username": "aa",
+        "password": "bb",
+        "type": "influencer",
         "firstName": "Saree",
         "lastName": "Branigan",
         "dateOfBirth": "681968675",
@@ -13,6 +16,7 @@
             "Electronics",
             "Games"
         ],
+
         "targets": [
             "Electronics",
             "Computers",

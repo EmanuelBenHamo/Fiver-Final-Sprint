@@ -12,6 +12,7 @@
 import influencerPreview from "./influencer-preview";
 import campaignPreview from "./campaign-preview";
 export default {
+  name: 'items-list',
   props: {
     userType: {
       type: String
