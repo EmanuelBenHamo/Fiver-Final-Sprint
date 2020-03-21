@@ -18,14 +18,13 @@ export default {
   },
   created() {
     this.loggedInUser = this.$store.getters.loggedInUser;
+    getItemsListByUserType();
   },
   methods: {
-    async getItemsListByUserType() { // TODO: move to store
-      if (this.loggedInUser.type === "influencer") {
-        this.itemsList = await campaignService.query();
-      } else if (this.loggedInUser.type === "brand") {
-        this.itemsList = await influencerService.query();
-      }
+    async getItemsListByUserType() {
+      this.itemsList = await this.$store.dispatch({
+        type: "getUserItems"
+      });
     }
   }
 };
