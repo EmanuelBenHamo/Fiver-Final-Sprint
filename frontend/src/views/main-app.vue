@@ -1,9 +1,13 @@
 <template>
-  <section class="main-app"></section>
-  <!-- <list :items="itemsList" v-if="itemsList"></list> -->
+  <section class="main-app">
+    <span>hello from main app cmp</span>
+    <!-- <list :items="itemsList" v-if="itemsList"></list> VOVA PLEASE ENTER HERE THE LIST YOU CREATED AND PASS THE ITEMSLIST AS PROPS, ALSO THE TYPE OF THE USER -->
+  </section>
 </template>
 
 <script>
+import influencerService from '../services/influencer.service.js';
+import campaignService from '../services/campaign.service.js';
 export default {
   name: "main-app",
   data() {
@@ -15,9 +19,9 @@ export default {
   created() {
     this.loggedInUser = this.$store.getters.loggedInUser;
     if (this.loggedInUser.type === "influencer") {
-        // set items list to be campaigns list
+        this.itemsList = await campaignService.query();
     } else if (this.loggedInUser.type === "brand") {
-        // set items list to be influencers list
+        this.itemsList = await influencerService.query();
     }
   }
 };
