@@ -6,7 +6,6 @@
 <script>
 import influencerService from "../services/influencer.service.js";
 import campaignService from "../services/campaign.service.js";
-import list from "../cmps/list.cmp.vue";
 export default {
   name: "main-app",
   data() {
@@ -17,17 +16,13 @@ export default {
   },
   created() {
     this.loggedInUser = this.$store.getters.loggedInUser;
-    if (this.loggedInUser.type === "influencer") {
-      campaignService.query()
-      .then(res => {
-        this.itemsList = res;
+    getItemsListByUserType();
+  },
+  methods: {
+    async getItemsListByUserType() {
+      this.itemsList = await this.$store.dispatch({
+        type: "getUserItems"
       });
-      console.log(this.itemsList);
-    } else if (this.loggedInUser.type === "brand") {
-      influencerService.query()
-            .then(res => {
-              this.itemsList = res;
-            });
     }
   },
   components: {
