@@ -21,11 +21,6 @@ const routes = [{
         component: campaignCreate
     },
     {
-        path: "/list",
-        name: "list",
-        component: list
-    },
-    {
         path: "/campaign/:id",
         name: "campaign-details",
         component: campaignDetails
