@@ -16,10 +16,6 @@ export default {
     };
   },
   created() {
-    this.$store.dispatch({ type: "loadBrands" });
-    this.$store.dispatch({ type: "loadCampaigns" });
-    this.$store.dispatch({ type: "loadInfluencers" });
-
     this.loggedInUser = this.$store.getters.loggedInUser;
     if (this.loggedInUser.type === "influencer") {
       campaignService.query()

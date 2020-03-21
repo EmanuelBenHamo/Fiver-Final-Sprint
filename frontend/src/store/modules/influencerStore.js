@@ -19,9 +19,9 @@ export default {
             const influencers = await influencerService.query()
             context.commit({ type: 'setInfluencers', influencers })
         },
-        addinfluencer(context, { influencer }) {
-            var savedCampign = influencerService.add(influencer);
-            console.log("influencer has been saved!", savedCampign);
+        addInfluencer(context, { influencer }) {
+            var savedInfluencer = influencerService.add(influencer);
+            console.log("influencer has been saved!", savedInfluencer);
         },
         getEmptyInfluencer() {
             return influencerService.getEmptyInfluencer();
