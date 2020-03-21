@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-var gInfluencers = require('../data/influencers.json');
+var gInfluencers = require('../../data/influencers.json');
 
 function query(filterBy = {}) {
     return Promise.resolve(gInfluencers);
@@ -8,7 +8,6 @@ function query(filterBy = {}) {
 
 function getById(id) {
     const influencer = gInfluencers.find(influencer => influencer._id === id);
-
     return influencer;
 }
 
