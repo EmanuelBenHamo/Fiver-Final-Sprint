@@ -28,6 +28,9 @@ export default {
         },
         async getInfluencerById(context, { influencerId }) {
             return await influencerService.getById(influencerId)
+        },
+        async addInfluencer(context, {influencer}){
+            return await influencerService.add(influencer)
         }
     },
     modules: {}
