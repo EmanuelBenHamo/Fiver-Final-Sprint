@@ -6,7 +6,7 @@ import campaignDetails from "../views/campaign-details.vue";
 import backofficePage from "../views/backoffice-page.vue";
 import offerList from "../cmps/offer-list.vue";
 import influencerDetails from "../views/influencer-details.vue";
-import list from "../cmps/list.cmp.vue"
+import mainApp from "../views/main-app.vue"
 
 Vue.use(VueRouter);
 
@@ -14,6 +14,11 @@ const routes = [{
         path: "/",
         name: "home-page",
         component: homePage
+    },
+    {
+        path: "/mainApp",
+        name: "main-app",
+        component: mainApp
     },
     {
         path: "/create",
