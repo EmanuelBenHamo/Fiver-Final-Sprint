@@ -1,7 +1,19 @@
-const fs = require('fs');
+// const fs = require('fs');
 
-var gBrands = require('../../data/brands.json');
+import storageService from './storage.service.js';
 
+const KEY = 'Brands'
+
+var gBrands = _getBrandsFromStorage();
+
+function _getBrandsFromStorage() {
+    var brands = storageService.load(KEY);
+    if (!brands) {
+        brands = require('../../data/brands.json');
+        storageService.store(KEY, brands)
+    }
+    return brands
+}
 function query() {
     return Promise.resolve(gBrands);
 }
@@ -37,7 +49,7 @@ function update(brand) {
     return Promise.resolve(brand);
 }
 
-module.exports = {
+export default {
     query,
     getById,
     remove,

@@ -21,27 +21,50 @@
       <li>Post Price: {{social.pricePerPost}}</li>
     </ul>
   </div>
+  <div class="campaign-offer flex">
+  <button  
+    @click="isMakingOffer = !isMakingOffer"
+    class="make-offer btn">
+    Make an Offer
+  </button>
+  <select 
+    v-if="isMakingOffer"
+    @change="sendOffer($event)"
+    class="campaign-list">
+      <option 
+        v-for="campaign in campaigns"
+        :key="campaign._id"
+        :value="campaign._id">
+        {{campaign.name}}
+      </option>
+  </select>
+  </div>
 </section>
 </template>
 
 <script>
 export default {
-    name: 'influencer-details',
+  name: 'influencer-details',
     data() {
     return {
       influencerId: null,
-      currInfluencer: null
+      currInfluencer: null,
+      campaigns: [],
+      isMakingOffer: false
     };
   },
   computed:{
     gender(){
       return (this.currInfluencer.gender === "Male") ?'♂': '♀';
-       }
-    
+       },
+    loggedInUser(){
+      return this.$store.getters.loggedInUser
+    }
   },
   created() {
     this.influencerId = this.$route.params.id;
     this.getInfluencerById();
+    this.loadCampaigns()
   },
   methods: {
     async getInfluencerById() {
@@ -51,6 +74,21 @@ export default {
       });
       this.currInfluencer = influencer;  
     },
+    async loadCampaigns(){
+     this.campaigns =  await this.$store.dispatch('loadCampaigns')
+    },
+    async sendOffer(ev) {
+      const campaignId = ev.target.value;
+      const campaign = await this.$store.dispatch({
+        type: 'getcampaignById',
+        campaignId
+      })
+      const sentOffer = await this.$store.dispatch({
+        type: 'sendOffer',
+        campaign,
+        influencer: this.currInfluencer
+      })
+    }
   }
 }
 </script>

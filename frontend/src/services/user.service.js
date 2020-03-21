@@ -43,6 +43,7 @@ async function signUp(credentials) {
 
     const user = { username, password, type };
     user._id = _makeId();
+    // should be the actual influencer / brand _id
 
     gUsers.unshift(user);
     storageService.store(USERS_KEY, gUsers);

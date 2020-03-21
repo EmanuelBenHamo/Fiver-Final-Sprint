@@ -18,6 +18,7 @@ export default {
         async loadCampaigns(context) {
             const campaigns = await campaignService.query()
             context.commit({ type: 'setCampaigns', campaigns })
+            return campaigns
         },
         addCampaign(context, { campaign }) {
             var savedCampign = campaignService.add(campaign);

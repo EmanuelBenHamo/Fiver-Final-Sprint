@@ -13,8 +13,10 @@ export default {
         }
     },
     actions: {
-        async sendOffer(context ,{campaign}){
-            return await offerService.createOffer(campaign)
+        async sendOffer(context ,payload){
+            console.log('Payload', payload);
+            
+            return await offerService.createOffer(payload)
         },
         async loadOffers(context){
             const offers = await offerService.query();

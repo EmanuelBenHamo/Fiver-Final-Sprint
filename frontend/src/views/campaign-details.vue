@@ -36,7 +36,8 @@ export default {
   data() {
     return {
       campaignId: null,
-      currCampaign: null
+      currCampaign: null,
+      loggedInUser: null
     };
   },
   computed: {
@@ -70,7 +71,9 @@ export default {
     async sendOffer() {
       const sentOffer = await this.$store.dispatch({
         type: 'sendOffer',
-        campaign : this.currCampaign
+        campaign : this.currCampaign,
+        // TODO - get influencer from the logged in user
+        influencer: this.loggedInUser
       })
     }
   }
