@@ -31,8 +31,8 @@ export default {
     }
   },
   created() {
-    console.log(this.itemsList);
-    console.log(this.userType);
+    console.log('items',this.itemsList);
+    console.log('type',this.userType);
   }
 };
 </script>

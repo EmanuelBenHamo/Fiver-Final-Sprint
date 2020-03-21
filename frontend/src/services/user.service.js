@@ -5,8 +5,8 @@ const USERS_KEY = 'users';
 var gUsers = _loadUsers();
 var gLoggedInUser;
 
-async function query(userType) {
-    return gUsers.filter(user.type === userType);
+async function query({userType}) {
+    return gUsers.filter(user => user.credentials.userType === userType);
 }
 
 async function signUp(credentials) {
@@ -25,13 +25,17 @@ async function signUp(credentials) {
 }
 
 async function login(credentials) {
+    
     const { username, password } = credentials;
-    const user = gUsers.find(user => user.username === username);
+    const user = gUsers.find(user => {
+        return user.credentials.username === username
+    });
 
     if (!user) {
         throw new Error(`wrong login details`); // didn't find user with that username
-    } else if (user.password !== password) {
-        throw new Error(`wrong login details`); // password is incorrect
+    } 
+    else if (user.credentials.password !== password) {
+        throw new Error(`wrong login pasword details`); // password is incorrect
     }
 
     gLoggedInUser = user;
@@ -70,12 +74,12 @@ export default {
 }
 
 async function _loadUsers() {
-    gUsers = storageService.load(USERS_KEY);
+    gUsers = await storageService.load(USERS_KEY);
     
     if (!gUsers) {
         let influencers = require('../../data/influencers.json');
         let brands = require('../../data/brands.json');
-        gUsers = [...brands, ...influencers];
+        gUsers = await [...brands, ...influencers];
         storageService.store(USERS_KEY, gUsers);
     }
 }

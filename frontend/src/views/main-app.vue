@@ -1,6 +1,6 @@
 <template>
   <section class="main-app">
-    <items-list v-if="itemsList" :itemsList="itemsList" :userType="this.loggedInUser.type" />
+    <items-list v-if="itemsList" :itemsList="itemsList" :userType="this.loggedInUser.credentials.userType" />
   </section>
 </template>
 <script>
@@ -17,7 +17,7 @@ export default {
   },
   created() {
     this.loggedInUser = this.$store.getters.loggedInUser;
-    getItemsListByUserType();
+    this.getItemsListByUserType();
   },
   methods: {
     async getItemsListByUserType() {

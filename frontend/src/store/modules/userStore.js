@@ -48,14 +48,15 @@ export default {
             return loggedInUser;
         },
         async getUserItems(context, payload) {
-            if (context.state.loggedInUser.type === "influencer") {
+            if (context.state.loggedInUser.credentials.userType === "influencer") {
                 let campaignsList = await campaignService.query();
                 context.commit({
                     type: 'setUserItems',
                     itemsList: campaignsList
                 });
                 return campaignsList;
-            } else if (context.state.loggedInUser.type === "brand") {
+                
+            } else if (context.state.loggedInUser.credentials.userType === "brand") {
                 let influencersList = await userService.query({ userType: "influencer" });
                 context.commit({
                     type: 'setUserItems',

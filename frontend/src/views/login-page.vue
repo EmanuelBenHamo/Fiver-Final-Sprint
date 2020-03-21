@@ -1,9 +1,9 @@
 <template>
   <section>
-    <button class="btn" @click="credentials.loginType='influencer'">I am an influencer</button>
-    <button class="btn" @click="credentials.loginType='brand'">I am a brand</button>
-    <span v-if="credentials.loginType">You are about to login as {{credentials.loginType}}</span>
-    <form v-if="credentials.loginType" @submit="login">
+    <button class="btn" @click="credentials.userType='influencer'">I am an influencer</button>
+    <button class="btn" @click="credentials.userType='brand'">I am a brand</button>
+    <span v-if="credentials.userType">You are about to login as {{credentials.userType}}</span>
+    <form v-if="credentials.userType" @submit.prevent="login">
       <label>
         username:
         <input type="text" placeholder="username" v-model="credentials.username" />
@@ -25,7 +25,7 @@ export default {
   data() {
     return {
       credentials: {
-        loginType: null,
+        userType: null,
         username: null,
         password: null
       }
