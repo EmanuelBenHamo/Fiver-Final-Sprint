@@ -11,12 +11,12 @@ export default {
   },
   mutations: {
     setLoggedInUser(state, payload) {
-      state.loggedInUser = { payload };
+      state.loggedInUser = payload.loggedInUser;
     }
   },
   actions: {
     async login(context, payload) {
-      const credentials = { payload };
+      const credentials = payload.credentials;
       const loggedInUser = await userService.login(credentials);
       context.commit({
         type: 'setLoggedInUser',
@@ -28,12 +28,12 @@ export default {
       await userService.logout();
       context.commit({
         type: 'setLoggedInUser',
-        loggedInUser
+        loggedInUser: null
       });
-      return loggedInUser;
+      return;
     },
     async signup(context, payload) {
-      const credentials = { payload };
+      const credentials = payload.credentials;
       const loggedInUser = await userService.signUp(credentials);
       context.commit({
         type: 'setLoggedInUser',
