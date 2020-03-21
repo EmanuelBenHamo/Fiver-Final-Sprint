@@ -3,7 +3,7 @@ import storageService from './storage.service.js';
 const USERS_KEY = 'users';
 
 var gUsers = loadUsers();
-const gLoggedInUser;
+var gLoggedInUser;
 
 async function loadUsers() {
     gUsers = storageService.load(USERS_KEY);

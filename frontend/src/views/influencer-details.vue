@@ -15,12 +15,12 @@ export default {
   },
 created() {
     this.influencerId = this.$route.params.id;
-    this.getinfluencerById();
+    this.getInfluencerById();
   },
   methods: {
-    async getinfluencerById() {
+    async getInfluencerById() {
       const influencer = await this.$store.dispatch({
-        type: 'getinfluencerById',
+        type: 'getInfluencerById',
         influencerId: this.influencerId
       });
       this.currInfluencer = influencer;
