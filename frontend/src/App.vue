@@ -4,4 +4,14 @@
   </div>
 </template>
 
+<script>
+import appHeader from './views/app-header.vue';
+export default {
+  name: 'App',
+  components: {
+    appHeader
+    }
+}
+</script>
+
 <style lang="scss"></style>
