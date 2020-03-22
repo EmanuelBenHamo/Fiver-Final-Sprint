@@ -1,0 +1,26 @@
+.home-page-container{
+    background-image: url('../assets/img/home_page_bg.png');
+    background-size: cover;
+    
+    .home-page-content{
+        position: absolute;
+        top: 50%;
+        left: 30%;
+        transform: translate(-50%,-50%);
+        
+
+        h1{
+            font-size: 2.5rem;
+            margin-bottom: 3.5rem;
+        }
+        p{
+            font-size: 1.25rem;
+            line-break: normal;
+            margin-bottom: 2.5rem;
+        }
+        .btns :first-child{
+            margin-right: 4rem;
+        }
+       
+    }
+}
