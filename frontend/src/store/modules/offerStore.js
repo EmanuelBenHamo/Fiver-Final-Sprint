@@ -14,7 +14,6 @@ export default {
     },
     actions: {
         async sendOffer(context ,payload){
-            console.log('Payload', payload);
             return await offerService.add(payload)
         },
         async loadOffers(context){

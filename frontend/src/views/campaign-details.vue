@@ -75,6 +75,9 @@ export default {
         // TODO - get influencer from the logged in user
         influencer: this.loggedInUser
       })
+      console.log('Offer Sent', sentOffer);
+      alert('Your offer has been sent')
+      
     }
   }
 };

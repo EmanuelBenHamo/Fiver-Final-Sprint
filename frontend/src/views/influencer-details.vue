@@ -95,6 +95,8 @@ export default {
         campaign,
         influencer: this.currInfluencer
       })
+      console.log('Offer Sent', sentOffer);
+      alert('Your offer has been sent')
     }
   }
 }
