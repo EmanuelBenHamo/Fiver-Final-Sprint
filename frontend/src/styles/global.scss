@@ -6,9 +6,12 @@
 @import './basics/helpers';
 @import './basics/layout';
 @import './basics/buttons';
+
 // VIEWS
 @import './views/signup-page';
+@import './views/home-page';
 @import './views/app-header';
+
 // CMPS
 @import './cmps/campaign-details';
 @import './cmps/campaign-create';
@@ -17,5 +20,6 @@
 @import './cmps/brand-list';
 @import './cmps/brand-preview';
 @import './cmps/influencers-list';
+
 // FONT
 @import "~font-awesome/css/font-awesome.css";

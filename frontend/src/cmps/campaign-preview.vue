@@ -1,5 +1,5 @@
 <template>
-  <section class="campaign-preview">
+  <section class="campaign-preview-container">
       <h1>{{campaign.name}}</h1>
         <h3>Brand: {{campaign.miniBrand.name}}</h3>
         <h3>Product Name: {{campaign.product}}</h3>

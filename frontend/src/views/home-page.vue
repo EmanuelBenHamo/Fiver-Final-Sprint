@@ -1,6 +1,9 @@
 <template>
-  <section>
-    <h1>Home Page</h1>
+  <section class="home-page-container">
+    <div class="home-page-content">
+      <h1>Mediaqueriz</h1>
+      <p>Connecting Brands and Influencers has never been easier</p>
+    </div>
   </section>
 </template>
 

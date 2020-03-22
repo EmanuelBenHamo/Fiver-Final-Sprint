@@ -1,13 +1,12 @@
-.campaign-preview {
-    margin: 5px;
-    padding: 5px;
+.campaign-preview-container {
+    padding: 15px;
     border: 1px solid $clr1;
-    .campaign-details-btn {
-        background-color: $clr1;
-        cursor: pointer;
-        color: #ffffff;
-        font-family: Arial;
-        font-size: 15px;
-        padding: 9px 23px;
+    position: relative;
+    
+    h1{
+        font-size: 1.7rem;
+        margin: 0.8rem 0;
+        text-align: center;
     }
+    
 }
