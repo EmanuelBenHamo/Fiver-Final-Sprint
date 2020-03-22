@@ -19,9 +19,14 @@ export default {
             const brands = await brandService.query()
             context.commit({ type: 'setBrands', brands })
         },
-        async addbrand(context, { brand }) {
-            var savedBrand = await brandService.add(brand);
-            console.log("brand has been saved!", savedBrand);
+        async addBrand(context, { brand }) {
+            var user = await brandService.add(brand);
+            context.dispatch({
+                type: 'signup',
+                user
+            })
+            console.log("brand has been saved!", user);
+            return user;
         },
         getEmptybrand() {
             return brandService.getEmptybrand();

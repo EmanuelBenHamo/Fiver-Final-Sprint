@@ -32,11 +32,9 @@ function remove(id) {
 }
 
 async function add(brand) {
-    brand._id = influencer._id = _randomInt(10000, 10000000)
+    brand._id = _randomInt(10000, 10000000)
     brand.createdAt = Date.now();
-    console.log('Before', brand);
     brand = _setBrandInfo(brand)
-    console.log('After', brand);
     
     gBrands.unshift(brand);
     storageService.store(KEY, gBrands)

@@ -6,7 +6,11 @@
 @import './basics/helpers';
 @import './basics/layout';
 @import './basics/buttons';
+
 // VIEWS
+@import './views/signup-page';
+
+
 // CMPS
 @import './cmps/campaign-details';
 @import './cmps/campaign-create';

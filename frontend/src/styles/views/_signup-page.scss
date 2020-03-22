@@ -1,0 +1,43 @@
+.user-signup{
+    font-size: 1.25rem;
+    box-shadow: 0 0 2px $clr1;
+    padding: 20px;
+    margin: 10px;
+
+    .text-info{
+        display: flex;
+        justify-content: space-between;
+        input{
+            height: 30px;
+            width: 60%;
+        }
+    }
+
+    .input-file {
+        color: transparent;
+        border: none;
+        max-width: fit-content;
+        outline: none;
+
+        &::-webkit-file-upload-button {
+            visibility: hidden;
+        }
+        &::after {
+            content: 'Upload Photo';
+            background-color: $clr4;
+            color: $clr2;
+            border-radius: .4rem;
+            padding: 6px 8px;
+            display: inline-block;
+            outline: none;
+            -webkit-user-select: none;
+            font-size: 1rem;
+        }
+        &:hover::after {
+            cursor: pointer;
+            background-color: lighten($clr4,5%);
+        }
+
+}
+    
+}
