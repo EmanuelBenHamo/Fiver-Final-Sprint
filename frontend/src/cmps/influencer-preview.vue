@@ -11,6 +11,9 @@
     <ul class="clean-list">
       <li v-for="(target, idx) in influencer.targets" :key="idx">{{target}}</li>
     </ul>
+     <router-link :to="'/influencer/' + influencer._id">
+        <button class="btn">Details</button>
+      </router-link>
   </section>
 </template>
 
