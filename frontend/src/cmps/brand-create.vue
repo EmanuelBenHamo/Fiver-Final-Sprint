@@ -1,14 +1,29 @@
 <template>
   <section class="brand-create-container flex column">
-      <h1>signup as a Brand</h1>
-      <label>Name: <input type="text" v-model="user.lastName"></label>
-      <label>Email <input type="email" v-model="user.email"></label>
-       <input type="file" @change="uploadImg($event)">
-    <!-- Support Claudinary -->
-        <label>Subjects</label>
+    <h1>signup as a Brand</h1>
+    <div class="text-info">
+      <label>Username: </label>
+      <input type="text" v-model="user.credentials.username">
+    </div>
+    <div class="text-info">
+      <label>password </label>
+      <input type="password" v-model="user.credentials.password">
+    </div>
+    <div class="text-info">
+      <label>Name: </label>
+      <input type="text" v-model="user.lastName">
+    </div>
+    <div class="text-info">
+      <label>Email </label>
+      <input type="email" v-model="user.email">
+    </div>
+    <div class="text-info upload-photo">
+      <label>Upload Photo </label>
+    <input type="file" @change="uploadImg($event)" class="input-file">
+    </div>
+    <label>Subjects</label>
     <!-- Add multypile subjects choises -->
     <button @click="saveUser" class="btn">Save</button>
-    <pre>{{this.user}}</pre>
   </section>
 </template>
 
@@ -18,7 +33,11 @@ export default {
     name: 'brand-create',
     data(){
       return {
-        user: {}
+        user: {
+          credentials:{
+            userType: 'brand'
+          }
+        }
       }
     },
      methods:{
@@ -28,6 +47,7 @@ export default {
                 brand: this.user
             })
             console.log('Saved!', savedUser);
+            this.$router.push('/app')
         },
         async uploadImg(ev) {
       // Cloudinary upload img  
@@ -41,5 +61,7 @@ export default {
 </script>
 
 <style>
-
+.brand-create-container > *{
+        margin-bottom: 20px;
+    }
 </style>

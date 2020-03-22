@@ -27,7 +27,12 @@ export default {
             return await influencerService.getById(influencerId)
         },
         async addInfluencer(context, {influencer}){
-            return await influencerService.add(influencer)
+            const user = await influencerService.add(influencer)
+            context.dispatch({
+                type: 'signup',
+                user
+            })
+            return user;
         }
     },
     modules: {}

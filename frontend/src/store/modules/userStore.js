@@ -37,10 +37,8 @@ export default {
             });
             return;
         },
-        async signup(context, payload) {
-            const credentials = payload.credentials;
-            const loggedInUser = await userService.signUp(credentials);
-
+        async signup(context, {user}) {
+            const loggedInUser = await userService.signUp(user);
             context.commit({
                 type: 'setLoggedInUser',
                 loggedInUser

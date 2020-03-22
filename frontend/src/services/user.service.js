@@ -9,18 +9,17 @@ async function query({userType}) {
     return gUsers.filter(user => user.credentials.userType === userType);
 }
 
-async function signUp(credentials) {
-    const { username, password, type } = credentials;
+async function signUp(user) {
+    const { username, password, type } = user.credentials;
 
     if (_isUsernameTaken(username)) {
         throw new Error('username already taken');
     }
 
-    const user = { username, password, type };
+    // const loggedinUser = { username, password, type };
     user._id = _makeId();
     _add(user);
     gLoggedInUser = user;
-
     return gLoggedInUser;
 }
 
