@@ -1,0 +1,16 @@
+.user-signup{
+    font-size: 1.25rem;
+    box-shadow: 0 0 2px $clr1;
+    padding: 20px;
+    margin: 10px;
+
+    .text-info{
+        display: flex;
+        justify-content: space-between;
+        input{
+            height: 30px;
+            width: 60%;
+        }
+    }
+        
+}

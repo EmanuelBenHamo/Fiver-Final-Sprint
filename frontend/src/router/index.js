@@ -8,8 +8,9 @@ import campaignDetails from "../views/campaign-details.vue";
 import backofficePage from "../views/backoffice-page.vue";
 import offerList from "../cmps/offer-list.vue";
 import influencerDetails from "../views/influencer-details.vue";
-import influencerCreate from "../views/influencer-create.vue";
-import brandCreate from "../views/brand-create.vue";
+// import influencerCreate from "../views/influencer-create.vue";
+// import brandCreate from "../views/brand-create.vue";
+import signupPage from "../views/signup-page.vue";
 
 Vue.use(VueRouter);
 
@@ -35,20 +36,25 @@ const routes = [
     component: loginPage
 },
 {
-    path: "/brand/create",
-    name: "brand-create",
-    component: brandCreate
+    path: "/signup",
+    name: "signup-page",
+    component: signupPage
 },
+// {
+//     path: "/brand/create",
+//     name: "brand-create",
+//     component: brandCreate
+// },
   {
     path: "/campaign/:id",
     name: "campaign-details",
     component: campaignDetails
   },
-  {
-    path:"/influencer/create",
-    name: "influencer-create",
-    component: influencerCreate
-  },
+  // {
+  //   path:"/influencer/create",
+  //   name: "influencer-create",
+  //   component: influencerCreate
+  // },
   
   {
     path:"/influencer/:id",

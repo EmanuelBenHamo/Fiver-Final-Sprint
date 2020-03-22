@@ -1,9 +1,18 @@
 <template>
   <section class="influencer-create-container flex column" >
     <h1>Signup as an Influencer</h1>
-    <label>First Name: <input type="text" v-model="user.firstName"></label>
-    <label>Last Name: <input type="text" v-model="user.lastName"></label>
-    <label>Email <input type="email" v-model="user.email"></label>
+    <div class="text-info">
+        <label>First Name: </label>
+        <input type="text" v-model="user.firstName">
+    </div>
+    <div class="text-info">
+        <label>Last Name: </label>
+        <input type="text" v-model="user.lastName">
+    </div>
+    <div class="text-info">
+        <label>Email </label>
+        <input type="email" v-model="user.email">
+    </div>
     <div class="gender-select">
         <input type="radio"  value="man" v-model="user.gender">
         <label>Man</label>
@@ -20,10 +29,11 @@
         <input type="checkbox" value="snapchat" v-model="user.socials"><label class="fa fa-snapchat fa-2x"></label>
         <input type="checkbox" value="tiktok" v-model="user.socials"><label>Tiktok</label>
     </div>
-    <label>Price per post <input type="number" v-model="user.pricePerPost"> </label>
+    <div class="text-info">
+        <label>Price per post </label>
+        <input type="number" v-model="user.pricePerPost">
+    </div>
     <button @click="saveUser" class="btn">Save</button>
-   
-    <pre>{{user}}</pre>
   </section>
 </template>
 
@@ -57,5 +67,7 @@ export default {
 </script>
 
 <style>
-
+    .influencer-create-container > *{
+        margin-bottom: 20px;
+    }
 </style>
