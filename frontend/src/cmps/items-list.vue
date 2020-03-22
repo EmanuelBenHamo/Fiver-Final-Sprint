@@ -1,16 +1,12 @@
 <template>
   <section class="list">
-    <div v-if="userType === 'influencer'" class="campaign-list">
-      <campaign-preview v-for="campaign in items" :key="campaign._id" :campaign="campaign" />
-    </div>
-    <div v-if="userType === 'brand'" class="influencers-list">
+    <div class="influencers-list">
       <influencer-preview v-for="influencer in items" :key="influencer._id" :influencer="influencer"/>
     </div>
   </section>
 </template>
 <script>
 import influencerPreview from "./influencer-preview";
-import campaignPreview from "./campaign-preview";
 export default {
   name: 'items-list',
   props: {
@@ -22,7 +18,6 @@ export default {
     }
   },
   components: {
-    campaignPreview,
     influencerPreview
   },
   computed: {
@@ -32,7 +27,6 @@ export default {
   },
   created() {
     console.log('items',this.itemsList);
-    console.log('type',this.userType);
   }
 };
 </script>
