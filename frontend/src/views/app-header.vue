@@ -1,6 +1,6 @@
 <template>
   <section class="header">
-    <nav class="navbar flex">
+    <nav class="navbar flex justify-end">
       <router-link class='home-page-btn btn' to="/">Home</router-link>
       <router-link class="btn" to="/login">Login</router-link>
       <router-link class="btn" to="/signup">Signup</router-link>
