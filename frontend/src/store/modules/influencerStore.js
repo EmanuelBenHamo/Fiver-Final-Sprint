@@ -19,14 +19,14 @@ export default {
             const influencers = await influencerService.query()
             context.commit({ type: 'setInfluencers', influencers })
         },
-     
+
         getEmptyInfluencer() {
             return influencerService.getEmptyInfluencer();
         },
         async getInfluencerById(context, { influencerId }) {
             return await influencerService.getById(influencerId)
         },
-        async addInfluencer(context, {influencer}){
+        async addInfluencer(context, { influencer }) {
             const user = await influencerService.add(influencer)
             context.dispatch({
                 type: 'signup',

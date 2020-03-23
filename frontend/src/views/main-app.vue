@@ -1,12 +1,15 @@
 <template>
   <section class="main-app">
-    <items-list v-if="itemsList" :itemsList="itemsList" :userType="this.loggedInUser.credentials.userType" />
+    <items-list
+      v-if="itemsList"
+      :itemsList="itemsList"
+    />
   </section>
 </template>
 <script>
 import influencerService from "../services/influencer.service.js";
 import campaignService from "../services/campaign.service.js";
-import itemsList from '../cmps/items-list.vue';
+import itemsList from "../cmps/items-list.vue";
 export default {
   name: "main-app",
   data() {
@@ -17,15 +20,22 @@ export default {
     };
   },
   created() {
-    this.loggedInUser = this.$store.getters.loggedInUser;
-    console.log(this.loggedInUser)
-    this.getItemsListByUserType();
+    // this.loggedInUser = this.$store.getters.loggedInUser;
+    this.loadInfluencers();
+    this.loadBrands();
+    this.loadCampaigns();
+    console.log(this.itemsList)
   },
   methods: {
-    async getItemsListByUserType() {
-      this.itemsList = await this.$store.dispatch({
-        type: "getUserItems"
-      });
+    async loadBrands() {
+      await this.$store.dispatch({ type: "loadBrands" });
+    },
+    async loadInfluencers() {
+      await this.$store.dispatch({ type: "loadInfluencers" });
+      this.itemsList = this.$store.getters.influencers;
+    },
+    async loadCampaigns() {
+      await this.$store.dispatch({ type: "loadCampaigns" });
     }
   },
   components: {
