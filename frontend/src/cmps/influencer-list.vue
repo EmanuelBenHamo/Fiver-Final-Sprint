@@ -8,12 +8,12 @@
 <script>
 import influencerPreview from "./influencer-preview";
 export default {
-  name: 'items-list',
+  name: 'influencer-list',
   props: {
     userType: {
       type: String
     },
-    itemsList: {
+    influencerList: {
       type: Array
     }
   },
@@ -22,7 +22,7 @@ export default {
   },
   computed: {
     items() {
-      return this.itemsList;
+      return this.influencerList;
     }
   },
 };

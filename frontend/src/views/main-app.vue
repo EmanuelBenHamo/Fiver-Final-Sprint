@@ -1,22 +1,22 @@
 <template>
   <section class="main-app">
-    <items-list
-      v-if="itemsList"
-      :itemsList="itemsList"
+    <influencer-list
+      v-if="influencerList"
+      :influencerList="influencerList"
     />
   </section>
 </template>
 <script>
 import influencerService from "../services/influencer.service.js";
 import campaignService from "../services/campaign.service.js";
-import itemsList from "../cmps/items-list.vue";
+import influencerList from "../cmps/influencer-list.vue";
 export default {
   name: "main-app",
   data() {
     return {
       loggedInUser: null,
       userType: null,
-      itemsList: null
+      influencerList: null
     };
   },
   created() {
@@ -33,14 +33,14 @@ export default {
     },
     async loadInfluencers() {
       await this.$store.dispatch({ type: "loadInfluencers" });
-      this.itemsList = this.$store.getters.influencers;
+      this.influencerList = this.$store.getters.influencers;
     },
     async loadCampaigns() {
       await this.$store.dispatch({ type: "loadCampaigns" });
     }
   },
   components: {
-    itemsList
+    influencerList
   }
 };
 </script>

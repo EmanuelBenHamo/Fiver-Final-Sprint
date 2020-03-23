@@ -5,7 +5,7 @@ export default {
     state: {
         loggedInUser: null,
         userType: null,
-        itemsList: null
+        influencerList: null
     },
     getters: {
         loggedInUser(state) {
@@ -23,7 +23,7 @@ export default {
             state.userType = payload.userType;
         },
         setUserItems(state, payload) {
-            state.itemsList = payload.itemsList;
+            state.influencerList = payload.influencerList;
         }
     },
     actions: {
@@ -32,6 +32,7 @@ export default {
             await context.commit(payload);
         },
         async login(context, payload) {
+            console.log(payload.credentials)
             const credentials = payload.credentials;
             const loggedInUser = await userService.login(credentials);
             context.commit({
@@ -61,7 +62,7 @@ export default {
                 let campaignsList = await campaignService.query();
                 context.commit({
                     type: 'setUserItems',
-                    itemsList: campaignsList
+                    influencerList: campaignsList
                 });
                 return campaignsList;
 
@@ -69,7 +70,7 @@ export default {
                 let influencersList = await userService.query({ userType: "influencer" });
                 context.commit({
                     type: 'setUserItems',
-                    itemsList: influencersList
+                    influencerList: influencersList
                 });
                 return influencersList;
             }

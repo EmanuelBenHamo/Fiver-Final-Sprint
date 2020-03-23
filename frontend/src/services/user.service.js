@@ -5,7 +5,7 @@ const USERS_KEY = 'users';
 var gUsers = _loadUsers();
 var gLoggedInUser;
 
-async function query({userType}) {
+async function query({ userType }) {
     return gUsers.filter(user => user.credentials.userType === userType);
 }
 
@@ -15,25 +15,19 @@ async function signUp(user) {
     if (_isUsernameTaken(username)) {
         throw new Error('username already taken');
     }
-
-    // const loggedinUser = { username, password, type };
-    user._id = _makeId();
     _add(user);
     gLoggedInUser = user;
     return gLoggedInUser;
 }
 
 async function login(credentials) {
-    
+    console.log(credentials, 'login')
     const { username, password } = credentials;
-    const user = gUsers.find(user => {
-        return user.credentials.username === username
-    });
+    const user = gUsers.find(user => user.credentials.username === username);
 
     if (!user) {
         throw new Error(`wrong login details`); // didn't find user with that username
-    } 
-    else if (user.credentials.password !== password) {
+    } else if (user.credentials.password !== password) {
         throw new Error(`wrong login pasword details`); // password is incorrect
     }
 
@@ -54,7 +48,7 @@ async function update(user) {
     const idx = gUsers.findIndex(currUser => currUser._id === user._id);
     gUsers.splice(idx, 1, user);
 
-   return user;
+    return user;
 }
 
 async function remove(id) {
@@ -74,7 +68,7 @@ export default {
 
 async function _loadUsers() {
     gUsers = await storageService.load(USERS_KEY);
-    
+
     if (!gUsers) {
         let influencers = require('../../data/influencers.json');
         let brands = require('../../data/brands.json');
