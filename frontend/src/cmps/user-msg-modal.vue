@@ -1,9 +1,9 @@
 <template>
-  <section v-if="isShown" class="msg-container">
-    <transition name="fade">
-      <h1 v-if="isShown">{{msg.txt}}</h1>
-    </transition>
-  </section>
+  <transition name="fade">
+    <section v-if="isShown" class="msg-container">
+      <h1>{{msg.txt}}</h1>
+    </section>
+  </transition>
 </template>
 
 <script>
