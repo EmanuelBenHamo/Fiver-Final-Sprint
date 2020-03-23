@@ -22,7 +22,6 @@ export default {
   },
   created() {
     this.loggedInUser = this.$store.getters.loggedInUser;
-    this.userType = this.$store.getters.serType;
     this.loadInfluencers();
     this.loadBrands();
     this.loadCampaigns();
@@ -36,7 +35,10 @@ export default {
       this.influencerList = this.$store.getters.influencers;
     },
     async loadCampaigns() {
-      await this.$store.dispatch({ type: 'loadCampaigns' });
+      await this.$store.dispatch({ 
+        type: "loadCampaigns",
+        filterBy: {userId: this.loggedInUser._id}
+        });
     }
   },
   components: {

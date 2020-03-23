@@ -1,5 +1,47 @@
-.campaign-list {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0.6rem, auto));
-    gap: 10px;
+.campaign-list-container{
+    position: fixed;
+    height: 80%;
+    width: 85%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 0 4px $clr1;
+    overflow: auto;
+
+    .top-bar{
+        background-color: $clr1;
+        color: $clr2;
+        padding: 10px 20px;  
+    }
+
+    .campaign-table-container {
+        border-collapse: collapse;
+        margin: auto;
+        width: 95%;
+        margin-top: 35px;
+
+        thead tr{
+          background-color: lighten($clr2 ,18%);  
+        }
+
+        tbody tr{
+            border-bottom: 1px solid lighten($clr1, 55%); 
+        }
+
+        td , th{
+            text-align: left;
+            min-width: min-content;           
+            padding: 15px 10px;
+        }
+
+    }
+
+    .close-list-btn{
+        position: absolute;
+        text-decoration: underline;
+        right: 5%;
+        cursor: pointer;
+    }
 }

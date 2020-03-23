@@ -28,11 +28,9 @@ export default {
     },
     actions: {
         async setUserType(context, payload) {
-            console.log(payload)
             await context.commit(payload);
         },
         async login(context, payload) {
-            console.log(payload.credentials)
             const credentials = payload.credentials;
             const loggedInUser = await userService.login(credentials);
             context.commit({
@@ -74,6 +72,13 @@ export default {
                 });
                 return influencersList;
             }
+        },
+        async getLoggedInUser(context) {
+            if(!context.state.loggedInUser){
+                const loggedInUser = await userService.getLoggedInUser()
+                context.state.loggedInUser = loggedInUser;
+            }
+            return context.state.loggedInUser;
         }
     }
 };

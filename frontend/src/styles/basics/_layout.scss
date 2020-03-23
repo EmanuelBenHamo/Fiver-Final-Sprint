@@ -12,10 +12,12 @@
     }
     .header{
         grid-column: 1/-1;
+        grid-row: 1 /2;
+
     }
     .home-page-container{
-        grid-row: 2/-1;
-        grid-column: 1/-1;
+        grid-row: 1 /-1;
+        grid-column: 2/-1;
     }
 }
 

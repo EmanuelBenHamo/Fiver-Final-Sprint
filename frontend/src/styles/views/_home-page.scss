@@ -1,26 +1,40 @@
 .home-page-container{
-    background-image: url('../assets/img/home_page_bg.png');
-    background-size: cover;
+ 
     
     .home-page-content{
-        position: absolute;
-        top: 55%;
-        left: 30%;
-        transform: translate(-50%,-50%);
+   
+        color: black;
         
 
         h1{
-            font-size: 2.5rem;
+            font-family: 'Rock Salt', cursive;
+            font-weight: 400;
+            font-size: 3.5rem;
             margin-bottom: 3.5rem;
         }
         p{
-            font-size: 1.25rem;
+            
+            font-size: 3.5rem;
             line-break: normal;
-            margin-bottom: 2.5rem;
+            margin: 1rem;
         }
         .btns :first-child{
             margin-right: 4rem;
         }
-       
+        
+    }
+    .img-container{
+        position: relative;
+        width: 700px;
+        height: 500px;
+
+        img{
+            position: absolute;
+            object-fit: cover;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+        }
     }
 }
