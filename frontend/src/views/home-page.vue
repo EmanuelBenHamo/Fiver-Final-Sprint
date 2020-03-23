@@ -10,12 +10,20 @@
 </template>
 <script>
 export default {
+  created(){
+    this.$store.dispatch({ type: 'setUserType', userType:null });
+  },
   methods: {
     redirect(userType) {
-      if(userType === 'brand')
-      this.$router.push('/app');
-      else if(userType === 'influencer')
-      this.$router.push('/backOffice');
+      if(userType === 'brand'){
+        this.$store.dispatch({ type: 'setUserType', userType });
+        this.$router.push('/app');
+      }
+      else if(userType === 'influencer'){
+        this.$store.dispatch({ type: 'setUserType', userType });
+        this.$router.push('/backOffice');
+      }
+        console.log(userType)
     }
   }
 };

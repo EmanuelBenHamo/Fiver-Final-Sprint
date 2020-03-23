@@ -4,22 +4,33 @@ import campaignService from '../../services/campaign.service.js';
 export default {
     state: {
         loggedInUser: null,
+        userType: null,
         itemsList: null
     },
     getters: {
         loggedInUser(state) {
             return state.loggedInUser;
+        },
+        userType(state) {
+            return state.userType;
         }
     },
     mutations: {
         setLoggedInUser(state, payload) {
             state.loggedInUser = payload.loggedInUser;
         },
+        setUserType(state, payload) {
+            state.userType = payload.userType;
+        },
         setUserItems(state, payload) {
             state.itemsList = payload.itemsList;
         }
     },
     actions: {
+        async setUserType(context, payload) {
+            console.log(payload)
+            await context.commit(payload);
+        },
         async login(context, payload) {
             const credentials = payload.credentials;
             const loggedInUser = await userService.login(credentials);
@@ -37,7 +48,7 @@ export default {
             });
             return;
         },
-        async signup(context, {user}) {
+        async signup(context, { user }) {
             const loggedInUser = await userService.signUp(user);
             context.commit({
                 type: 'setLoggedInUser',
@@ -53,7 +64,7 @@ export default {
                     itemsList: campaignsList
                 });
                 return campaignsList;
-                
+
             } else if (context.state.loggedInUser.credentials.userType === "brand") {
                 let influencersList = await userService.query({ userType: "influencer" });
                 context.commit({

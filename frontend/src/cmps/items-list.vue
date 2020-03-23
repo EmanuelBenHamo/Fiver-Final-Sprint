@@ -25,8 +25,5 @@ export default {
       return this.itemsList;
     }
   },
-  created() {
-    console.log('items',this.itemsList);
-  }
 };
 </script>

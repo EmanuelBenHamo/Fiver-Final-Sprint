@@ -21,10 +21,11 @@ export default {
   },
   created() {
     // this.loggedInUser = this.$store.getters.loggedInUser;
+    this.userType = this.$store.getters.userType;
+    console.log(this.userType)
     this.loadInfluencers();
     this.loadBrands();
     this.loadCampaigns();
-    console.log(this.itemsList)
   },
   methods: {
     async loadBrands() {
