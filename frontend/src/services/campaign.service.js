@@ -15,8 +15,9 @@ function _getCampaignsFromStorage() {
     return campaigns
 }
 
-function query(filterBy = {}) {
-    return Promise.resolve(gCampaigns);
+async function query(filterBy = {}) {
+    const campaignsToShow = gCampaigns.filter(campaign => campaign.miniBrand.id === filterBy._id)
+    return campaignsToShow;
 }
 
 async function getById(id) {

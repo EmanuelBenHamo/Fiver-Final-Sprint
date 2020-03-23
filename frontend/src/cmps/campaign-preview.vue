@@ -1,22 +1,34 @@
 <template>
-  <section class="campaign-preview-container">
-      <h1>{{campaign.name}}</h1>
-        <h3>Brand: {{campaign.miniBrand.name}}</h3>
-        <h3>Product Name: {{campaign.product}}</h3>
-        <h3>Budget: {{campaign.budget | currency}}</h3>
-        <h4>Start date:{{campaign.startDate | date}}</h4>
-        <h4>End date:{{campaign.endDate |date}}</h4>
-        <router-link :to="'/campaign/' + campaign._id">
-            <button class="btn">Details</button>
-      </router-link>
-  </section>
+    <tr class="campaign-preview-container" v-if="campaign">
+        <td>{{campaign.name}}</td>
+        <td>{{campaign.product}}</td>
+        <td>{{campaign.startDate |date}} - {{campaign.endDate |date}}</td>
+        <td>{{campaign.budget | currency}}</td>
+        <td>
+          <button class="btn" @click="$emit('sendOffer', campaign )">
+            Send Offer
+          </button>
+        </td>
+    </tr>
+  
 </template>
 <script>
-export default {
+  export default {
   props: {
     campaign: {
       type: Object
     }
   },
+  data(){
+    return {
+     
+    }
+  },
+  created(){
+   
+  },
+  methods: {
+    
+  }
 };
 </script>

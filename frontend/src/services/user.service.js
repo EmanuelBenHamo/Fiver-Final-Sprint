@@ -16,10 +16,11 @@ async function signUp(user) {
         throw new Error('username already taken');
     }
 
-    // const loggedinUser = { username, password, type };
     user._id = _makeId();
     _add(user);
     gLoggedInUser = user;
+    storageService.store('loggedInUser', gLoggedInUser)
+
     return gLoggedInUser;
 }
 
@@ -38,15 +39,19 @@ async function login(credentials) {
     }
 
     gLoggedInUser = user;
-
+    storageService.store('loggedInUser', gLoggedInUser)
     return gLoggedInUser;
 }
 
 async function logout() {
     gLoggedInUser = null;
+    localStorage.removeItem('loggedInUser');
 }
 
 async function getLoggedInUser() {
+    if(!gLoggedInUser){
+        gLoggedInUser = storageService.load('loggedInUser')
+    }
     return gLoggedInUser;
 }
 

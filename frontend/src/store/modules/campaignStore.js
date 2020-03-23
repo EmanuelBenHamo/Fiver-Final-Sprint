@@ -15,8 +15,8 @@ export default {
         },
     },
     actions: {
-        async loadCampaigns(context) {
-            const campaigns = await campaignService.query()
+        async loadCampaigns(context, { loggedInUser }) {
+            const campaigns = await campaignService.query(loggedInUser)
             context.commit({ type: 'setCampaigns', campaigns })
             return campaigns
         },

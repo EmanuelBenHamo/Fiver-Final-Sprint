@@ -62,6 +62,13 @@ export default {
                 });
                 return influencersList;
             }
+        },
+        async getLoggedInUser(context) {
+            if(!context.state.loggedInUser){
+                const loggedInUser = await userService.getLoggedInUser()
+                context.state.loggedInUser = loggedInUser;
+            }
+            return context.state.loggedInUser;
         }
     }
 };
