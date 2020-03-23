@@ -1,4 +1,21 @@
-.influencer-photo {
-  width: 100%;
-  border: solid black 2px;
+.influencer-preview {
+  color: black;
+  font-size: 20px;
+  font-family: Lato;
+}
+.carousel-container {
+  .influencer-photo {
+    width: 100%;
+    border: solid black 2px;
+  }
+  .carousel-info-container {
+  }
+  .carousel-dots-bar {
+  }
+  .carousel-nav-btns {
+  }
+  .influencer-info-container {
+  }
+  .influencer-fullname {
+  }
 }

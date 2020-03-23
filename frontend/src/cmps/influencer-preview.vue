@@ -1,9 +1,21 @@
 <template>
   <section v-if="influencer" class="influencer-preview">
-    <div class="ratio-poster">
-      <img class="influencer-photo" :src="influencer.photos[0].url" />
-    </div>
-    <router-link :to="'/influencer/' + influencer._id">Link</router-link>
+    <router-link :to="'/influencer/' + influencer._id">
+      <section class="carousel-container ratio-poster">
+        <img class="influencer-photo flex" :src="photo" />
+
+        <section class="flex column carousel-info-container">
+          <div class="flex carousel-dots-bar">dots bar</div>
+          <section class="flex space-between carousel-nav-btns">
+            <button>prev</button>
+            <button>next</button>
+          </section>
+          <section class="influencer-info-container">
+            <div class="influencer-fullname">{{fullname}}</div>
+          </section>
+        </section>
+      </section>
+    </router-link>
   </section>
 </template>
 
@@ -19,8 +31,11 @@ export default {
     console.log("url", this.influencer.photos[0].url);
   },
   computed: {
-    imgUrl() {
+    photo() {
       return this.influencer.photos[0].url;
+    },
+    fullname() {
+      return `${this.influencer.firstName} ${this.influencer.lastName}`;
     }
   }
 };
