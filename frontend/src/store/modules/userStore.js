@@ -4,23 +4,35 @@ import campaignService from '../../services/campaign.service.js';
 export default {
     state: {
         loggedInUser: null,
-        itemsList: null
+        userType: null,
+        influencerList: null
     },
     getters: {
         loggedInUser(state) {
             return state.loggedInUser;
+        },
+        userType(state) {
+            return state.userType;
         }
     },
     mutations: {
         setLoggedInUser(state, payload) {
             state.loggedInUser = payload.loggedInUser;
         },
+        setUserType(state, payload) {
+            state.userType = payload.userType;
+        },
         setUserItems(state, payload) {
-            state.itemsList = payload.itemsList;
+            state.influencerList = payload.influencerList;
         }
     },
     actions: {
+        async setUserType(context, payload) {
+            console.log(payload)
+            await context.commit(payload);
+        },
         async login(context, payload) {
+            console.log(payload.credentials)
             const credentials = payload.credentials;
             const loggedInUser = await userService.login(credentials);
             context.commit({
@@ -37,7 +49,7 @@ export default {
             });
             return;
         },
-        async signup(context, {user}) {
+        async signup(context, { user }) {
             const loggedInUser = await userService.signUp(user);
             context.commit({
                 type: 'setLoggedInUser',
@@ -50,15 +62,15 @@ export default {
                 let campaignsList = await campaignService.query();
                 context.commit({
                     type: 'setUserItems',
-                    itemsList: campaignsList
+                    influencerList: campaignsList
                 });
                 return campaignsList;
-                
+
             } else if (context.state.loggedInUser.credentials.userType === "brand") {
                 let influencersList = await userService.query({ userType: "influencer" });
                 context.commit({
                     type: 'setUserItems',
-                    itemsList: influencersList
+                    influencerList: influencersList
                 });
                 return influencersList;
             }
