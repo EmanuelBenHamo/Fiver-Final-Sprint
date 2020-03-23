@@ -1,19 +1,9 @@
 <template>
-  <section class="influencer-preview">
-    <img :src="influencer.imgUrl" alt="Influencer Logo" />
-    <h1>{{influencer.lastName}} {{influencer.firstName}}</h1>
-    <ul class="clean-list">
-      <li v-for="(social, idx) in influencer.socials" :key="idx">{{social.type}}</li>
-    </ul>
-    <ul class="clean-list">
-      <li v-for="(tag, idx) in influencer.tags" :key="idx">{{tag}}</li>
-    </ul>
-    <ul class="clean-list">
-      <li v-for="(target, idx) in influencer.targets" :key="idx">{{target}}</li>
-    </ul>
-     <router-link :to="'/influencer/' + influencer._id">
-        <button class="btn">Details</button>
-      </router-link>
+  <section v-if="influencer" class="influencer-preview">
+    <div class="ratio-poster">
+      <img class="influencer-photo" :src="influencer.photos[0].url" />
+    </div>
+    <router-link :to="'/influencer/' + influencer._id">Link</router-link>
   </section>
 </template>
 
@@ -23,6 +13,17 @@ export default {
     influencer: {
       type: Object
     }
+  },
+  created() {
+    // debugger
+    console.log("url", this.influencer.photos[0].url);
+  },
+  computed: {
+    imgUrl() {
+      return this.influencer.photos[0].url;
+    }
   }
 };
 </script>
+
+    
