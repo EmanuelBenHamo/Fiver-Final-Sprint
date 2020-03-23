@@ -2,23 +2,24 @@ import campaignService from "../../services/campaign.service.js";
 
 export default {
     state: {
-        campaigns: []
+        campaignsToShow: []
     },
     mutations: {
-        setCampaigns(state, { campaigns }) {
-            state.campaigns = campaigns;
+        setCampaigns(state, { campaignsToShow }) {
+            state.campaignsToShow = campaignsToShow;
         },
     },
     getters: {
-        campaigns(state) {
-            return state.campaigns;
+        campaignsToShow(state) {
+            return state.campaignsToShow;
         },
     },
     actions: {
-        async loadCampaigns(context) {
-            const campaigns = await campaignService.query()
-            context.commit({ type: 'setCampaigns', campaigns })
-            return campaigns
+        async loadCampaigns(context, { filterBy }) {
+            
+            const campaignsToShow = await campaignService.query(filterBy)
+            context.commit({ type: 'setCampaigns', campaignsToShow })
+            return campaignsToShow
         },
         addCampaign(context, { campaign }) {
             var savedCampaign = campaignService.add(campaign);

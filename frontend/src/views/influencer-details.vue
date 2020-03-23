@@ -25,45 +25,41 @@
     </ul>
   </div>
   </div>
+
   <div class="campaign-offer flex justify-center">
     <button  
       @click="isMakingOffer = !isMakingOffer"
       class="make-offer btn">
       Make an Offer
     </button>
-    <select 
-      v-if="isMakingOffer"
-      @change="sendOffer($event)"
-      class="campaign-list">
-        <option 
-          v-for="campaign in campaigns"
-          :key="campaign._id"
-          :value="campaign._id">
-          {{campaign.name}}
-        </option>
-    </select>
   </div>
+  <div v-if="isMakingOffer"
+    @click="isMakingOffer = !isMakingOffer"
+    class="screen" >
+  </div>
+  <campaign-list
+    v-if="isMakingOffer"
+    @close="isMakingOffer = !isMakingOffer"
+    @sendOffer="sendOffer"
+  />
 </section>
 </template>
 
 <script>
+import campaignList from '../cmps/campaign-list.vue';
 export default {
   name: 'influencer-details',
     data() {
     return {
       influencerId: null,
       currInfluencer: null,
-      campaigns: [],
-      isMakingOffer: false
+      isMakingOffer: false,
     };
   },
   computed:{
     genderIcon(){
       return (this.currInfluencer.gender === "Male") ?'mars': 'venus';
        },
-    loggedInUser(){
-      return this.$store.getters.loggedInUser
-    },
     fullname(){
       return this.currInfluencer.firstName + ' ' + this.currInfluencer.lastName;
     }
@@ -71,7 +67,6 @@ export default {
   created() {
     this.influencerId = this.$route.params.id;
     this.getInfluencerById();
-    this.loadCampaigns()
   },
   methods: {
     async getInfluencerById() {
@@ -81,23 +76,18 @@ export default {
       });
       this.currInfluencer = influencer;  
     },
-    async loadCampaigns(){
-     this.campaigns =  await this.$store.dispatch('loadCampaigns')
-    },
-    async sendOffer(ev) {
-      const campaignId = ev.target.value;
-      const campaign = await this.$store.dispatch({
-        type: 'getcampaignById',
-        campaignId
-      })
-      const sentOffer = await this.$store.dispatch({
+    async sendOffer(campaign) {
+        const sentOffer = await this.$store.dispatch({
         type: 'sendOffer',
         campaign,
         influencer: this.currInfluencer
       })
       console.log('Offer Sent', sentOffer);
       alert('Your offer has been sent')
-    }
+    },
+  },
+  components:{
+    campaignList
   }
 }
 </script>

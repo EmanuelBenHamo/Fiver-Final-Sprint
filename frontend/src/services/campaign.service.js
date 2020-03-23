@@ -15,8 +15,12 @@ function _getCampaignsFromStorage() {
     return campaigns
 }
 
-function query(filterBy = {}) {
-    return Promise.resolve(gCampaigns);
+async function query(filterBy = {}) {
+    if(filterBy){
+        return  gCampaigns.filter(campaign => campaign.miniBrand.id === filterBy.userId);
+    } else {
+        return gCampaigns;
+    }
 }
 
 async function getById(id) {
@@ -78,7 +82,3 @@ export default {
     update,
     getEmptyCampaign
 }
-
-// function _saveCampaignsToFile() {
-//     fs.writeFileSync('../data/campaigns.json', JSON.stringify(gCampaigns, null, 2));
-// }

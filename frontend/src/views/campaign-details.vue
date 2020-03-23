@@ -26,7 +26,6 @@
       </ul>
       <h4>Gender: {{gender}}</h4>
     </div>
-    <button @click="sendOffer" class="btn">Send an Offer</button>
   </section>
 </template>
 
