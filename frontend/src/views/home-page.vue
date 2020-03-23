@@ -1,8 +1,11 @@
 <template>
-  <section class="home-page-container">
+  <section class="home-page-container flex align-center space-between">
     <div class="home-page-content">
-      <h1>Mediaqueriz</h1>
-      <p>Connecting Brands and Influencers has never been easier</p>
+      <h1>Get Influenced</h1>
+      <p>Bringing Your Brand Forward</p>
+    </div>
+    <div class="img-container">
+    <img  src="../assets/img/woman_beach.jpg" alt="">
     </div>
   </section>
 </template>
