@@ -33,7 +33,7 @@
       Make an Offer
     </button>
   </div>
-  <div v-if="isMakingOffer" class="screen" ></div>
+  <div v-if="isMakingOffer" @click="isMakingOffer = !isMakingOffer" class="screen" ></div>
   <campaign-list
   v-if="isMakingOffer"
  :campaigns="campaigns"

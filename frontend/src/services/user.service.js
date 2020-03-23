@@ -16,7 +16,6 @@ async function signUp(user) {
         throw new Error('username already taken');
     }
 
-    user._id = _makeId();
     _add(user);
     gLoggedInUser = user;
     storageService.store('loggedInUser', gLoggedInUser)
