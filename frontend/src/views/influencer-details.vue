@@ -46,6 +46,7 @@
 </template>
 
 <script>
+import { eventBus } from "../services/event.bus.service.js";
 import campaignList from '../cmps/campaign-list.vue';
 export default {
   name: 'influencer-details',
@@ -83,8 +84,9 @@ export default {
         influencer: this.currInfluencer
       })
       console.log('Offer Sent', sentOffer);
-      alert('Your offer has been sent')
-    },
+      // alert('Your offer has been sent')
+      eventBus.$emit('showMsg',{txt:'Your offer has been sent'})
+    }
   },
   components:{
     campaignList
