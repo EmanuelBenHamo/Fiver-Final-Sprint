@@ -1,14 +1,13 @@
 <template>
-  <section>
-      <div v-if="isShown" class="msg-container"></div>
+  <section v-if="isShown" class="msg-container">
     <transition name="fade">
-      <h1>hello maafaka{{msg.txt}}</h1>
+      <h1 v-if="isShown">{{msg.txt}}</h1>
     </transition>
   </section>
 </template>
 
 <script>
-import { eventBus } from "../services/event.bus.js";
+import { eventBus } from "../services/event.bus.service.js";
 export default {
   data() {
     return {
@@ -18,6 +17,7 @@ export default {
   },
   created() {
     eventBus.$on("showMsg", msg => {
+      console.log(msg);
       this.msg = msg;
       this.isShown = true;
       setTimeout(() => {

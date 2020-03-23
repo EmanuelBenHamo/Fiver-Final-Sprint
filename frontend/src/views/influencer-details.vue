@@ -47,6 +47,7 @@
 </template>
 
 <script>
+import { eventBus } from "../services/event.bus.service.js";
 export default {
   name: 'influencer-details',
     data() {
@@ -96,7 +97,8 @@ export default {
         influencer: this.currInfluencer
       })
       console.log('Offer Sent', sentOffer);
-      alert('Your offer has been sent')
+      // alert('Your offer has been sent')
+      eventBus.$emit('showMsg',{txt:'Your offer has been sent'})
     }
   }
 }
