@@ -36,7 +36,7 @@ export default {
     async loadCampaigns() {
       await this.$store.dispatch({ 
         type: "loadCampaigns",
-        loggedInUser: this.loggedInUser
+        filterBy: {userId: this.loggedInUser._id}
         });
     }
   },

@@ -8,8 +8,12 @@ function load(key) {
     return JSON.parse(str);
 }
 
+function clear(key) {
+    localStorage.removeItem(key);
+}
 
 module.exports = {
     store,
-    load
+    load,
+    clear
 }

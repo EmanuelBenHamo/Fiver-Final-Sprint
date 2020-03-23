@@ -1,6 +1,7 @@
 import storageService from './storage.service.js';
 
 const USERS_KEY = 'users';
+const USER_KEY = 'loggedInUser';
 
 var gUsers = _loadUsers();
 var gLoggedInUser;
@@ -17,7 +18,7 @@ async function signUp(user) {
     }
     _add(user);
     gLoggedInUser = user;
-    storageService.store('loggedInUser', gLoggedInUser)
+    storageService.store(USER_KEY, gLoggedInUser)
 
     return gLoggedInUser;
 }
@@ -33,18 +34,18 @@ async function login(credentials) {
     }
 
     gLoggedInUser = user;
-    storageService.store('loggedInUser', gLoggedInUser)
+    storageService.store(USER_KEY, gLoggedInUser)
     return gLoggedInUser;
 }
 
 async function logout() {
     gLoggedInUser = null;
-    localStorage.removeItem('loggedInUser');
+    storageService.clear()
 }
 
 async function getLoggedInUser() {
     if(!gLoggedInUser){
-        gLoggedInUser = storageService.load('loggedInUser')
+        gLoggedInUser = storageService.load(USER_KEY)
     }
     return gLoggedInUser;
 }

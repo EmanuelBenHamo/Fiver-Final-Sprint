@@ -15,9 +15,9 @@ export default {
         },
     },
     actions: {
-        async loadCampaigns(context, { loggedInUser }) {
+        async loadCampaigns(context, { filterBy }) {
             
-            const campaignsToShow = await campaignService.query(loggedInUser)
+            const campaignsToShow = await campaignService.query(filterBy)
             context.commit({ type: 'setCampaigns', campaignsToShow })
             return campaignsToShow
         },
