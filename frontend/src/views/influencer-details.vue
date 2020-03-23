@@ -36,7 +36,7 @@
   <div v-if="isMakingOffer" @click="isMakingOffer = !isMakingOffer" class="screen" ></div>
   <campaign-list
   v-if="isMakingOffer"
- :campaigns="campaigns"
+ :campaigns="campaignsToShow"
   @close="isMakingOffer = !isMakingOffer"
   @sendOffer="sendOffer"
   />
@@ -51,7 +51,7 @@ export default {
     return {
       influencerId: null,
       currInfluencer: null,
-      campaigns: [],
+      campaignsToShow: [],
       isMakingOffer: false,
       loggedInUser:null
     };
@@ -79,12 +79,7 @@ export default {
       this.currInfluencer = influencer;  
     },
     async loadCampaigns(){
-      await this.getLoggedInUser()
-      console.log('USER USER LOGGED IN USER', this.loggedInUser);
-     this.campaigns =  await this.$store.dispatch({
-       type:'loadCampaigns',
-       loggedInUser: this.loggedInUser
-       })
+     this.campaignsToShow =  await this.$store.getters.campaignsToShow
     },
     async sendOffer(campaign) {
         const sentOffer = await this.$store.dispatch({
@@ -95,13 +90,13 @@ export default {
       console.log('Offer Sent', sentOffer);
       alert('Your offer has been sent')
     },
-    async getLoggedInUser(){
-      const loggedInUser = await this.$store.dispatch({
-        type: 'getLoggedInUser',
-      })
-      this.loggedInUser = loggedInUser
-      return loggedInUser;
-    }
+    // async getLoggedInUser(){
+    //   const loggedInUser = await this.$store.dispatch({
+    //     type: 'getLoggedInUser',
+    //   })
+    //   this.loggedInUser = loggedInUser
+    //   return loggedInUser;
+    // }
   },
   components:{
     campaignList

@@ -1,33 +1,47 @@
 <template>
   <section class="main-app">
-    <items-list v-if="itemsList" :itemsList="itemsList" :userType="this.loggedInUser.credentials.userType" />
+    <influencer-list
+      v-if="influencerList"
+      :influencerList="influencerList"
+    />
   </section>
 </template>
 <script>
 import influencerService from "../services/influencer.service.js";
 import campaignService from "../services/campaign.service.js";
-import itemsList from '../cmps/items-list.vue';
+import influencerList from "../cmps/influencer-list.vue";
 export default {
   name: "main-app",
   data() {
     return {
       loggedInUser: null,
-      itemsList: null
+      userType: null,
+      influencerList: null
     };
   },
   created() {
     this.loggedInUser = this.$store.getters.loggedInUser;
-    this.getItemsListByUserType();
+    this.loadInfluencers();
+    this.loadBrands();
+    this.loadCampaigns();
   },
   methods: {
-    async getItemsListByUserType() {
-      this.itemsList = await this.$store.dispatch({
-        type: "getUserItems"
-      });
+    async loadBrands() {
+      await this.$store.dispatch({ type: "loadBrands" });
+    },
+    async loadInfluencers() {
+      await this.$store.dispatch({ type: "loadInfluencers" });
+      this.influencerList = this.$store.getters.influencers;
+    },
+    async loadCampaigns() {
+      await this.$store.dispatch({ 
+        type: "loadCampaigns",
+        loggedInUser: this.loggedInUser
+        });
     }
   },
   components: {
-    itemsList
+    influencerList
   }
 };
 </script>
