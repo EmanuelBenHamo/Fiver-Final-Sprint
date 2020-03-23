@@ -2,10 +2,10 @@
   <section class="backoffice-page-container">
       <h1>Welcome to the Back Office</h1>
       <div class="backoffice-navbar">
-          <router-link to="" class="dashboard">Dashboard</router-link> |
+          <router-link to="dashboard" class="dashboard">Dashboard</router-link> |
           <router-link to="offer" class="offers">Offers</router-link> |
-          <router-link to="" class="campaigns">Campaigns</router-link> |
-          <router-link to="" class="messages">Messages</router-link>
+          <router-link to="dashCampaign" class="campaign">Campaigns</router-link> |
+          <router-link to="message" class="message">Messages</router-link>
       </div>
       <router-view></router-view>
   </section>

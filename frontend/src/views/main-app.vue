@@ -12,11 +12,13 @@ export default {
   data() {
     return {
       loggedInUser: null,
+      userType: null,
       itemsList: null
     };
   },
   created() {
     this.loggedInUser = this.$store.getters.loggedInUser;
+    console.log(this.loggedInUser)
     this.getItemsListByUserType();
   },
   methods: {
