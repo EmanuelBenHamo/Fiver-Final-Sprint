@@ -2,9 +2,11 @@
     z-index: 1000;
     position: fixed;
     top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    left: 950px;
+    padding: 10px;
+    background-color: $clr4;
+    display: inline-block;
+    text-align: center;
     h1 {
         color: white;
     }
