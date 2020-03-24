@@ -7,6 +7,8 @@
     position: absolute;
     top: 0;
     width: 100%;
+    transition: transform 0.5s ease-in;
+    transform: translateY(-200%);
     background-color: yellow;
   }
   .carousel-nav {
@@ -19,5 +21,10 @@
     bottom: 0;
     width: 100%;
     background-color: red;
+  }
+  :hover {
+    .carousel-dots-bar {
+      transform: translateY(0);
+    }
   }
 }

@@ -10,13 +10,13 @@
     }
   }
   .carousel-prev-btn {
+    transform: translateX(-200%);
     transition: transform 0.5s ease-in;
     margin-inline-start: 15px;
-    transform: translateX(-200%);
   }
   .carousel-next-btn {
-    transition: transform 0.5s ease-in;
     transform: translateX(200%);
+    transition: transform 0.5s ease-in;
     margin-inline-end: 15px;
   }
 }
