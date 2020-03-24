@@ -1,21 +1,76 @@
+$border-width: 5px;
+
 .influencer-preview {
+  position: relative;
   color: black;
   font-size: 20px;
-  font-family: Lato;
-}
-.carousel-container {
-  .influencer-photo {
-    width: 100%;
-    border: solid black 2px;
+  font-family: Rubik;
+  .carousel-container {
+    .influencer-photo {
+      width: 100%;
+      border: $border-width solid black;
+    }
+    .carousel-info-container {
+      .carousel-dots-bar {
+        // display: none;
+        background-color: rgba($color: #ffffff, $alpha: 0.2);
+        margin-block-start: 10px;
+        align-self: center;
+      }
+      .carousel-nav-btns {
+        display: none;
+        .carousel-prev-btn {
+          background-color: red;
+          margin-inline-start: 15px;
+        }
+        .carousel-next-btn {
+          background-color: red;
+          margin-inline-end: 15px;
+        }
+      }
+      .influencer-info-container {
+        background-color: rgba($color: #ffffff, $alpha: 0.5);
+        // background-color: yellow;
+        color: black;
+        margin: $border-width;
+
+        .influencer-fullname {
+          width: 100%;
+          text-align: center;
+          border-block-end: 1px solid black;
+        }
+        .social-details-container {
+          .tags {
+            text-align: center;
+          }
+          .social-networks-info-container {
+            .social-network-info {
+              &:not(:last-of-type) {
+                padding-inline-end: 10px;
+                border-inline-end: 1px solid black;
+              }
+              &:last-of-type {
+                padding-inline-start: 10px;
+              }
+              .social-network-name {
+                text-transform: capitalize;
+                text-align: center;
+              }
+              .social-network-followers-count {
+                text-align: center;
+              }
+            }
+          }
+        }
+      }
+    }
   }
-  .carousel-info-container {
-  }
-  .carousel-dots-bar {
-  }
-  .carousel-nav-btns {
-  }
-  .influencer-info-container {
-  }
-  .influencer-fullname {
+  :hover {
+    .carousel-nav-btns {
+      display: flex !important;
+    }
+    .carousel-dots-bar {
+    //   display: flex;
+    }
   }
 }
