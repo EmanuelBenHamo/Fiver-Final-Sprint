@@ -12,7 +12,7 @@
           </section>
           <section class="influencer-info-container flex column align-center">
             <div class="influencer-fullname">{{fullname}}</div>
-            <section class="flex column social-details-container">
+            <section class="flex column align-center social-details-container">
               <section class="social-networks-info-container flex">
                 <div class="social-network-info flex column">
                   <span class="social-network-name">{{influencer.socials[0].type}}</span>
