@@ -3,7 +3,6 @@
     <router-link :to="'/influencer/' + influencer._id">
       <section class="carousel-container ratio-poster">
         <img class="influencer-photo flex" :src="photo" />
-
         <section class="flex column space-between carousel-info-container">
           <div class="flex carousel-dots-bar">dots bar</div>
           <section class="carousel-nav-btns flex space-between">
