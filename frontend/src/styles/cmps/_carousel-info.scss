@@ -5,24 +5,28 @@
   .influencer-fullname {
     width: 100%;
     text-align: center;
+    font-size: 1.5rem;
+    text-transform: capitalize;
   }
   .social-details-container {
     max-height: 0;
     transition: max-height 0.5s ease-in-out;
     overflow: hidden;
-    border-block-start: 1px solid black;
     width: 100%;
-    .tags {
-      text-align: center;
-    }
+    border-block-start: 1px solid black;
+    background-color: yellow;
     .social-networks-info-container {
+      border: 2px solid cyan;
+      width: 100%;
+      align-items: center;
+      justify-content: center;
       .social-network-info {
+        background-color: red;
+        align-items: center;
+        justify-content: center;
+        padding: 0 20px;
         &:not(:last-of-type) {
-          padding-inline-end: 10px;
           border-inline-end: 1px solid black;
-        }
-        &:last-of-type {
-          padding-inline-start: 10px;
         }
         .social-network-name {
           text-transform: capitalize;
@@ -34,9 +38,11 @@
       }
     }
   }
+}
+.preview-carousel-container {
   :hover {
     .social-details-container {
-      max-height: 3.5rem !important;
+      max-height: 3.5rem;
     }
   }
 }

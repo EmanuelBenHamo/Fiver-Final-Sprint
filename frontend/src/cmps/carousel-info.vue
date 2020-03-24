@@ -1,7 +1,7 @@
 <template>
   <section class="influencer-info-container flex column align-center">
     <div class="influencer-fullname">{{fullname}}</div>
-    <section class="flex column align-center social-details-container">
+    <section class="social-details-container flex column align-center">
       <section class="social-networks-info-container flex">
         <div class="social-network-info flex column">
           <span class="social-network-name">{{previewItem.socials[0].type}}</span>
@@ -25,10 +25,6 @@ export default {
   computed: {
     fullname() {
       return `${this.previewItem.firstName} ${this.previewItem.lastName}`;
-    },
-    tags() {
-      const str = this.previewItem.tags.slice(0, 2).join(" | ");
-      return str;
     },
     firstSocialFollowersCount() {
       return this.getFollowersCountBySocialIndex(0);
