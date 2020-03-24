@@ -1,4 +1,6 @@
 .influencers-list {
     display: grid;
     grid-template-columns: repeat(3, minmax(0.6rem, auto));
+
+    padding-top: 20px;
 }
