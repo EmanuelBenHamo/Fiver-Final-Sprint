@@ -4,16 +4,12 @@ import campaignService from '../../services/campaign.service.js';
 export default {
     state: {
         loggedInUser: null,
-        userType: null,
         influencerList: null
     },
     getters: {
         loggedInUser(state) {
             return state.loggedInUser;
         },
-        userType(state) {
-            return state.userType;
-        }
     },
     mutations: {
         setLoggedInUser(state, payload) {
@@ -74,7 +70,7 @@ export default {
             }
         },
         async getLoggedInUser(context) {
-            if(!context.state.loggedInUser){
+            if (!context.state.loggedInUser) {
                 const loggedInUser = await userService.getLoggedInUser()
                 context.state.loggedInUser = loggedInUser;
             }

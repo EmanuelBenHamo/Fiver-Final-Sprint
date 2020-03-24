@@ -1,6 +1,5 @@
 <template>
   <section class='main-app'>
-    <!-- <user-msg></user-msg> -->
     <influencer-list
       v-if='influencerList'
       :influencerList='influencerList'
@@ -11,7 +10,6 @@
 import influencerService from '../services/influencer.service.js';
 import campaignService from '../services/campaign.service.js';
 import influencerList from '../cmps/influencer-list.vue';
-// import userMsg from '../cmps/user-msg-modal.vue'
 export default {
   name: 'main-app',
   data() {
@@ -43,7 +41,6 @@ export default {
   },
   components: {
     influencerList,
-    // userMsg
   }
 };
 </script>

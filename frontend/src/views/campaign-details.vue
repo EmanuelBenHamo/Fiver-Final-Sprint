@@ -77,6 +77,7 @@ export default {
       console.log('Offer Sent', sentOffer);
       alert('Your offer has been sent')
       
+      
     }
   }
 };

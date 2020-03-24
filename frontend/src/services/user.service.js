@@ -34,6 +34,7 @@ async function login(credentials) {
     }
 
     gLoggedInUser = user;
+    console.log(gLoggedInUser)
     storageService.store(USER_KEY, gLoggedInUser)
     return gLoggedInUser;
 }
@@ -44,7 +45,7 @@ async function logout() {
 }
 
 async function getLoggedInUser() {
-    if(!gLoggedInUser){
+    if (!gLoggedInUser) {
         gLoggedInUser = storageService.load(USER_KEY)
     }
     return gLoggedInUser;

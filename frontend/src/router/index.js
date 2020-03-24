@@ -55,22 +55,22 @@ const routes = [{
         name: 'backoffice-page',
         component: backofficePage,
         children: [{
-                path: '/dashboard',
+                path: '/dashboard/:id',
                 name: 'dash-board',
                 component: dashBoard
             },
             {
-                path: '/offer',
+                path: '/offer/:id',
                 name: 'offer-list',
                 component: offerList
             },
             {
-                path: '/dashCampaign',
+                path: '/dashCampaign/:id',
                 name: 'dash-campaign-list',
                 component: dashCampaignList
             },
             {
-                path: '/message',
+                path: '/message/:id',
                 name: 'message-list',
                 component: messageList
             }

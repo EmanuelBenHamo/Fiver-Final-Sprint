@@ -84,7 +84,6 @@ export default {
         influencer: this.currInfluencer
       })
       console.log('Offer Sent', sentOffer);
-      // alert('Your offer has been sent')
       eventBus.$emit('showMsg',{txt:'Your offer has been sent'})
     }
   },
