@@ -1,0 +1,33 @@
+.carousel-nav-container {
+  .carousel-nav-btn {
+    background-color: rgba($color: #ffffff, $alpha: 0.7);
+    .nav-btn-img {
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      width: 30px;
+      height: 30px;
+    }
+  }
+  .carousel-prev-btn {
+    transition: transform 0.5s ease-in;
+    margin-inline-start: 15px;
+    transform: translateX(-200%);
+  }
+  .carousel-next-btn {
+    transition: transform 0.5s ease-in;
+    transform: translateX(200%);
+    margin-inline-end: 15px;
+  }
+}
+
+.preview-carousel-container {
+  :hover {
+    .carousel-prev-btn {
+      transform: translateX(0);
+    }
+    .carousel-next-btn {
+      transform: translateX(0);
+    }
+  }
+}

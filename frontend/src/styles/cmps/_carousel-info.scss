@@ -1,0 +1,42 @@
+.influencer-info-container {
+  background-color: rgba($color: #ffffff, $alpha: 0.7);
+  color: black;
+
+  .influencer-fullname {
+    width: 100%;
+    text-align: center;
+  }
+  .social-details-container {
+    max-height: 0;
+    transition: max-height 0.5s ease-in-out;
+    overflow: hidden;
+    border-block-start: 1px solid black;
+    width: 100%;
+    .tags {
+      text-align: center;
+    }
+    .social-networks-info-container {
+      .social-network-info {
+        &:not(:last-of-type) {
+          padding-inline-end: 10px;
+          border-inline-end: 1px solid black;
+        }
+        &:last-of-type {
+          padding-inline-start: 10px;
+        }
+        .social-network-name {
+          text-transform: capitalize;
+          text-align: center;
+        }
+        .social-network-followers-count {
+          text-align: center;
+        }
+      }
+    }
+  }
+  :hover {
+    .social-details-container {
+      max-height: 3.5rem !important;
+    }
+  }
+}

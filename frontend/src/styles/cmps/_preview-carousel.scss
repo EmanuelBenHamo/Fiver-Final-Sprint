@@ -1,0 +1,23 @@
+.preview-carousel-container {
+  border: 5px solid white;
+  .carousel-photo {
+    width: 100%;
+  }
+  .carousel-dots-bar {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background-color: yellow;
+  }
+  .carousel-nav {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+  }
+  .carousel-info {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: red;
+  }
+}
