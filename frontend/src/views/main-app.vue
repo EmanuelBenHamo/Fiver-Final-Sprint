@@ -1,46 +1,49 @@
 <template>
-  <section class="main-app">
+  <section class='main-app'>
+    <!-- <user-msg></user-msg> -->
     <influencer-list
-      v-if="influencerList"
-      :influencerList="influencerList"
+      v-if='influencerList'
+      :influencerList='influencerList'
     />
   </section>
 </template>
 <script>
-import influencerService from "../services/influencer.service.js";
-import campaignService from "../services/campaign.service.js";
-import influencerList from "../cmps/influencer-list.vue";
+import influencerService from '../services/influencer.service.js';
+import campaignService from '../services/campaign.service.js';
+import influencerList from '../cmps/influencer-list.vue';
+// import userMsg from '../cmps/user-msg-modal.vue'
 export default {
-  name: "main-app",
+  name: 'main-app',
   data() {
     return {
       loggedInUser: null,
-      userType: null,
       influencerList: null
     };
   },
   created() {
-    // this.loggedInUser = this.$store.getters.loggedInUser;
-    this.userType = this.$store.getters.userType;
-    console.log(this.userType)
+    this.loggedInUser = this.$store.getters.loggedInUser;
     this.loadInfluencers();
     this.loadBrands();
     this.loadCampaigns();
   },
   methods: {
     async loadBrands() {
-      await this.$store.dispatch({ type: "loadBrands" });
+      await this.$store.dispatch({ type: 'loadBrands' });
     },
     async loadInfluencers() {
-      await this.$store.dispatch({ type: "loadInfluencers" });
+      await this.$store.dispatch({ type: 'loadInfluencers' });
       this.influencerList = this.$store.getters.influencers;
     },
     async loadCampaigns() {
-      await this.$store.dispatch({ type: "loadCampaigns" });
+      await this.$store.dispatch({ 
+        type: "loadCampaigns",
+        filterBy: {userId: this.loggedInUser._id}
+        });
     }
   },
   components: {
-    influencerList
+    influencerList,
+    // userMsg
   }
 };
 </script>

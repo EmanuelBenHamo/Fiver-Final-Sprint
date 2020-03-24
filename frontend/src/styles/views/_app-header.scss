@@ -1,4 +1,18 @@
-.navbar {
-    line-height: 2rem;  
-    background-color: lighten($clr4, 20%);
+.header{
+    z-index: 10;
+    padding: 20px;
+
+    label{
+        font-size: 2rem;
+        font-family: 'Permanent Marker', cursive;
+        margin-right: 50px;
+        color: $clr4;   
+        
+        &:hover{
+            cursor: pointer;
+        }
+    }
+    .navbar {
+        line-height: 2rem;  
+    }
 }

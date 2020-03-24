@@ -64,7 +64,9 @@ async function _createOffer({campaign, influencer}) {
             endDate: campaign.endDate,
         },
         miniInfluencer: {
-            // TODO - Add the current influencer's details
+           id: influencer._id,
+           firstName: influencer.firstName,
+           lastName: influencer.lastName
         },
         createdAt: Date.now()
     };
