@@ -13,7 +13,8 @@ export default {
   },
   computed: {
     followersCount() {
-      return `${this.social.menFollowers + this.social.womenFollowers}k`;
+      return `${Math.round(
+        (this.social.menFollowers + this.social.womenFollowers) / 1000)}k`;
     }
   }
 };
