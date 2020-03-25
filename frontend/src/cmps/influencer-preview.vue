@@ -1,28 +1,21 @@
 <template>
-  <section class="influencer-preview">
-    <img :src="influencer.imgUrl" alt="Influencer Logo" />
-    <h1>{{influencer.lastName}} {{influencer.firstName}}</h1>
-    <ul class="clean-list">
-      <li v-for="(social, idx) in influencer.socials" :key="idx">{{social.type}}</li>
-    </ul>
-    <ul class="clean-list">
-      <li v-for="(tag, idx) in influencer.tags" :key="idx">{{tag}}</li>
-    </ul>
-    <ul class="clean-list">
-      <li v-for="(target, idx) in influencer.targets" :key="idx">{{target}}</li>
-    </ul>
-     <router-link :to="'/influencer/' + influencer._id">
-        <button class="btn">Details</button>
-      </router-link>
+  <section v-if="influencer" class="influencer-preview">
+    <router-link :to="'/influencer/' + influencer._id">
+      <preview-carousel :previewItem="influencer" />
+    </router-link>
   </section>
 </template>
 
 <script>
+import previewCarousel from "./preview-carousel";
 export default {
   props: {
     influencer: {
       type: Object
     }
+  },
+  components: {
+    previewCarousel
   }
 };
 </script>
