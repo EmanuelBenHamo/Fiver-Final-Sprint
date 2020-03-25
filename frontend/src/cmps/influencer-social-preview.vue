@@ -1,6 +1,6 @@
 <template>
   <section class="social-network-info-container flex column">
-    <span class="social-network-name">{{social.type}}</span>
+    <i :class="[socialIconLogo, socialIcon]"></i>
     <span class="social-network-followers-count">{{followersCount}}</span>
   </section>
 </template>
@@ -11,10 +11,20 @@ export default {
   props: {
     social: Object
   },
+  data() {
+    return {
+      socialIconLogo: "",
+      socialIcon: "social-icon"
+    };
+  },
+  created() {
+    this.socialIconLogo = `fa fa-${this.social.type.toLowerCase()}`;
+  },
   computed: {
     followersCount() {
-      return `${Math.round(
-        (this.social.menFollowers + this.social.womenFollowers) / 1000)}k`;
+      return `${Math.floor(
+        (this.social.menFollowers + this.social.womenFollowers) / 1000
+      )}k`;
     }
   }
 };

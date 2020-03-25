@@ -1,6 +1,6 @@
 <template>
-  <section class="influencer-socials-list-container flex column align-center">
-    <influencer-social-preview v-for="(social, index) in socials" :social="social" :key="index" />
+  <section class="influencer-socials-list-container flex align-center">
+    <influencer-social-preview v-for="(social, index) in socials.slice(0,2)" :social="social" :key="index" />
   </section>
 </template>
 
