@@ -1,8 +1,7 @@
 <template>
   <section class="list">
     <div class="influencers-list">
-      <!-- <influencer-preview v-for="influencer in items" :key="influencer._id" :influencer="influencer"/> -->
-      <influencer-preview :key="influencerList[0]._id" :influencer="influencerList[0]" />
+      <influencer-preview v-for="influencer in items" :key="influencer._id" :influencer="influencer"/>
     </div>
   </section>
 </template>
