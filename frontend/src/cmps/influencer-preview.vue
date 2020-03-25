@@ -10,9 +10,7 @@
 import influencerPoster from "./influencer-poster";
 export default {
   props: {
-    influencer: {
-      type: Object
-    }
+    influencer: Object
   },
   components: {
     influencerPoster
