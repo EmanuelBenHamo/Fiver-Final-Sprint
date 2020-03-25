@@ -11,7 +11,8 @@ import influencerDetails from '../views/influencer-details.vue';
 import signupPage from '../views/signup-page.vue';
 import dashBoard from '../cmps/dash-board.vue';
 import messageList from '../cmps/message-list.vue';
-import dashCampaignList from '../cmps/dash-campaign-list.vue'
+import dashCampaignList from '../cmps/dash-campaign-list.vue';
+import filterCmp from '../cmps/influencer-filter.vue';
 
 Vue.use(VueRouter);
 
@@ -75,6 +76,11 @@ const routes = [{
                 component: messageList
             }
         ]
+    },
+    {
+        path: '/filter',
+        name: 'influencer-filter',
+        component: filterCmp
     }
 ]
 

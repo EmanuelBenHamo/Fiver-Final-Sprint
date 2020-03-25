@@ -3,7 +3,8 @@
     <!-- <user-msg></user-msg> -->
     <influencer-list
       v-if='influencerList'
-      :influencerList='influencerList'
+      :influencers='influencerList'
+      @setFilterBy="loadInfluencers"
     />
   </section>
 </template>
@@ -20,8 +21,8 @@ export default {
       influencerList: null
     };
   },
-  created() {
-    this.loggedInUser = this.$store.getters.loggedInUser;
+  async created() {
+    await this.getLoggetInUser();
     this.loadInfluencers();
     this.loadBrands();
     this.loadCampaigns();
@@ -30,8 +31,12 @@ export default {
     async loadBrands() {
       await this.$store.dispatch({ type: 'loadBrands' });
     },
-    async loadInfluencers() {
-      await this.$store.dispatch({ type: 'loadInfluencers' });
+    async loadInfluencers(filterBy) {
+      console.log('filterBy!!', filterBy);
+      await this.$store.dispatch({ 
+        type: 'loadInfluencers', 
+        filterBy
+        });
       this.influencerList = this.$store.getters.influencers;
     },
     async loadCampaigns() {
@@ -39,11 +44,16 @@ export default {
         type: "loadCampaigns",
         filterBy: {userId: this.loggedInUser._id}
         });
+    },
+    async getLoggetInUser(){
+      this.loggedInUser = this.$store.getters.loggedInUser;
+      if(!this.loggedInUser){
+       this.loggedInUser = await this.$store.dispatch('getLoggedInUser');
+      }
     }
   },
   components: {
     influencerList,
-    // userMsg
   }
 };
 </script>

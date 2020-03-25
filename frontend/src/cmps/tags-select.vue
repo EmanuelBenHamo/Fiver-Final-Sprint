@@ -1,0 +1,56 @@
+<template>
+  <section class=" select-btns tags-select-container flex">
+      <label>Select Tags</label>
+      <div class="tags-choises flex wrap space-between ">
+        <label v-for="(tag, idx) in tags" class="checkbox-container" :key="idx">
+            <input type="checkbox" :value="tag" v-model="selectedTags">
+            <span class="checkmark">{{tag}}</span>
+        </label>
+      </div>
+  </section>
+</template>
+
+<script>
+export default {
+  data() { 
+    return {
+        selectedTags: [],
+        tags: [
+        "Books",
+        "Garden",
+        "Sports",
+        "Industrial",
+        "Health",
+        "Music",
+        "Movies",
+        "Automotive",
+        "Computers",
+        "Electronics",
+        "Grocery",
+        "Kids",
+        "Jewelery",
+        "Baby",
+        "Clothing",
+        "Beauty",
+        "Shoes",
+        "Tools",
+        "Home",
+        "Animals",
+        "Games",
+        "Toys",
+        "Outdoors",
+        "Traveling",
+        "Cooking"
+      ]
+    };
+  },
+  watch: {
+      selectedTags(){
+          this.$emit('setTags', this.selectedTags);
+      }
+  }
+};
+</script>
+
+<style>
+</style>
