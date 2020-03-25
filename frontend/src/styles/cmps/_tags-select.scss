@@ -1,0 +1,16 @@
+.tags-select-container {
+    & > :first-child {
+        margin-bottom: 10px;
+    }
+    .tags-choises{
+        display: grid;
+        grid-auto-rows: 50px;
+        grid-template-columns: repeat(5, 1fr);
+        margin-left: 15px;
+        box-shadow: 0 0 4px $clr2;
+
+            .checkbox-container{
+                margin: 10px 12px;
+            }
+    }
+}

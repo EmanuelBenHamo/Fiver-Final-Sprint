@@ -24,11 +24,13 @@ button{
     all: unset
 }
 
-input{
+input:not([type='checkbox']):not([type='radio']):not([type="file"]) {
     margin: 0 10px;
     border-radius: 0.2rem;
     padding-left:0.5rem;
     border: 1px solid lighten($clr1, 50%);
+    height: 30px;
+    width: 60%;
     
 }
 
