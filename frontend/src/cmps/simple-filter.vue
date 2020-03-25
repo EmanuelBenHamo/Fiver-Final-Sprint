@@ -1,62 +1,47 @@
 <template>
   <div class="filter-container-simple flex space-between">
+    <filter-name @setName="setName"/>
+    
+        <div class="border-line"></div>
 
-    <div class="border-line"></div>
+    <filter-gender @setGender="setGender"/>
 
-    <!-- GENDER -->
-    <div class="select-btns gender-radio-btn flex align-center">
-      <label class="radio-container radio-all">
-        <input type="radio" value="All" v-model="filterBy.gender" />
-        <span class="checkmark">All</span>
-      </label>
-      <label class="radio-container radio-male">
-        <input type="radio" value="Male" v-model="filterBy.gender" />
-        <span class="checkmark fa fa-mars"></span>
-      </label>
-      <label class="radio-container radio-female">
-        <input type="radio" value="Female" v-model="filterBy.gender" />
-        <span class="checkmark fa fa-venus"></span>
-      </label>
-    </div>
+        <div class="border-line"></div>
 
-    <div class="border-line"></div>
-
-    <!-- SOCIAL TYPE -->
-    <div class="select-btns social-checkbox-btn flex align-center">
-      <label class="checkbox-container checkbox-instagram">
-        <input type="checkbox" value="instagram" v-model="filterBy.socials.type" />
-        <span class="checkmark fa fa-instagram"></span>
-      </label>
-      <label class="checkbox-container checkbox-snapchat">
-        <input type="checkbox" value="snapchat" v-model="filterBy.socials.type" />
-        <span class="checkmark fa fa-snapchat"></span>
-      </label>
-      <label class="checkbox-container checkbox-tiktok">
-        <input type="checkbox" value="tiktok" v-model="filterBy.socials.type " />
-        <span class="checkmark">
-          <img src="../assets/icons/tik-tok.svg" class="tiktok-icon" />
-        </span>
-      </label>
-    </div>
+    <filter-socials @setSocials="setSocials"/>
+    
     <button class="filter-btn btn" @click="$emit('setFilterBy',filterBy)">Filter</button>
-    <button @click="isAdvance =!isAdvance" class="filter-type-btn advance-btn">Advance</button>
+    <button @click="$emit('isAdvance')" class="filter-type-btn advance-btn">Advance</button>
   </div>
 </template>
 
 <script>
 import filterName from './filter-name.vue'
+import filterGender from './filter-gender.vue'
+import filterSocials from './filter-socials.vue'
 export default {
     data(){
         return{
             filterBy: {
-                socials: {
-                    type: []
-                }
+                gender: 'All',
             }
         }
+    },
+    methods: {
+        setName(name){
+            this.filterBy.name = name
+        },
+        setGender(gender){
+            this.filterBy.gender = gender
+        },
+        setSocials(socials){
+            this.filterBy.socials = socials
+        },
+    },
+    components: {
+        filterName,
+        filterGender,
+        filterSocials
     }
 };
 </script>
-
-<style>
-</style>

@@ -7,11 +7,10 @@
 
 <script>
 export default {
+    name: 'filter-gender',
     data(){
         return{ 
-            name:{
-
-            }
+            name: null
         }
     },
     watch: {

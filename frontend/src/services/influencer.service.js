@@ -78,10 +78,9 @@ function _setSocialInfo(influencer) {
 
 function _filterInfluencers(filterBy) {
   var name = new RegExp(filterBy.name, 'i');
-  
-  const influencersToShow = gInfluencers
-  .filter(influencer => { // FILTER BY NAME
-    return influencer.firstName.match(name) || influencer.lastName.match(name);
+  const influencersToShow = gInfluencers.filter(influencer => { // FILTER BY NAME
+    if(!filterBy.name) return influencer
+     return influencer.firstName.match(name) || influencer.lastName.match(name);
   })
   .filter(influencer => { // FILTER BY GENDER
     if (filterBy.gender === 'All') return influencer;
@@ -106,7 +105,7 @@ function _filterInfluencers(filterBy) {
       })
     })
     .filter(influencer => {  // FILTER BY SOCIAL NETWORK
-      if (!filterBy.socials.type || !filterBy.socials.type.length){
+      if (!filterBy.socials || !filterBy.socials.type || !filterBy.socials.type.length){
         influencer.filteredSocialMap = influencer.socials
         return influencer
       }
@@ -119,7 +118,7 @@ function _filterInfluencers(filterBy) {
         }
       })
       .filter(influencer => {  // FILTER BY FOLLOWERS COUNT
-        if(!filterBy.socials.followersCount || !filterBy.socials.followersCount.length) return influencer
+        if(!filterBy.socials || !filterBy.socials.followersCount || !filterBy.socials.followersCount.length) return influencer
         return influencer.filteredSocialMap.some(social => {
           let followersCount = social.menFollowers + social.womenFollowers;
           return (
@@ -129,28 +128,26 @@ function _filterInfluencers(filterBy) {
           })
         })
         .filter(influencer => {  // FILTER BY MEN FOLLOWERS PERCENTAGE
-            if(!filterBy.socials.menFollowersPercentage) return influencer
-            return influencer.filteredSocialMap.some(social => {
-              let menFollowersPercentage =
-              (social.menFollowers / followersCount) * 100;
-              return social
+          if(!filterBy.socials || !filterBy.socials.menFollowersPercentage) return influencer
+          return influencer.filteredSocialMap.some(social => {
+            let menFollowersPercentage = (social.menFollowers / (social.menFollowers + social.womenFollowers)) * 100;
+              return menFollowersPercentage > filterBy.socials.menFollowersPercentage
             })
-
           })
         .filter(influencer => {  // FILTER BY POSTS
-        if(!filterBy.socials.posts) return influencer;
+        if(!filterBy.socials ||!filterBy.socials.posts) return influencer;
         return influencer.filteredSocialMap.some( social => {
           return +social.posts > +filterBy.socials.posts; 
         })
       })
       .filter(influencer => {  // FILTER BY STORIES
-        if(!filterBy.socials.stories) return influencer;
+        if(!filterBy.socials || !filterBy.socials.stories) return influencer;
         return influencer.filteredSocialMap.some( social => {
           return +social.stories > +filterBy.socials.stories; 
         })
       })
       .filter(influencer => {  // FILTER BY FOLLOWERS AGE
-        if(!filterBy.socials.followersAvgAge) return influencer;
+        if(!filterBy.socials || !filterBy.socials.followersAvgAge) return influencer;
         return influencer.filteredSocialMap.some( social => {
           return(
             social.followersAvgAge >= filterBy.socials.followersAvgAge[0]
