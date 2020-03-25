@@ -1,5 +1,7 @@
 .offers-preview {
     width: 90%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     border: 1px solid gray;
     padding: 10px;
     margin-bottom: 5px;
@@ -7,6 +9,10 @@
         padding: 0;
         margin: 0;
     }
+}
+
+.offer-status-container {
+    margin: 0 auto;
 }
 
 .offer-status {

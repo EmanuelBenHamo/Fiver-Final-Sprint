@@ -1,10 +1,10 @@
 <template>
   <section class="offer-list-container" v-if="offers">
     <h1>Offer List</h1>
-    <div class="offers-topbar flex space-between">
-      <span>Product</span>
-      <span>Dates</span>
-      <span>Status</span>
+    <div class="offers-topbar">
+      <span class="offer-list-title">Product</span>
+      <span class="offer-list-title">Dates</span>
+      <span class="offer-list-title">Status</span>
     </div>
     <offer-preview v-for="offer in offers" :key="offer._id" :offer="offer" />
   </section>

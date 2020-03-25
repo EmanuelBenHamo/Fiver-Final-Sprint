@@ -3,6 +3,12 @@
     text-align: -webkit-center;
 }
 
+.offer-list-title {
+    margin: 0 auto;
+}
+
 .offers-topbar {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     margin-bottom: 5px;
 }

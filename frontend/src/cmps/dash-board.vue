@@ -22,7 +22,6 @@ export default {
   },
   created() {
     this.loggedInUser = this.$store.getters.loggedInUser;
-    console.log(this.loggedInUser);
   },
   computed: {
     fullName() {

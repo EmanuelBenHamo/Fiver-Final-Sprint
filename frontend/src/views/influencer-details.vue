@@ -83,7 +83,6 @@ export default {
         campaign,
         influencer: this.currInfluencer
       })
-      console.log('Offer Sent', sentOffer);
       eventBus.$emit('showMsg',{txt:'Your offer has been sent'})
     }
   },
