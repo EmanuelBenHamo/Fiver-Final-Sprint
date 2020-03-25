@@ -1,6 +1,6 @@
 <template>
   <section class="backoffice-page-container">
-    <h1>Welcome to the Back Office</h1>
+    <h1>Back Office</h1>
     <div class="backoffice-navbar">
       <router-link :to="'/dashboard/' + loggedInUser._id" class="dashboard">Dashboard</router-link>
       <router-link :to="'/offer/' + loggedInUser._id" class="offers">Offers</router-link>

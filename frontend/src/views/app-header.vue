@@ -22,8 +22,8 @@ export default {
       loggedInUser: null,
       demoUser: {
         credentials: {
-          username: "lcometson1",
-          password: "AmOu29"
+          username: "thearley0",
+          password: "ykR0KU"
         }
       }
     };
