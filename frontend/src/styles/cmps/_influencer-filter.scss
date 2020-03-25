@@ -5,6 +5,8 @@
         font-weight: 600;
     }
 
+    
+
     .filter-type-btn {
         font-size: 0.8rem;
         font-weight: 600;
@@ -15,15 +17,32 @@
 
         }
     }
+}
 
+.filter-container-simple {
+    .radio-container.radio-all span{
+        font-size: 1.5rem;
+    }
+
+    img.tiktok-icon{
+        filter: invert(50%) sepia(11%) saturate(220%) hue-rotate(113deg) brightness(94%) contrast(92%);            height: 2rem;
+        width: 2rem;
+
+    }
+    input:checked + span > img.tiktok-icon {
+        filter: invert(84%) sepia(76%) saturate(5862%) hue-rotate(118deg) brightness(100%) contrast(81%);
+        font-weight: 700;
+    }
+
+    .border-line {
+        width: 2px;
+        background-color: lighten($clr1, 45%);
+        opacity: 0.3;
+    }
 }
 
 
 .filter-container-advance {
-    /* always present */
-
-
-
 
    & > * {
         margin-bottom: 2rem;
@@ -56,5 +75,14 @@
     }
     .filter-btn{
         align-self: flex-end;
+    }
+
+    .border-line {
+        height: 2px;
+        width: 90%;
+        margin: 2rem auto;
+        background-color: lighten($clr1, 45%);
+        opacity: 0.3;
+
     }
 }

@@ -8,11 +8,11 @@
         <label>Name</label>
     <input type="text" v-model="filterBy.name" placeholder="Search By Name">
     </div>
-
+    <div class="border-line"></div>
     <!-- GENDER -->
     <div class="select-btns gender-radio-btn flex align-center">
-        <label>Gender</label>
-        <label class="radio-container radio-All">
+        <!-- <label>Gender</label> -->
+        <label class="radio-container radio-all">
             <input type="radio" value="All" v-model="filterBy.gender">
             <span class="checkmark">All</span>
         </label>
@@ -25,10 +25,12 @@
             <span class="checkmark fa fa-venus fa-2x"></span>
         </label>
     </div>
+   
+    <div class="border-line"></div>
 
     <!-- SOCIAL TYPE -->
     <div class="select-btns social-checkbox-btn flex align-center">
-        <label>Social Networks</label>
+        <!-- <label>Social Networks</label> -->
         <label class="checkbox-container checkbox-instagram">
             <input type="checkbox" value="instagram" v-model="filterBy.socials.type">
             <span class="checkmark fa fa-instagram fa-2x"></span>
@@ -39,7 +41,9 @@
         </label>
         <label class="checkbox-container checkbox-tiktok">
             <input type="checkbox" value="tiktok" v-model="filterBy.socials.type ">
-            <span class="checkmark">Tiktok</span>
+            <span class="checkmark">
+                <img src="../assets/icons/tik-tok.svg" class="tiktok-icon">
+            </span>
         </label>
     </div>
     <button class="filter-btn btn" @click="setFilterBy">Filter</button>
@@ -92,6 +96,8 @@
         </label>
     </div>
 
+    <div class="border-line"></div>
+
     <!-- INFLUENCER AGE -->
     <div class="followers-silder filter-by-age">
         <label>Influencer's Age Range</label>
@@ -106,16 +112,18 @@
         </el-slider>
     </div>
 
-    <!-- TAGS -->
-    <tags-select @setTags="setTags"></tags-select>
-
     <!-- POSTS, STORIES, PRICE -->
     <div class="filter-by-nums flex space-around">
         <input type="number" v-model="filterBy.socials.posts" placeholder="Minimum Number of Posts">
         <input type="number" v-model="filterBy.socials.stories" placeholder="Minimum Number of Stories">
         <input type="number" v-model="filterBy.pricePerPost" placeholder="What is your max price?">
     </div>
+    <!-- TAGS -->
+    <tags-select @setTags="setTags"></tags-select>
 
+    
+
+    <div class="border-line"></div>
     <!-- FOLLOWERS COUNT -->
     <div class="followers-silder followers-count">
         <label>Followers </label>

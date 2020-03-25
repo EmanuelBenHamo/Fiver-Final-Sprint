@@ -10,7 +10,7 @@
 import influencerPreview from "./influencer-preview";
 import influencerFilter from "./influencer-filter";
 export default {
-  name: 'influencer-list',
+  name: "influencer-list",
   props: {
     influencers: {
       type: Array
