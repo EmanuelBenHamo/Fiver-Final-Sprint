@@ -5,14 +5,11 @@
   .influencer-fullname {
     width: 100%;
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     text-transform: capitalize;
   }
   .social-details-container {
-    max-height: 0;
-    transition: max-height 0.5s ease-in-out;
-    overflow: hidden;
-    width: 100%;
+    font-size: 1rem;
     border-block-start: 1px solid black;
     .social-networks-info-container {
       width: 100%;
@@ -33,13 +30,6 @@
           text-align: center;
         }
       }
-    }
-  }
-}
-.preview-carousel-container {
-  :hover {
-    .social-details-container {
-      max-height: 3.5rem;
     }
   }
 }
