@@ -55,7 +55,7 @@ function update(offer) {
 async function _createOffer({campaign, influencer}) {
     const newOffer = {
         _id: Math.floor(Math.random() * 1000000 + 10000),
-        status: 'Pendeing',
+        status: 'pending',
         description: campaign.description,
         miniCampaign: {
             id: campaign._id,

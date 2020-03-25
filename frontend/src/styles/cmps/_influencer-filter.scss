@@ -1,41 +1,60 @@
-.filter-container {
-    padding: 20px 40px;
+.filter-container{
+    padding: 20px 30px;
     box-shadow: 0 3px 4px lighten($clr1, 30%);
-    .select-btns {
-        margin: 20px;
-     
-        input {
-        display: none;
-        }
-        label {
-        margin-right: 20px;
-        display: inline-block;
-        cursor: pointer;
-        }
-        
-        span {
-            color: lighten($clr1, 30%)
-        }
+    label{
+        font-weight: 600;
+    }
 
-        input:checked + span {
-            font-weight: 700;
-            color: $clr1
+    .filter-type-btn {
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-decoration: underline;
+        
+        &:hover{
+            cursor: pointer;
+
         }
     }
 
-    .followersCount {
-        padding-right: 25px;
+}
 
+
+.filter-container-advance {
+    /* always present */
+
+
+
+
+   & > * {
+        margin-bottom: 2rem;
+    }
+
+
+    .followers-count {
+        
         span{
             color: lighten($clr1, 45%)
         }
+    }
+    
+    .men-followers-percentage-silder {
+        width: 80%;
+    }
+    .followers-silder {
+        padding-right: 25px;
         .el-slider{
             width: 82%;
             margin: auto;
         }
+        
     }
-
-    .menFollowersPercentageSilder {
-        width: 80%;
+    .el-slider__bar{
+        background-color: $clr4;
+    }
+    .el-slider__button{
+        border-color: $clr4;
+    }
+    .filter-btn{
+        align-self: flex-end;
     }
 }

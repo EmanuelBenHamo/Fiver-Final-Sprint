@@ -20,7 +20,7 @@
       <li>Women: {{social.womenFollowers}}</li>
       <li>Posts: {{social.posts}}</li>
       <li>Stories: {{social.stories}}</li>
-      <li>Avrage Followers Age: {{social.avgAge}}</li>
+      <li>Avrage Followers Age: {{social.followersAvgAge}}</li>
       <li>Post Price: {{social.pricePerPost}}</li>
     </ul>
   </div>
