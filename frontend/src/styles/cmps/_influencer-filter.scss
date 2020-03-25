@@ -1,6 +1,5 @@
 .filter-container{
     padding: 20px 30px;
-    box-shadow: 0 3px 4px lighten($clr1, 30%);
     label{
         font-weight: 600;
     }
@@ -26,12 +25,11 @@
 
     img.tiktok-icon{
         filter: invert(50%) sepia(11%) saturate(220%) hue-rotate(113deg) brightness(94%) contrast(92%);            height: 2rem;
-        width: 2rem;
+        width: 1.5em;
 
     }
     input:checked + span > img.tiktok-icon {
-        filter: invert(84%) sepia(76%) saturate(5862%) hue-rotate(118deg) brightness(100%) contrast(81%);
-        font-weight: 700;
+        filter: invert(85%) sepia(31%) saturate(3723%) hue-rotate(139deg) brightness(98%) contrast(84%);
     }
 
     .border-line {
