@@ -5,7 +5,7 @@
       <influencer-poster-data class="influencer-poster-data" :influencer="influencer" />
     </section>
   </section>
-</template> 
+</template>  
 
 <script>
 import influencerPosterData from "./influencer-poster-data";

@@ -4,7 +4,7 @@
       <influencer-poster :influencer="influencer" />
     </router-link>
   </section>
-</template>
+</template> 
  
 <script>
 import influencerPoster from "./influencer-poster";

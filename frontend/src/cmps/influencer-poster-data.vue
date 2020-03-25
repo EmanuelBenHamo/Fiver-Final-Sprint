@@ -1,5 +1,5 @@
 <template>
-  <section class="influencer-poster-data-container flex column align-center"> 
+  <section class="influencer-poster-data-container flex column align-center space-between"> 
     <div class="influencer-fullname">{{fullname}}</div>
     <section class="social-details-container flex column align-center">
       <section class="social-networks-info-container flex">
@@ -11,7 +11,7 @@
           <span class="social-network-name">{{influencer.socials[1].type}}</span>
           <span class="social-network-followers-count">{{secondSocialFollowersCount}}</span>
         </div>
-      </section>
+      </section> 
     </section>
   </section>
 </template>
