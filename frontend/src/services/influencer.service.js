@@ -1,4 +1,5 @@
 import storageService from './storage.service.js';
+import utilService from './util.service.js';
 
 const KEY = 'influencers';
 
@@ -8,6 +9,7 @@ function _getInfluencersFromStorage() {
   var influencers = storageService.load(KEY);
   if (!influencers) {
     influencers = require('../../data/influencers.json');
+    utilService.shuffle(influencers);
     storageService.store(KEY, influencers);
   }
   return influencers;

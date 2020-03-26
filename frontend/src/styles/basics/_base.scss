@@ -1,46 +1,44 @@
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-html{
-    font-family: 'Rubik';
-    color: $clr1;
+html {
+  font-family: "Quicksand", sans-serif;
+
+  color: $clr1;
 }
 
 body {
-    margin: 0;
+  margin: 0;
 }
 
-a{
-    text-decoration: none;
-    color: inherit;
+a {
+  text-decoration: none;
+  color: inherit;
 
-    &:focus{
-        outline: none;
-    }
+  &:focus {
+    outline: none;
+  }
 }
 
-button{
-    all: unset
+button {
+  all: unset;
 }
 
-input:not([type='checkbox']):not([type='radio']):not([type="file"]) {
-    margin: 0 10px;
-    border-radius: 0.2rem;
-    padding-left:0.5rem;
-    border: 1px solid lighten($clr1, 50%);
-    height: 30px;
-    width: 60%;
-    
+input:not([type="checkbox"]):not([type="radio"]):not([type="file"]) {
+  margin: 0 10px;
+  border-radius: 0.2rem;
+  padding-left: 0.5rem;
+  border: 1px solid lighten($clr1, 50%);
+  height: 30px;
+  width: 60%;
 }
 
-textarea{
-    margin: 0 10px;
-    border-radius: 0.2rem;
-    padding-left:0.5rem;
-    border: 1px solid lighten($clr1, 50%);
-    resize: none;
-    height: 100px;
-    
+textarea {
+  margin: 0 10px;
+  border-radius: 0.2rem;
+  padding-left: 0.5rem;
+  border: 1px solid lighten($clr1, 50%);
+  resize: none;
+  height: 100px;
 }
-

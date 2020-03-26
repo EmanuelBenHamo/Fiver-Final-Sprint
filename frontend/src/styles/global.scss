@@ -20,10 +20,12 @@
 @import "./cmps/brand-list";
 @import "./cmps/brand-preview";
 @import "./cmps/influencers-list";
-@import "./cmps/influencer-details";
+@import "./cmps/influencer-filter";
 @import "./cmps/influencer-preview";
+@import "./cmps/influencer-poster";
+@import "./cmps/influencer-poster-data";
+@import "./cmps/influencer-details";
 @import "./cmps/user-msg-modal";
-@import "./cmps/preview-carousel";
 @import "./cmps/carousel-dots-bar";
 @import "./cmps/carousel-nav";
 @import "./cmps/carousel-info";
@@ -35,4 +37,5 @@
 @import './cmps/advance-filter';
 @import './cmps/filter-followers-count';
 @import './cmps/filter-followers-percentage';
-
+@import "./cmps/influencer-socials-list";
+@import "./cmps/influencer-social-preview";

@@ -12,13 +12,11 @@ import influencerFilter from "./influencer-filter";
 export default {
   name: "influencer-list",
   props: {
-    influencers: {
-      type: Array
-    }
+    influencers: Array
   },
   methods: {
     setFilterBy(filterBy) {
-      this.$emit('setFilterBy', filterBy)
+      this.$emit("setFilterBy", filterBy);
     }
   },
   components: {

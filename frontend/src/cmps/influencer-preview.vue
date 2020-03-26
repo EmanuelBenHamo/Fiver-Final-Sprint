@@ -1,21 +1,19 @@
 <template>
   <section v-if="influencer" class="influencer-preview">
     <router-link :to="'/influencer/' + influencer._id">
-      <preview-carousel :previewItem="influencer" />
+      <influencer-poster :influencer="influencer" />
     </router-link>
   </section>
-</template>
-
+</template> 
+ 
 <script>
-import previewCarousel from "./preview-carousel";
+import influencerPoster from "./influencer-poster";
 export default {
   props: {
-    influencer: {
-      type: Object
-    }
+    influencer: Object
   },
   components: {
-    previewCarousel
+    influencerPoster
   }
 };
 </script>
