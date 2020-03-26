@@ -32,7 +32,6 @@ export default {
       await this.$store.dispatch({ type: 'loadBrands' });
     },
     async loadInfluencers(filterBy) {
-      console.log('filterBy!!', filterBy);
       await this.$store.dispatch({ 
         type: 'loadInfluencers', 
         filterBy

@@ -2,7 +2,7 @@
   <section class=" select-btns tags-select-container flex">
       <label>Select Tags</label>
       <div class="tags-choises flex wrap space-between ">
-        <label v-for="(tag, idx) in tags" class="checkbox-container" :key="idx">
+        <label v-for="(tag, idx) in tagsByName" class="checkbox-container" :key="idx">
             <input type="checkbox" :value="tag" v-model="selectedTags">
             <span class="checkmark">{{tag}}</span>
         </label>
@@ -44,11 +44,16 @@ export default {
       ]
     };
   },
+  computed:{
+    tagsByName(){
+      return this.tags.sort()
+    }
+  },
   watch: {
       selectedTags(){
           this.$emit('setTags', this.selectedTags);
       }
-  }
+  },  
 };
 </script>
 

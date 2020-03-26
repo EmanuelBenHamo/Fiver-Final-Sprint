@@ -1,0 +1,36 @@
+.filter-container-advance {
+
+    & > * {
+         margin-bottom: 2rem;
+     }
+ 
+     .filter-followers-label{
+         font-size: 1.25rem;
+     }
+     
+     .followers-silder {
+         padding-right: 25px;
+         .el-slider{
+             width: 82%;
+             margin: auto;
+         }   
+     }
+     .el-slider__bar{
+         background-color: $clr4;
+     }
+     .el-slider__button{
+         border-color: $clr4;
+     }
+     .filter-btn{
+         align-self: flex-end;
+     }
+ 
+     .border-line {
+         height: 2px;
+         width: 90%;
+         margin-bottom: 2rem;
+         background-color: lighten($clr1, 45%);
+         opacity: 0.3;
+ 
+     }
+ }
