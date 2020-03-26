@@ -1,12 +1,12 @@
 <template>
   <section class="backoffice-page-container">
     <h1>Back Office</h1>
+    <dash-board :user="loggedInUser"></dash-board>
     <div class="backoffice-navbar">
-      <dash-board :user="loggedInUser"></dash-board>
       <router-link :to="'/offer/' + this.loggedInUser._id" class="btn offers">Offers</router-link>
       <router-link :to="'/message/'" class="btn message">Messages</router-link>
-      <router-view></router-view>
     </div>
+    <router-view></router-view>
   </section>
 </template>
 <script>
@@ -22,7 +22,7 @@ export default {
   created() {
     this.loadLoggedInUser();
 
-    //change offer status by clicking the 
+    //change offer status by clicking the
     //offer toggle button.
     //event bus catches the offerStatusChange
     //even and changes the relavent offer to its new status.

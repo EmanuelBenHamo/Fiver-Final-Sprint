@@ -1,15 +1,6 @@
 .backoffice-navbar {
-    margin-bottom: 10px;
-    // a {
-    //     // border: 1px solid black;
-    //     border-radius: 3px;
-    //     padding: 3px;
-    //     color: $clr1;
-    //     font-size: 1.2rem;
-    //     margin-right: 10px;
-    // }
-    // a:hover {
-    //     color: white;
-    //     color: $clr4;
-    // }
+    margin-bottom: 15px;
+    .btn:first-child {
+        margin: 0;
+    }
 }
