@@ -1,6 +1,14 @@
-.followers-count {
+.followers-count-conatiner {
          
-    span{
-        color: lighten($clr1, 45%)
+    & >:first-child {
+        display: block;
+        margin-bottom: 1.5rem; 
+    }
+    .followers-count{
+        padding:0 25px;
+        .followers-count-slider {
+            width: 80%;
+            
+        }
     }
 }

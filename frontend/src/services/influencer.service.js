@@ -159,20 +159,27 @@ function _filterInfluencers(filterBy) {
           })
         })
         
-        if(filterBy.topRated){
-          var topRated = gInfluencers.filter(influencer => {
-              var maxFollowersCount = 0
-              influencer.socials.forEach(social => {
-              var followersCount = social.menFollowers + social.womenFollowers;
-              maxFollowersCount = (followersCount > maxFollowersCount)? followersCount :maxFollowersCount;
-            })
-            return influencer.maxFollowersCount = maxFollowersCount;
-          })
-          influencersToShow = topRated.sort((a,b) => b.maxFollowersCount - a.maxFollowersCount).slice(0, 5)
-          console.log('HERE', influencersToShow);
+        if(filterBy.topRated){         
+          influencersToShow = gInfluencers.sort((a,b) => {
+            let firstItem = _getMaxFollowersCount(a)
+            let secondItem = _getMaxFollowersCount(b) 
+            
+            if(secondItem > firstItem ) return 1
+            else if (firstItem > secondItem) return -1
+            else return 0
+          }).slice(0, 5)
         }
-
   return influencersToShow;
+}
+
+function _getMaxFollowersCount(influencer){
+  var maxFollowersCount = 0
+  influencer.socials.forEach(social => {
+    if(social.type !== 'instagram' && social.type !== 'snapchat') return
+    var followersCount = social.menFollowers + social.womenFollowers;
+    maxFollowersCount = (followersCount > maxFollowersCount) ? followersCount :maxFollowersCount;
+  })
+  return maxFollowersCount;
 }
 
 function _randomInt(min, max) {

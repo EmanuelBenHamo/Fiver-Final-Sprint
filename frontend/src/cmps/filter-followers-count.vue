@@ -1,15 +1,21 @@
 <template>
-     <div class="followers-silder followers-count">
+     <div class="followers-count-conatiner">
         <label>Amount</label>
-        <span>- choose a range</span>
-        <el-slider
-            v-model="followersCount"
-            :format-tooltip="localeString"
-            range
-            label='Followers'
-            :steps="100"
-            :max="1000000">
-        </el-slider>
+        <div class="followers-count flex space-between align-center">
+        <label>50K</label>
+            <div class="followers-count-slider">
+            <el-slider
+                v-model="followersCount"
+                :format-tooltip="localeString"
+                range
+                label='Followers'
+                :steps="100"
+                :min="50000"
+                :max="500000">
+            </el-slider>
+            </div>
+        <label>500K</label>
+        </div>
     </div>
 </template>
 

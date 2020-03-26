@@ -1,16 +1,21 @@
-.filter-container{
-    padding: 20px 30px;
-    label{
-        font-weight: 600;
-    }
-    .filter-type-btn {
-        font-size: 0.8rem;
-        font-weight: 600;
-        text-decoration: underline;
-        
-        &:hover{
-            cursor: pointer;
+.main-filter-container {
 
+    .filter-container{
+        
+        padding: 20px 30px;
+        
+        label{
+            font-weight: 600;
+        }
+        .filter-type-btn {
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-decoration: underline;
+            
+            &:hover{
+                cursor: pointer;
+                
+            }
         }
     }
 }
