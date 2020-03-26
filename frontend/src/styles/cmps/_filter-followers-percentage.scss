@@ -1,0 +1,14 @@
+.men-followers-percentage-container {
+         
+    & >:first-child {
+        display: block;
+        margin-bottom: 1.5rem; 
+    }
+    .men-followers-percentage{
+        padding:0 25px;
+        .men-followers-percentage-silder {
+            width: 80%;
+            
+        }
+    }
+}

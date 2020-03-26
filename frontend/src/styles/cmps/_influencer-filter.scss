@@ -1,12 +1,8 @@
 .filter-container{
     padding: 20px 30px;
-    box-shadow: 0 3px 4px lighten($clr1, 30%);
     label{
         font-weight: 600;
     }
-
-    
-
     .filter-type-btn {
         font-size: 0.8rem;
         font-weight: 600;
@@ -16,73 +12,5 @@
             cursor: pointer;
 
         }
-    }
-}
-
-.filter-container-simple {
-    .radio-container.radio-all span{
-        font-size: 1.5rem;
-    }
-
-    img.tiktok-icon{
-        filter: invert(50%) sepia(11%) saturate(220%) hue-rotate(113deg) brightness(94%) contrast(92%);            height: 2rem;
-        width: 2rem;
-
-    }
-    input:checked + span > img.tiktok-icon {
-        filter: invert(84%) sepia(76%) saturate(5862%) hue-rotate(118deg) brightness(100%) contrast(81%);
-        font-weight: 700;
-    }
-
-    .border-line {
-        width: 2px;
-        background-color: lighten($clr1, 45%);
-        opacity: 0.3;
-    }
-}
-
-
-.filter-container-advance {
-
-   & > * {
-        margin-bottom: 2rem;
-    }
-
-
-    .followers-count {
-        
-        span{
-            color: lighten($clr1, 45%)
-        }
-    }
-    
-    .men-followers-percentage-silder {
-        width: 80%;
-    }
-    .followers-silder {
-        padding-right: 25px;
-        .el-slider{
-            width: 82%;
-            margin: auto;
-        }
-        
-    }
-    .el-slider__bar{
-        background-color: $clr4;
-    }
-    .el-slider__button{
-        border-color: $clr4;
-    }
-    .filter-btn{
-        align-self: flex-end;
-    }
-
-    .border-line {
-        height: 2px;
-        width: 90%;
-        margin: 2rem auto;
-        background-color: lighten($clr1, 45%);
-        opacity: 0.3;
-
     }
 }

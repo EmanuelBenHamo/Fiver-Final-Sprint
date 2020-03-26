@@ -1,0 +1,11 @@
+.social-checkbox-btn{
+
+    img.tiktok-icon{
+        filter: invert(50%) sepia(11%) saturate(220%) hue-rotate(113deg) brightness(94%) contrast(92%);            height: 2rem;
+        width: 1.5em;
+        
+    }
+    input:checked + span > img.tiktok-icon {
+        filter: invert(85%) sepia(31%) saturate(3723%) hue-rotate(139deg) brightness(98%) contrast(84%);
+    }
+}

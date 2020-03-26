@@ -65,7 +65,6 @@ export default {
 
 function _setSocialInfo(influencer) {
     influencer.socials = influencer.socials.map(social => {
-        console.log('social', social);
         var currSocial = {
             type: social,
             menFollowers: _randomInt(10000, 10000000),
@@ -80,14 +79,14 @@ function _setSocialInfo(influencer) {
 }
 
 function _filterInfluencers(filterBy) {
-    var name = new RegExp(filterBy.name, 'i');
 
-    const influencersToShow = gInfluencers
-        .filter(influencer => { // FILTER BY NAME
+    var name = new RegExp(filterBy.name, 'i');
+    var influencersToShow = gInfluencers.filter(influencer => { // FILTER BY NAME
+            if (!filterBy.name) return influencer
             return influencer.firstName.match(name) || influencer.lastName.match(name);
         })
         .filter(influencer => { // FILTER BY GENDER
-            if (filterBy.gender === 'All') return influencer; //Filter by gender
+            if (filterBy.gender === 'All') return influencer;
             return filterBy.gender === influencer.gender;
         })
         .filter(influencer => { // FILTER BY AGE
@@ -109,54 +108,68 @@ function _filterInfluencers(filterBy) {
             })
         })
         .filter(influencer => { // FILTER BY SOCIAL NETWORK
-            if (!filterBy.socials.type || !filterBy.socials.type.length) {
+            if (!filterBy.socials || !filterBy.socials.type || !filterBy.socials.type.length) {
                 influencer.filteredSocialMap = influencer.socials
                 return influencer
             }
             const filteredSocialMap = influencer.socials.filter(social => {
-                var socialType = filterBy.socials.type.filter(filterSocialType => {
-                    return social.type === filterSocialType;
-                });
-                return socialType.length;
+                return filterBy.socials.type.includes(social.type)
             });
             if (filteredSocialMap.length) {
                 influencer.filteredSocialMap = filteredSocialMap; // MAPPING ONLY THE RELEVANT SOCIAL NETWORKS
                 return influencer;
             }
         })
-        .filter(influencer => {
+        .filter(influencer => { // FILTER BY FOLLOWERS COUNT
+            if (!filterBy.socials || !filterBy.socials.followersCount || !filterBy.socials.followersCount.length) return influencer
             return influencer.filteredSocialMap.some(social => {
                 let followersCount = social.menFollowers + social.womenFollowers;
-                let menFollowersPercentage =
-                    (social.menFollowers / followersCount) * 100;
-
-                return (+followersCount > filterBy.socials.followersCount[0] && // FILTER BY FOLLOWERS COUNT
-                    +followersCount < filterBy.socials.followersCount[1] &&
-                    menFollowersPercentage > filterBy.socials.menFollowersPercentage // FILTER BY PERCENTAGE OF MEN FOLLOWERS
+                return (+followersCount > filterBy.socials.followersCount[0] &&
+                    +followersCount < filterBy.socials.followersCount[1]
                 );
-            });
-        })
-        .filter(influencer => {
-            if (!filterBy.socials.posts) return influencer;
-            return influencer.filteredSocialMap.some(social => {
-                return +social.posts > +filterBy.socials.posts; // FILTER BY POSTS
             })
         })
-        .filter(influencer => {
-            if (!filterBy.socials.stories) return influencer;
+        .filter(influencer => { // FILTER BY MEN FOLLOWERS PERCENTAGE
+            if (!filterBy.socials || !filterBy.socials.menFollowersPercentage) return influencer
             return influencer.filteredSocialMap.some(social => {
-                return +social.stories > +filterBy.socials.stories; // FILTER BY STORIES
+                let menFollowersPercentage = (social.menFollowers / (social.menFollowers + social.womenFollowers)) * 100;
+                return menFollowersPercentage > filterBy.socials.menFollowersPercentage
             })
         })
-        .filter(influencer => {
-            if (!filterBy.socials.followersAvgAge) return influencer;
+        .filter(influencer => { // FILTER BY POSTS
+            if (!filterBy.socials || !filterBy.socials.posts) return influencer;
+            return influencer.filteredSocialMap.some(social => {
+                return +social.posts > +filterBy.socials.posts;
+            })
+        })
+        .filter(influencer => { // FILTER BY STORIES
+            if (!filterBy.socials || !filterBy.socials.stories) return influencer;
+            return influencer.filteredSocialMap.some(social => {
+                return +social.stories > +filterBy.socials.stories;
+            })
+        })
+        .filter(influencer => { // FILTER BY FOLLOWERS AGE
+            if (!filterBy.socials || !filterBy.socials.followersAvgAge) return influencer;
             return influencer.filteredSocialMap.some(social => {
                 return (
-                        social.followersAvgAge >= filterBy.socials.followersAvgAge[0] &&
-                        social.followersAvgAge <= filterBy.socials.followersAvgAge[1]
-                    ) // FILTER BY FOLLOWERS AGE
+                    social.followersAvgAge >= filterBy.socials.followersAvgAge[0] &&
+                    social.followersAvgAge <= filterBy.socials.followersAvgAge[1]
+                )
             })
         })
+
+    if (filterBy.topRated) {
+        var topRated = gInfluencers.filter(influencer => {
+            var maxFollowersCount = 0
+            influencer.socials.forEach(social => {
+                var followersCount = social.menFollowers + social.womenFollowers;
+                maxFollowersCount = (followersCount > maxFollowersCount) ? followersCount : maxFollowersCount;
+            })
+            return influencer.maxFollowersCount = maxFollowersCount;
+        })
+        influencersToShow = topRated.sort((a, b) => b.maxFollowersCount - a.maxFollowersCount).slice(0, 5)
+        console.log('HERE', influencersToShow);
+    }
 
     return influencersToShow;
 }
@@ -166,13 +179,12 @@ function _randomInt(min, max) {
 }
 
 function _getAge(testEpoch) {
-
     var myDate = new Date(testEpoch * 1000);
     var today = new Date();
-    var year = today.getFullYear() - myDate.getFullYear();
+    var age = today.getFullYear() - myDate.getFullYear();
     var month = today.getMonth() - myDate.getMonth();
     if (month < 0 || month === 0 && today.getDate() < myDate.getDate()) {
-        year--
+        age--
     }
-    return year
+    return age
 }
