@@ -1,40 +1,82 @@
-.home-page-container{
- 
-    
-    .home-page-content{
-   
-        color: black;
-        
-
-        h1{
-            font-family: 'Rock Salt', cursive;
-            font-weight: 400;
-            font-size: 3.5rem;
-            margin-bottom: 3.5rem;
-        }
-        p{
-            
-            font-size: 3.5rem;
-            line-break: normal;
-            margin: 1rem;
-        }
-        .btns :first-child{
-            margin-right: 4rem;
-        }
-        
+.home-page-container {
+    // margin: auto;
+  .home-page-content {
+    color: black;
+    margin-right: 2.5rem;
+    height: 520px;
+    position: relative;
+    h1 {
+        margin-top: 2rem;
+      font-family: "Rock Salt", cursive;
+      font-weight: 400;
+      font-size:4.5rem;
+      line-height: 1.9;
+      transform: rotate(-10deg);
+      position: absolute;
+      top: 0;
+      left: 0;
     }
-    .img-container{
-        position: relative;
-        width: 700px;
-        height: 500px;
-
-        img{
-            position: absolute;
-            object-fit: cover;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 100%;
-        }
+    p {
+        font-size: 1.25rem;
+      line-break: normal;
+      margin: 1rem;
     }
+    .go-btn{
+    max-width: unset;
+    text-align: center;
+    }
+
+  }
+  .imgs-container {
+    background-color: pink;
+    width: 400px;
+    margin: auto;
+    z-index: -1;
+
+    & > img {
+        width: 100%;
+    }
+  }
+
+  .carousel-img {
+    animation-name: home-page-carousel;
+    animation-duration: 32s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  .home-pic-1 {
+      opacity: 0;
+      animation-delay: 24s;
+    }
+    .home-pic-2 {
+        opacity: 0;
+        animation-delay: 16s;
+    }
+    .home-pic-3 {
+        opacity: 0;
+        animation-delay: 8s;
+    }
+    .home-pic-4 {
+        opacity: 0;
+    animation-delay: 0;
+  }
+
+  @keyframes home-page-carousel {
+    0% {
+      opacity: 0;
+    }
+    6% {
+      opacity: 1;
+    }
+    25% {
+      opacity: 1;
+    }
+    31% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 0;
+    }
+  }
 }

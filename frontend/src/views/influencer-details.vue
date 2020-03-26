@@ -97,7 +97,7 @@ export default {
 <style>
 .gender{
   font-weight: bolder;
-  font-family: fantasy;
+  /* font-family: fantasy; */
 }
 .social-info span{
   font-size: 2rem;
