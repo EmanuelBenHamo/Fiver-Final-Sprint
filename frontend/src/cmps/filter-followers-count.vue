@@ -1,6 +1,6 @@
 <template>
      <div class="followers-silder followers-count">
-        <label>Followers </label>
+        <label>Amount</label>
         <span>- choose a range</span>
         <el-slider
             v-model="followersCount"
@@ -18,14 +18,13 @@ export default {
     name: 'filter-followers-count',
     data(){
         return{ 
-       followersCount: null
-        }
-        
+            followersCount: null
+        } 
     },
     methods: {
         localeString(value){
-        if(!value)return
-        return value.toLocaleString('en-US')
+            if(!value)return
+            return value.toLocaleString('en-US')
         }
     },
     watch: {

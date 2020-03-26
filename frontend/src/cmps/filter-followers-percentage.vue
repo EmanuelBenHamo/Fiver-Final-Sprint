@@ -1,4 +1,6 @@
 <template>
+<section class="men-followers-percentage-container">
+<label>Gender</label>
    <div class="men-followers-percentage flex space-between align-center">
         <label>Men</label>
         <div class="men-followers-percentage-silder">
@@ -9,6 +11,7 @@
         </div>
         <label>Women</label>
     </div>
+</section>
 </template>
 
 <script>

@@ -1,24 +1,25 @@
 <template>
 <section class="filter-container-advance flex column">
     <div class="filter-header flex space-between" >
-    <h3>Who is your next influencer?</h3>
-    <button @click="$emit('isAdvance')" class="filter-type-btn simple-btn">Simple</button>
-        </div>
-    <!-- NAME -->
+        <h3>Who is your next influencer?</h3>
+        <button @click="$emit('isAdvance')" class="filter-type-btn simple-btn">Simple</button>
+    </div>
+
+    <div class="basic-filter-section flex space-around">
+        <!-- NAME -->
        <filter-name @setName="setName"/>
-
-    <!-- GENDER -->
+        <!-- GENDER -->
         <filter-gender @setGender="setGender"/>
-
-    <!-- SOCIAL TYPE -->
+        <!-- SOCIAL TYPE -->
        <filter-socials @setSocials="setSocials"/>
+    </div>
 
     <div class="border-line"></div>
 
-    <!-- INFLUENCER AGE -->
-       <filter-age @setAge="setAge"/>
+        <!-- INFLUENCER AGE -->
+    <filter-age @setAge="setAge"/>
 
-    <!-- POSTS, STORIES, PRICE -->
+        <!-- POSTS, STORIES, PRICE -->
     <div class="filter-by-nums flex space-around">
         <input type="number" v-model="filterBy.socials.posts" placeholder="Minimum Number of Posts">
         <input type="number" v-model="filterBy.socials.stories" placeholder="Minimum Number of Stories">
@@ -29,19 +30,17 @@
     <tags-select @setTags="setTags"></tags-select>
 
     <div class="border-line"></div>
-
+    <label class="filter-followers-label">Followers</label>
     <!-- FOLLOWERS COUNT -->
-       <filter-followers-count @setFollowersCount="setFollowersCount"/>
-
+    <filter-followers-count @setFollowersCount="setFollowersCount"/>
 
     <!-- FOLLOWERS PERCENTAGE -->
-       <filter-followers-percentage @setFollowersPercentage="setFollowersPercentage"/>
-    
-    <!-- FOLLOWEWRS AGE -->
-       <filter-followers-age @setFollowersAge="setFollowersAge"/>
-    
+    <filter-followers-percentage @setFollowersPercentage="setFollowersPercentage"/>
 
-     <button class="filter-btn btn" @click="$emit('setFilterBy',filterBy)">Filter</button>
+    <!-- FOLLOWEWRS AGE -->
+    <filter-followers-age @setFollowersAge="setFollowersAge"/>
+    
+    <button class="filter-btn btn" @click="$emit('setFilterBy',filterBy)">Filter</button>
 
 </section>
 </template>
@@ -103,7 +102,6 @@ export default {
         filterFollowersCount,
         filterFollowersPercentage,
         filterFollowersAge
-
     }
 };
 </script>

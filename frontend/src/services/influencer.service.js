@@ -77,8 +77,9 @@ function _setSocialInfo(influencer) {
 }
 
 function _filterInfluencers(filterBy) {
+  
   var name = new RegExp(filterBy.name, 'i');
-  const influencersToShow = gInfluencers.filter(influencer => { // FILTER BY NAME
+  var influencersToShow = gInfluencers.filter(influencer => { // FILTER BY NAME
     if(!filterBy.name) return influencer
      return influencer.firstName.match(name) || influencer.lastName.match(name);
   })
@@ -156,6 +157,19 @@ function _filterInfluencers(filterBy) {
           })
         })
         
+        if(filterBy.topRated){
+          var topRated = gInfluencers.filter(influencer => {
+              var maxFollowersCount = 0
+              influencer.socials.forEach(social => {
+              var followersCount = social.menFollowers + social.womenFollowers;
+              maxFollowersCount = (followersCount > maxFollowersCount)? followersCount :maxFollowersCount;
+            })
+            return influencer.maxFollowersCount = maxFollowersCount;
+          })
+          influencersToShow = topRated.sort((a,b) => b.maxFollowersCount - a.maxFollowersCount).slice(0, 5)
+          console.log('HERE', influencersToShow);
+        }
+
   return influencersToShow;
 }
 

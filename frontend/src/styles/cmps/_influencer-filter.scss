@@ -3,9 +3,6 @@
     label{
         font-weight: 600;
     }
-
-    
-
     .filter-type-btn {
         font-size: 0.8rem;
         font-weight: 600;
@@ -15,72 +12,5 @@
             cursor: pointer;
 
         }
-    }
-}
-
-
-    .radio-container.radio-all span{
-        font-size: 1.5rem;
-    }
-
-    img.tiktok-icon{
-        filter: invert(50%) sepia(11%) saturate(220%) hue-rotate(113deg) brightness(94%) contrast(92%);            height: 2rem;
-        width: 1.5em;
-
-    }
-    input:checked + span > img.tiktok-icon {
-        filter: invert(85%) sepia(31%) saturate(3723%) hue-rotate(139deg) brightness(98%) contrast(84%);
-    }
-
-    .border-line {
-        width: 2px;
-        background-color: lighten($clr1, 45%);
-        opacity: 0.3;
-    }
-
-
-
-.filter-container-advance {
-
-   & > * {
-        margin-bottom: 2rem;
-    }
-
-
-    .followers-count {
-        
-        span{
-            color: lighten($clr1, 45%)
-        }
-    }
-    
-    .men-followers-percentage-silder {
-        width: 80%;
-    }
-    .followers-silder {
-        padding-right: 25px;
-        .el-slider{
-            width: 82%;
-            margin: auto;
-        }
-        
-    }
-    .el-slider__bar{
-        background-color: $clr4;
-    }
-    .el-slider__button{
-        border-color: $clr4;
-    }
-    .filter-btn{
-        align-self: flex-end;
-    }
-
-    .border-line {
-        height: 2px;
-        width: 90%;
-        margin: 2rem auto;
-        background-color: lighten($clr1, 45%);
-        opacity: 0.3;
-
     }
 }

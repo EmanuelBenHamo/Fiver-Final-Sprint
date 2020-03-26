@@ -1,6 +1,6 @@
 <template>
  <div class="followers-silder select-age-range">
-        <label>Folloewrs Average Age</label>
+        <label>Average Age</label>
         <el-slider
             v-model="followersAvgAge"
             range

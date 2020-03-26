@@ -1,5 +1,7 @@
 <template>
-  <section class="home-page-container flex align-center space-between">
+<section class="home-page-container flex column">
+
+  <section class="home-page-hero flex align-center space-between">
     <div class="home-page-content flex column justify-end">
       <h1>Get Influenced</h1>
       <div class="sub-content flex column ">
@@ -16,11 +18,23 @@
       </div>
     </div>
   </section>
+  <section class="top-rated-list">
+    <h1>Our Most Popular Influencers</h1>
+    <div v-if="topRatedList" class="influencers-list">
+      <influencer-preview  v-for="influencer in topRatedList" :key="influencer._id" :influencer="influencer"/>
+    </div>
+  </section>
+</section>
 </template>
+
+
 <script>
+import influencerPreview from "../cmps/influencer-preview.vue";
 export default {
+  
   created(){
     this.$store.dispatch({ type: 'setUserType', userType:null });
+    this.loadInfluencers();
   },
   data(){
     return{
@@ -29,7 +43,13 @@ export default {
           username:'c',
           password:'d'
         }
-      }
+      },
+      topRatedList: [],
+    }
+  },
+  computed:{
+    getInfluencers(){
+     return this.influencerList = this.$store.getters.influencers;
     }
   },
   methods: {
@@ -42,10 +62,19 @@ export default {
         this.$store.dispatch({ type: 'setUserType', userType });
         this.$router.push('/backOffice');
       }
-        console.log(userType)
+    },
+    async loadInfluencers() {
+      await this.$store.dispatch({ 
+        type: 'loadInfluencers', 
+        filterBy: {topRated: 5}
+        });
+        this.topRatedList = this.$store.getters.influencers;
     }
+  },
+  components: {
+    influencerPreview
   }
-};
+}
 </script>
 
 <style></style>

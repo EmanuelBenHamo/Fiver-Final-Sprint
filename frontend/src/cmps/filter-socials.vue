@@ -1,5 +1,9 @@
 <template>
     <div class="select-btns social-checkbox-btn flex align-center">
+      <label class="checkbox-container checkbox-facebook">
+        <input type="checkbox" value="facebook" v-model="socials.type" />
+        <span class="checkmark fa fa-facebook"></span>
+      </label>
       <label class="checkbox-container checkbox-instagram">
         <input type="checkbox" value="instagram" v-model="socials.type" />
         <span class="checkmark fa fa-instagram"></span>
