@@ -46,7 +46,7 @@ export default {
   },
   computed:{
     tagsByName(){
-      return this.tags.sort()
+      return JSON.parse(JSON.stringify(this.tags)).sort()
     }
   },
   watch: {

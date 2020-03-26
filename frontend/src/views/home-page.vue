@@ -47,11 +47,6 @@ export default {
       topRatedList: [],
     }
   },
-  computed:{
-    getInfluencers(){
-     return this.influencerList = this.$store.getters.influencers;
-    }
-  },
   methods: {
     redirect(userType) {
       if(userType === 'brand'){
