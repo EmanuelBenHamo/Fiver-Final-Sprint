@@ -8,7 +8,7 @@
         <router-link class="nav-btn" to="/signup">Signup</router-link>
       </div>
       <div>
-        <router-link class="demo-login-btn" to @click.native="login">influencer login</router-link>
+        <router-link class="demo-login-btn" to="" @click.native="login">influencer login</router-link>
       </div> 
     </nav>
   </section>
@@ -34,7 +34,7 @@ export default {
         type: "login",
         credentials: this.demoUser.credentials
       });
-      this.$router.push("/dashboard/" + this.loggedInUser._id);
+      this.$router.push("/backoffice");
     }
   }
 };

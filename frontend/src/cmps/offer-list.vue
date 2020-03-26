@@ -1,6 +1,5 @@
 <template>
   <section class="offer-list-container" v-if="offers">
-    <h1>Offer List</h1>
     <div class="offers-topbar">
       <span class="offer-list-title">Product</span>
       <span class="offer-list-title">Dates</span>

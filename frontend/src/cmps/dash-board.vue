@@ -1,8 +1,10 @@
 <template>
   <section class="dashboard">
-    <div v-if=this.loggedInUser>
+    <div class="dashboard-basic-info" v-if="this.loggedInUser">
       <img :src="this.userImg" alt="dash-avatar" class="dash-avatar" />
       <h2>{{this.fullName}}</h2>
+    </div>
+    <div class="dashboard-socials-info">
       <p>Date Of Birth: {{dateOfBirth | date}}</p>
       <ul class="social-info clean-list" v-for="(social, idx) in loggedInUser.socials" :key="idx">
         <li>
@@ -15,6 +17,7 @@
 </template>
 <script>
 export default {
+  name: "dash-board",
   data() {
     return {
       loggedInUser: null

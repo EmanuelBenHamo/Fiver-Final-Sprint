@@ -21,16 +21,15 @@ export default {
   },
   async created() {
     await this.getLoggetInUser();
-    this.loadInfluencers();
-    this.loadBrands();
-    this.loadCampaigns();
+    await this.loadInfluencers();
+    await this.loadBrands();
+    await this.loadCampaigns();
   },
   methods: {
     async loadBrands() {
       await this.$store.dispatch({ type: 'loadBrands' });
     },
     async loadInfluencers(filterBy) {
-      console.log('filterBy!!', filterBy);
       await this.$store.dispatch({ 
         type: 'loadInfluencers', 
         filterBy

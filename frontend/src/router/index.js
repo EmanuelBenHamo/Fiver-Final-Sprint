@@ -9,7 +9,6 @@ import backofficePage from '../views/backoffice-page.vue';
 import offerList from '../cmps/offer-list.vue';
 import influencerDetails from '../views/influencer-details.vue';
 import signupPage from '../views/signup-page.vue';
-import dashBoard from '../cmps/dash-board.vue';
 import messageList from '../cmps/message-list.vue';
 import dashCampaignList from '../cmps/dash-campaign-list.vue';
 import filterCmp from '../cmps/influencer-filter.vue';
@@ -56,22 +55,17 @@ const routes = [{
         name: 'backoffice-page',
         component: backofficePage,
         children: [{
-                path: '/dashboard/:id',
-                name: 'dash-board',
-                component: dashBoard
-            },
-            {
-                path: '/offer/:id',
+                path: '/offer/:id?',
                 name: 'offer-list',
                 component: offerList
             },
             {
-                path: '/dashCampaign/:id',
+                path: '/dashCampaign/:id?',
                 name: 'dash-campaign-list',
                 component: dashCampaignList
             },
             {
-                path: '/message/:id',
+                path: '/message/:id?',
                 name: 'message-list',
                 component: messageList
             }
