@@ -18,12 +18,14 @@
 <script>
 export default {
   name: "dash-board",
+  props:['user'],
   data() {
     return {
       loggedInUser: null
     };
   },
   created() {
+    // console.log(this.user)
     this.loggedInUser = this.$store.getters.loggedInUser;
   },
   computed: {

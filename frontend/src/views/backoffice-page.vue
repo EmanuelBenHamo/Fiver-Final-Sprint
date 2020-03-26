@@ -3,8 +3,8 @@
     <h1>Back Office</h1>
     <div class="backoffice-navbar">
       <dash-board :user="loggedInUser"></dash-board>
-      <router-link :to="'/offer/' + this.loggedInUser._id" class="offers">Offers</router-link>
-      <router-link :to="'/message/'" class="message">Messages</router-link>
+      <router-link :to="'/offer/' + this.loggedInUser._id" class="btn offers">Offers</router-link>
+      <router-link :to="'/message/'" class="btn message">Messages</router-link>
       <router-view></router-view>
     </div>
   </section>
