@@ -1,4 +1,5 @@
 import storageService from './storage.service.js';
+import utilService from './util.service.js';
 
 const KEY = 'influencers';
 
@@ -8,6 +9,7 @@ function _getInfluencersFromStorage() {
   var influencers = storageService.load(KEY);
   if (!influencers) {
     influencers = require('../../data/influencers.json');
+    utilService.shuffle(influencers);
     storageService.store(KEY, influencers);
   }
   return influencers;
@@ -89,12 +91,12 @@ function _filterInfluencers(filterBy) {
       return filterBy.gender === influencer.gender;
     })
     .filter(influencer => { // FILTER BY AGE
-        if(!filterBy.age) return influencer;
-        var age = _getAge(influencer.dateOfBirth);
-        return (
-            filterBy.age[0] < age
-            && filterBy.age[1] > age
-        );
+      if (!filterBy.age) return influencer;
+      var age = _getAge(influencer.dateOfBirth);
+      return (
+        filterBy.age[0] < age
+        && filterBy.age[1] > age
+      );
     })
     .filter(influencer => { // FILTER BY PRICE
       if (!filterBy.pricePerPost) return influencer;
@@ -107,12 +109,12 @@ function _filterInfluencers(filterBy) {
       })
     })
     .filter(influencer => {  // FILTER BY SOCIAL NETWORK
-      if (!filterBy.socials.type || !filterBy.socials.type.length){
-          influencer.filteredSocialMap = influencer.socials
-          return influencer
+      if (!filterBy.socials.type || !filterBy.socials.type.length) {
+        influencer.filteredSocialMap = influencer.socials
+        return influencer
       }
-      const filteredSocialMap = influencer.socials.filter(social => { 
-        var socialType = filterBy.socials.type.filter(filterSocialType => { 
+      const filteredSocialMap = influencer.socials.filter(social => {
+        var socialType = filterBy.socials.type.filter(filterSocialType => {
           return social.type === filterSocialType;
         });
         return socialType.length;
@@ -136,27 +138,27 @@ function _filterInfluencers(filterBy) {
       });
     })
     .filter(influencer => {
-        if(!filterBy.socials.posts) return influencer;
-       return influencer.filteredSocialMap.some( social => {
-            return +social.posts > +filterBy.socials.posts; // FILTER BY POSTS
-        })
+      if (!filterBy.socials.posts) return influencer;
+      return influencer.filteredSocialMap.some(social => {
+        return +social.posts > +filterBy.socials.posts; // FILTER BY POSTS
+      })
     })
     .filter(influencer => {
-        if(!filterBy.socials.stories) return influencer;
-        return influencer.filteredSocialMap.some( social => {
-            return +social.stories > +filterBy.socials.stories; // FILTER BY STORIES
-        })
+      if (!filterBy.socials.stories) return influencer;
+      return influencer.filteredSocialMap.some(social => {
+        return +social.stories > +filterBy.socials.stories; // FILTER BY STORIES
+      })
     })
     .filter(influencer => {
-        if(!filterBy.socials.followersAvgAge) return influencer;
-        return influencer.filteredSocialMap.some( social => {
-            return(
-            social.followersAvgAge >= filterBy.socials.followersAvgAge[0]
-            && social.followersAvgAge <= filterBy.socials.followersAvgAge[1]
-            ) // FILTER BY FOLLOWERS AGE
-        })
+      if (!filterBy.socials.followersAvgAge) return influencer;
+      return influencer.filteredSocialMap.some(social => {
+        return (
+          social.followersAvgAge >= filterBy.socials.followersAvgAge[0]
+          && social.followersAvgAge <= filterBy.socials.followersAvgAge[1]
+        ) // FILTER BY FOLLOWERS AGE
+      })
     })
-    
+
   return influencersToShow;
 }
 
@@ -164,15 +166,15 @@ function _randomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-function _getAge(testEpoch){
-    var myDate = new Date( testEpoch *1000);
-    var today = new Date();
-    var year = today.getFullYear() - myDate.getFullYear();
-    var month = today.getMonth() - myDate.getMonth();
-    if( month < 0 || month === 0 && today.getDate() < myDate.getDate()){
-        year--
-    }
-    return year
+function _getAge(testEpoch) {
+  var myDate = new Date(testEpoch * 1000);
+  var today = new Date();
+  var year = today.getFullYear() - myDate.getFullYear();
+  var month = today.getMonth() - myDate.getMonth();
+  if (month < 0 || month === 0 && today.getDate() < myDate.getDate()) {
+    year--
+  }
+  return year
 }
 
 
