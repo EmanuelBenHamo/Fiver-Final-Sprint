@@ -24,7 +24,7 @@ export default {
     followersCount() {
       return `${Math.floor(
         (this.social.menFollowers + this.social.womenFollowers) / 1000
-      )}k`;
+      )}K`;
     }
   }
 };
