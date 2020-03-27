@@ -35,7 +35,8 @@ export default {
       prevPhotoIndex: 0,
       currPhotoIndex: 0,
       nextPhotoIndex: 0,
-      playInterval: null
+      playInterval: null,
+      photosDisplayTime: 6000
     };
   },
   created() {
@@ -54,11 +55,9 @@ export default {
       });
     },
     playPhotos() {
-      const photoDisplayTime = 6000;
       this.playInterval = setInterval(() => {
         this.next();
-        // this.prev();
-      }, photoDisplayTime);
+      }, this.photosDisplayTime);
     },
     next() {
       this.$refs["curr-photo"].classList.add("slide-out-left");
@@ -69,7 +68,7 @@ export default {
         this.currPhotoIndex = this.getUpdateIndex(this.currPhotoIndex, 1);
         this.$refs["curr-photo"].classList.remove("slide-out-left");
         this.$refs["next-photo"].classList.remove("slide-in");
-      }, 3000);
+      }, this.photosDisplayTime / 2);
     },
     prev() {
       this.$refs["curr-photo"].classList.add("slide-out-right");
@@ -80,7 +79,7 @@ export default {
         this.currPhotoIndex = this.getUpdateIndex(this.currPhotoIndex, -1);
         this.$refs["curr-photo"].classList.remove("slide-out-right");
         this.$refs["prev-photo"].classList.remove("slide-in");
-      }, 3000);
+      }, this.photosDisplayTime / 2);
     },
     getUpdateIndex(index, diff) {
       index += diff;
