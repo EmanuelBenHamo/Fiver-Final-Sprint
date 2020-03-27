@@ -1,13 +1,12 @@
 <template>
-  <section class=" select-btns tags-select-container flex">
-      <label>Select Tags</label>
-      <div class="tags-choises flex wrap space-between ">
+  <!-- <section class="  flex"> -->
+      <div class=" filter-tags-container tags-choises select-btns">
         <label v-for="(tag, idx) in tagsByName" class="checkbox-container" :key="idx">
             <input type="checkbox" :value="tag" v-model="selectedTags">
             <span class="checkmark">{{tag}}</span>
         </label>
       </div>
-  </section>
+  <!-- </section> -->
 </template>
 
 <script>

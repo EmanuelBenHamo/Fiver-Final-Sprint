@@ -1,6 +1,8 @@
 <template>
-    <div class="followers-silder filter-by-age">
+    <section class="filter-influencer-age">
+
         <label>Influencer's Age Range</label>
+    <div class="followers-silder filter-by-age">
         <el-slider
             v-model="age"
             range
@@ -11,6 +13,7 @@
             :max="50">
         </el-slider>
     </div>
+    </section>
 </template>
 
 <script>
@@ -33,9 +36,15 @@ export default {
         
     },
     watch: {
-        age(){
-            this.$emit('setAge', this.age)
+        age: {
+        deep: true,
+        handler(){
+        this.$emit('setAge', this.age)
         }
     }
+},
+created(){
+    this.$emit('closeAllOthers')
+}
 }
 </script>

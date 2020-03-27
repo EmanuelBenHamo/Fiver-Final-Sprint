@@ -1,16 +1,36 @@
-.filter-container{
-    padding: 20px 30px;
-    label{
-        font-weight: 600;
-    }
-    .filter-type-btn {
-        font-size: 0.8rem;
-        font-weight: 600;
-        text-decoration: underline;
-        
-        &:hover{
-            cursor: pointer;
+.main-filter-container {
 
+    .filter-container{
+        
+        padding: 20px 30px;
+        
+        label{
+            font-weight: 600;
+        }
+        .filter-type-btn {
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-decoration: underline;
+            
+            &:hover{
+                cursor: pointer;
+                
+            }
         }
     }
+
+    .filter-modal {
+        opacity: 0
+    }
+    .filter-modal.active {
+        opacity:1;
+        z-index:1000
+    }
+    
 }
+.fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+  }
+  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 1;
+  }

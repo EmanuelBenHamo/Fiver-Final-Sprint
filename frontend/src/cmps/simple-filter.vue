@@ -8,10 +8,8 @@
 
         <div class="border-line"></div>
 
-    <filter-socials @setSocials="setSocials"/>
-    
-    <button class="filter-btn btn" @click="$emit('setFilterBy',filterBy)">Filter</button>
-    <button @click="$emit('isAdvance')" class="filter-type-btn advance-btn">Advance</button>
+    <filter-socials @setTypes="setTypes"/>
+    <slot></slot>
   </div>
 </template>
 
@@ -22,21 +20,31 @@ import filterSocials from './filter-socials.vue'
 export default {
     data(){
         return{
-            filterBy: {
+            simpleFilter: {
+                name:'',
                 gender: 'All',
+                types: []
             }
         }
     },
     methods: {
         setName(name){
-            this.filterBy.name = name
+            this.simpleFilter.name = name
         },
         setGender(gender){
-            this.filterBy.gender = gender
+            this.simpleFilter.gender = gender
         },
-        setSocials(socials){
-            this.filterBy.socials = socials
+        setTypes(types){
+            this.simpleFilter.types = types
         },
+    },
+    watch: {
+        simpleFilter: {
+            deep: true,
+            handler() {
+                this.$emit('setSimpleFilter', this.simpleFilter)
+            }
+        }
     },
     components: {
         filterName,

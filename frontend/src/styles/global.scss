@@ -20,7 +20,6 @@
 @import "./cmps/brand-list";
 @import "./cmps/brand-preview";
 @import "./cmps/influencers-list";
-@import "./cmps/influencer-filter";
 @import "./cmps/influencer-preview";
 @import "./cmps/influencer-poster";
 @import "./cmps/influencer-poster-data";
@@ -28,13 +27,19 @@
 @import "./cmps/user-msg-modal";
 @import "./cmps/carousel-dots-bar";
 @import "./cmps/carousel-nav";
-@import './cmps/influencer-filter';
-@import './cmps/tags-select';
-@import './cmps/filter-gender';
-@import './cmps/filter-socials';
-@import './cmps/simple-filter';
-@import './cmps/advance-filter';
-@import './cmps/filter-followers-count';
-@import './cmps/filter-followers-percentage';
 @import "./cmps/influencer-socials-list";
 @import "./cmps/influencer-social-preview";
+
+@import './cmps/influencer-filter';
+@import './cmps/simple-filter';
+@import "./cmps/advance-filter-tabs";
+@import './cmps/filter-socials';
+@import './cmps/filter-age';
+@import './cmps/filter-price';
+@import './cmps/filter-tags';
+@import './cmps/filter-gender';
+@import './cmps/filter-media-activity';
+@import './cmps/filter-followers';
+@import './cmps/filter-followers-count';
+@import './cmps/filter-followers-percentage';
+@import './cmps/filter-followers-age';

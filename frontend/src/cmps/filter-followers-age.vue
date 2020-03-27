@@ -1,6 +1,7 @@
 <template>
- <div class="followers-silder select-age-range">
+ <div class="filter-followers-age-container followers-silder select-age-range">
         <label>Average Age</label>
+        <div class="followers-age-slider">
         <el-slider
             v-model="followersAvgAge"
             range
@@ -10,6 +11,7 @@
             :min="15"
             :max="50">
         </el-slider>
+        </div>
     </div>
 </template>
 
