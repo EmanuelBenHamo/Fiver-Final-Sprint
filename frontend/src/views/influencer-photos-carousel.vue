@@ -27,7 +27,7 @@
 export default {
   name: "influencer-photos-carousel",
   props: {
-    influencer: Object
+    photosUrls: Array
   },
   data() {
     return {
@@ -45,12 +45,12 @@ export default {
   },
   methods: {
     loadPhotos() {
-      let images = this.influencer.photos.map(influencerPhoto => {
+      let images = this.photosUrls.map(currPhotoUrl => {
         let image = new Image();
         image.onload = () => {
           this.loadedPhotos.push(image);
         };
-        image.src = influencerPhoto.regular;
+        image.src = currPhotoUrl;
         return image;
       });
     },

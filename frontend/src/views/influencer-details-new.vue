@@ -1,6 +1,6 @@
 <template>
   <section>
-    <influencer-photos-carousel v-if="currInfluencer" :influencer="currInfluencer" />
+    <influencer-photos-carousel v-if="currInfluencer" :photosUrls="getInfluencerPhotosUrls()" />
   </section>
 </template>
 
@@ -19,6 +19,11 @@ export default {
     this.getInfluencerById();
   },
   methods: {
+    getInfluencerPhotosUrls() {
+      return this.currInfluencer.photos.map(currPhoto => {
+        return currPhoto.regular;
+      });
+    },
     async getInfluencerById() {
       const influencer = await this.$store.dispatch({
         type: "getInfluencerById",
