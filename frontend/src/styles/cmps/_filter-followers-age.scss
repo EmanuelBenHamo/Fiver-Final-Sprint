@@ -1,0 +1,13 @@
+.filter-followers-container {
+         
+    & >:first-child {
+        display: block;
+        margin-bottom: .5rem; 
+    }
+    
+    .followers-age-slider {
+        margin: auto;
+        width: 80%;
+        
+    }
+}
