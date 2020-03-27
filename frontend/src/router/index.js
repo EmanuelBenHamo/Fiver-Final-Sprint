@@ -7,7 +7,7 @@ import campaignCreate from '../views/campaign-create.vue';
 import campaignDetails from '../views/campaign-details.vue';
 import backofficePage from '../views/backoffice-page.vue';
 import offerList from '../cmps/offer-list.vue';
-import influencerDetails from '../views/influencer-details.vue';
+import influencerDetailsNew from '../views/influencer-details-new.vue';
 import signupPage from '../views/signup-page.vue';
 import dashBoard from '../cmps/dash-board.vue';
 import messageList from '../cmps/message-list.vue';
@@ -49,7 +49,7 @@ const routes = [{
     {
         path: '/influencer/:id',
         name: 'influencer-details',
-        component: influencerDetails
+        component: influencerDetailsNew
     },
     {
         path: '/backoffice/',
