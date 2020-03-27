@@ -1,9 +1,7 @@
 <template>
-  <section>
-    <button class="btn" @click="credentials.userType='influencer'">I am an influencer</button>
-    <button class="btn" @click="credentials.userType='brand'">I am a brand</button>
-    <span v-if="credentials.userType">You are about to login as {{credentials.userType}}</span>
-    <form v-if="credentials.userType" @submit.prevent="login">
+  <section >
+    <span v-if="credentials.userType">Login as {{credentials.userType}}</span>
+    <form v-if="credentials.userType" @submit.prevent="login" class="login-page-form flex column">
       <label>
         username:
         <input type="text" placeholder="username" v-model="credentials.username" />
@@ -25,7 +23,7 @@ export default {
   data() {
     return {
       credentials: {
-        userType: null,
+        userType: 'brand',
         username: null,
         password: null
       }
@@ -47,6 +45,3 @@ export default {
   }
 };
 </script>
-
-<style>
-</style>
