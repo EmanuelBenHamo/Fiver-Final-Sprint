@@ -1,22 +1,25 @@
 <template>
-  <section class="carousel-container">
-    <div class="photo prev-photo" ref="prev-photo">
-      <section class="ratio-square">
-        <img v-if="loadedPhotos.length > 1" :src="loadedPhotos[this.prevPhotoIndex].src" />
-      </section>
-    </div>
+  <section class="ratio-square">
+    <img
+      class="photo prev-photo"
+      ref="prev-photo"
+      v-if="loadedPhotos.length > 1"
+      :src="loadedPhotos[this.prevPhotoIndex].src"
+    />
 
-    <div class="photo curr-photo" ref="curr-photo">
-      <section class="ratio-square">
-        <img v-if="loadedPhotos.length > 0" :src="loadedPhotos[this.currPhotoIndex].src" />
-      </section>
-    </div>
+    <img
+      class="photo curr-photo"
+      ref="curr-photo"
+      v-if="loadedPhotos.length > 0"
+      :src="loadedPhotos[this.currPhotoIndex].src"
+    />
 
-    <div class="photo next-photo" ref="next-photo">
-      <section class="ratio-square">
-        <img v-if="loadedPhotos.length > 1" :src="loadedPhotos[this.nextPhotoIndex].src" />
-      </section>
-    </div>
+    <img
+      class="photo next-photo"
+      ref="next-photo"
+      v-if="loadedPhotos.length > 1"
+      :src="loadedPhotos[this.nextPhotoIndex].src"
+    />
   </section>
 </template>
 
