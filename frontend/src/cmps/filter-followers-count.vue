@@ -34,9 +34,13 @@ export default {
         }
     },
     watch: {
-        followersCount(){
-            this.$emit('setFollowersCount', this.followersCount)
+        followersCount: {
+            deep: true,
+            handler(){
+                this.$emit('setFollowersCount', this.followersCount)
+            }
         }
+        
     }
 }
 </script>

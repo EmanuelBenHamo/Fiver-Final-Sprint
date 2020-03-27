@@ -27,9 +27,8 @@
     </div>
 
     <!-- TAGS -->
-    <tags-select @setTags="setTags"></tags-select>
+    <filter-tags @setTags="setTags"></tags-select>
 
-    <div class="border-line"></div>
     <label class="filter-followers-label">Followers</label>
     <!-- FOLLOWERS COUNT -->
     <filter-followers-count @setFollowersCount="setFollowersCount"/>
