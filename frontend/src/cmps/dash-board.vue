@@ -6,7 +6,7 @@
     <div class="dash-stats">
       <p>{{this.fullName}}</p>
       <!-- <p>menFollowers:{{this.loggedInUser.menFollowers}}</p>
-      <p>menFollowers{{this.loggedInUser.womenFollowers}}</p> -->
+      <p>menFollowers{{this.loggedInUser.womenFollowers}}</p>-->
     </div>
     <div v-if="loggedInUser" class="dashboard-socials-info">
       <ul class="social-info clean-list" v-for="(social, idx) in loggedInUser.socials" :key="idx">
@@ -58,6 +58,8 @@ export default {
         this.loggedInUser = await this.$store.dispatch("getLoggedInUser");
       }
     }
+  },
+  components: {
   }
 };
 </script>

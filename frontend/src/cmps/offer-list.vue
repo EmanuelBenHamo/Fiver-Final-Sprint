@@ -1,12 +1,14 @@
 <template>
-  <section class="offer-list-container" v-if="offers">
-    <div class="offers-topbar">
-      <span class="offer-list-title">Product</span>
-      <span class="offer-list-title">Dates</span>
-      <span class="offer-list-title">Status</span>
-    </div>
-    <offer-preview v-for="offer in offers" :key="offer._id" :offer="offer" />
-  </section>
+  <transition name="fade">
+    <section class="offer-list-container" v-if="offers">
+      <div class="offers-topbar">
+        <span class="offer-list-title">Product</span>
+        <span class="offer-list-title">Dates</span>
+        <span class="offer-list-title">Status</span>
+      </div>
+      <offer-preview v-for="offer in offers" :key="offer._id" :offer="offer" />
+    </section>
+  </transition>
 </template>
 <script>
 import offerPreview from "./offer-preview.vue";
@@ -23,8 +25,6 @@ export default {
   async created() {
     await this.getLoggetInUser();
     await this.loadOffers(this.loggedInUser._id);
-    console.log(this.loggedInUser);
-    console.log(this.offers);
     if (this.user)
       // await this.loadOffers(this.user._id);
       this.offers = await this.$store.getters.offer;
