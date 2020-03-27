@@ -1,16 +1,17 @@
 <template>
-  <section class="dashboard">
-    <div class="dashboard-basic-info" v-if="this.loggedInUser">
-      <img :src="this.userImg" alt="dash-avatar" class="dash-avatar" />
-      <h2>{{this.fullName}}</h2>
+  <section v-if="loggedInUser" class="dashboard">
+    <div class="dashboard-image-container" v-if="this.loggedInUser">
+      <img :src="this.loggedInUser.photos[0].url" alt="dash-avatar" class="dash-avatar" />
     </div>
-    <div class="dashboard-socials-info">
-      <p>Date Of Birth: {{dateOfBirth | date}}</p>
+    <div class="dash-stats">
+      <p>{{this.fullName}}</p>
+      <!-- <p>menFollowers:{{this.loggedInUser.menFollowers}}</p>
+      <p>menFollowers{{this.loggedInUser.womenFollowers}}</p> -->
+    </div>
+    <div v-if="loggedInUser" class="dashboard-socials-info">
       <ul class="social-info clean-list" v-for="(social, idx) in loggedInUser.socials" :key="idx">
-        <li>
-          <span :class="`fa fa-${social.type}`"></span>
-          {{social.type}}
-        </li>
+        <li><span :class="`fa fa-${social.type}`"></span>men:{{social.menFollowers}}</li>
+        <li><span :class="`fa fa-${social.type}`"></span>women{{social.womenFollowers}}</li>
       </ul>
     </div>
   </section>
@@ -18,15 +19,13 @@
 <script>
 export default {
   name: "dash-board",
-  props:['user'],
   data() {
     return {
       loggedInUser: null
     };
   },
   created() {
-    // console.log(this.user)
-    this.loggedInUser = this.$store.getters.loggedInUser;
+    this.getLoggetInUser();
   },
   computed: {
     fullName() {
@@ -35,17 +34,29 @@ export default {
     dateOfBirth() {
       return this.loggedInUser.dateOfBirth;
     },
-    userImg() {
-      return this.loggedInUser.photos[3].url;
-    },
+    // userImg() {
+    //   return this.loggedInUser.photos[3].url;
+    // },
     socials() {
       return this.loggedInUser.socials;
     },
+    // menFollowers(){},
+    // womenFollowers(){},
+    // menFollowers(){},
+    // dateOfBirth(){},
     email() {
       return this.loggedInUser.email;
     },
     gender() {
       return this.loggedInUser.gender;
+    }
+  },
+  methods: {
+    async getLoggetInUser() {
+      this.loggedInUser = this.$store.getters.loggedInUser;
+      if (!this.loggedInUser) {
+        this.loggedInUser = await this.$store.dispatch("getLoggedInUser");
+      }
     }
   }
 };

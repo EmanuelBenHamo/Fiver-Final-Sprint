@@ -1,13 +1,18 @@
-.dashboard {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    .dashboard-basic-info {
-        grid-column: 1/2
+    .dashboard {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        // grid-template-rows: repeat(2, 1fr);
+        .dashboard-basic-info {
+            grid-column: 1/2
+        }
+        .dashboard-socials-info {
+            grid-row: 1/1;
+            grid-column: 2/2;
+        }
+        .dash-avatar {
+            margin: 0 auto;
+            width: 200px;
+            // height: 100%;
+            // object-fit: cover;
+        }
     }
-    .dashboard-socials-info {
-        grid-column: 2/2
-    }
-    .dash-avatar {
-        width: 200px
-    }
-}

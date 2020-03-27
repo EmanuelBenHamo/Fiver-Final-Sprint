@@ -13,19 +13,32 @@ import offerPreview from "./offer-preview.vue";
 import offerService from "../services/offer.service.js";
 export default {
   name: "offer-list",
+  props: ["user"],
   data() {
     return {
+      loggedInUser: null,
       offers: null
     };
   },
-  created() {
-    this.loadOffers(this.$route.params.id);
-    this.offers = this.$store.getters.offer;
+  async created() {
+    await this.getLoggetInUser();
+    await this.loadOffers(this.loggedInUser._id);
+    console.log(this.loggedInUser);
+    console.log(this.offers);
+    if (this.user)
+      // await this.loadOffers(this.user._id);
+      this.offers = await this.$store.getters.offer;
   },
   methods: {
     async loadOffers(influencerId) {
       const offers = await this.$store.dispatch("loadOffers", { influencerId });
       this.offers = offers;
+    },
+    async getLoggetInUser() {
+      this.loggedInUser = this.$store.getters.loggedInUser;
+      if (!this.loggedInUser) {
+        this.loggedInUser = await this.$store.dispatch("getLoggedInUser");
+      }
     }
   },
   components: {

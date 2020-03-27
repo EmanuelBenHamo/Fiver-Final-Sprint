@@ -22,12 +22,15 @@ export default {
       loggedInUser: null,
       demoUser: {
         credentials: {
-          username: "thearley0",
-          password: "ykR0KU"
+          username: "abrisco7",
+          password: "fgVbJO"
         }
       }
     };
   },
+    // "userType": "influencer",
+    //         "username": "abrisco7",
+    //         "password": "fgVbJO"
   methods: {
     login() {
       this.loggedInUser = this.$store.dispatch({
