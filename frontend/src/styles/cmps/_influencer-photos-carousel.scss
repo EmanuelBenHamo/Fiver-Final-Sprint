@@ -1,14 +1,16 @@
 .carousel-container {
   position: relative;
   overflow: hidden;
-  height: 100%;
   width: 500px;
+  height: 100%;
   border: 3px solid blue;
+  background-color: grey;
 }
 .photo {
   position: absolute;
+  width: 100%;
   border: 5px pink solid;
-  width: 500px;
+  background-color: black;
 }
 .prev-photo {
   border: 5px solid red;
@@ -21,8 +23,12 @@
   border: 5px solid green;
   transform: translateX(100%);
 }
-.slide-out {
+.slide-out-left {
   transform: translateX(-100%);
+  transition: transform 3s;
+}
+.slide-out-right {
+  transform: translateX(100%);
   transition: transform 3s;
 }
 .slide-in {

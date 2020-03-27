@@ -54,23 +54,30 @@ export default {
       const photoDisplayTime = 6000;
       this.playInterval = setInterval(() => {
         this.next();
+        // this.prev();
       }, photoDisplayTime);
     },
     next() {
-      this.$refs["curr-photo"].classList.add("slide-out");
+      this.$refs["curr-photo"].classList.add("slide-out-left");
       this.nextPhotoIndex = this.getUpdateIndex(this.nextPhotoIndex, 1);
       this.$refs["next-photo"].classList.add("slide-in");
       setTimeout(() => {
         this.prevPhotoIndex = this.currPhotoIndex;
         this.currPhotoIndex = this.getUpdateIndex(this.currPhotoIndex, 1);
-        this.$refs["curr-photo"].classList.remove("slide-out");
+        this.$refs["curr-photo"].classList.remove("slide-out-left");
         this.$refs["next-photo"].classList.remove("slide-in");
       }, 3000);
     },
     prev() {
+      this.$refs["curr-photo"].classList.add("slide-out-right");
       this.prevPhotoIndex = this.getUpdateIndex(this.prevPhotoIndex, -1);
-      this.currPhotoIndex = this.getUpdateIndex(this.currPhotoIndex, -1);
-      this.nextPhotoIndex = this.getUpdateIndex(this.nextPhotoIndex, -1);
+      this.$refs["prev-photo"].classList.add("slide-in");
+      setTimeout(() => {
+        this.nextPhotoIndex = this.currPhotoIndex;
+        this.currPhotoIndex = this.getUpdateIndex(this.currPhotoIndex, -1);
+        this.$refs["curr-photo"].classList.remove("slide-out-right");
+        this.$refs["prev-photo"].classList.remove("slide-in");
+      }, 3000);
     },
     getUpdateIndex(index, diff) {
       index += diff;
