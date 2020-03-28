@@ -1,7 +1,10 @@
 <template>
   <section class="influencer-details-socials-container">
-    <influencer-details-socials-hero class="influencer-details-socials-hero" :socials="socials" />
-    <section class="influencer-details-socials-expanded flex align-center justify-center">socials</section>
+    <influencer-details-socials-hero class="influencer-details-socials-hero" :socials="sortedSocials" />
+    <influencerDetailsSocialsExpanded
+      :socials="sortedSocials"
+      class="influencer-details-socials-expanded flex align-center justify-center"
+    />
     <section class="send-offer-container flex justify-center">
       <button class="send-offer-btn">make an offer</button>
     </section>
@@ -10,13 +13,32 @@
 
 <script>
 import influencerDetailsSocialsHero from "./influencer-details-socials-hero";
+import influencerDetailsSocialsExpanded from "./influencer-details-socials-expanded";
 export default {
   name: "influencer-details-socials",
   props: {
     socials: Array
   },
   components: {
-    influencerDetailsSocialsHero
+    influencerDetailsSocialsHero,
+    influencerDetailsSocialsExpanded
+  },
+  computed: {
+    sortedSocials() {
+      let socialsCopy = this.socials.slice(0, this.socials.length);
+      socialsCopy.sort(this.sortDesByFollowersCount);
+      return socialsCopy;
+    }
+  },
+  methods: {
+    sortDesByFollowersCount(firstSocial, secondSocial) {
+      let firstSocialFollowersCount =
+        firstSocial.menFollowers + firstSocial.womenFollowers;
+      let secondSocialFollowersCount =
+        secondSocial.menFollowers + secondSocial.womenFollowers;
+
+      return secondSocialFollowersCount - firstSocialFollowersCount;
+    }
   }
 };
 </script>
