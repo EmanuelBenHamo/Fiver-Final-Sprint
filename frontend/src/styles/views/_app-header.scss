@@ -1,16 +1,14 @@
-.header{
+.header {
     z-index: 10;
     padding: 10px 20px;
     border-bottom: 1px solid lighten($clr1, 45%);
-
-
-    label{
+    // width: 100%;
+    label {
         font-size: 2rem;
         font-family: 'Permanent Marker', cursive;
         margin-right: 50px;
-        color: $clr4;   
-        
-        &:hover{
+        color: $clr4;
+        &:hover {
             cursor: pointer;
         }
     }

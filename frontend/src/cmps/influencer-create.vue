@@ -78,7 +78,7 @@ export default {
         this.user.firstName = "demo";
         this.user.lastName = "demo";
         this.user.imgUrl = "http://dummyimage.com/250x250.jpg/cc0000/ffffff";
-        this.user.socials.push("pinstegram");
+        this.user.socials.push("instagram");
       }
       const savedUser = await this.$store.dispatch({
         type: "addInfluencer",

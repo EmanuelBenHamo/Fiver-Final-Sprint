@@ -3,9 +3,10 @@
     <!-- <h1>Back Office</h1> -->
     <dash-board :user="loggedInUser"></dash-board>
     <div class="backoffice-navbar">
-      <!-- <offer-list :user="this.loggedInUser"></offer-list> -->
-      <router-link :to="'/offer/' + userId" class="btn offers">Offers</router-link>
-      <router-link :to="'/message/'" class="btn message">Messages</router-link>
+      <button class="btn" @click="toggle('offer')">offers</button>
+      <button class="btn" @click="toggle('message')">messeges</button>
+      <offer-list v-if="offerShow" :user="this.loggedInUser"></offer-list>
+      <message-list v-if="messageShow"></message-list>
     </div>
     <router-view></router-view>
   </section>
@@ -14,11 +15,14 @@
 import { eventBus } from "../services/event.bus.service.js";
 import dashBoard from "../cmps/dash-board.vue";
 import offerList from "../cmps/offer-list.vue";
+import messageList from "../cmps/message-list.vue";
 export default {
   name: "backoffice-page",
   data() {
     return {
-      loggedInUser: null
+      loggedInUser: null,
+      offerShow: false,
+      messageShow: false
     };
   },
   async created() {
@@ -30,6 +34,16 @@ export default {
       if (!this.loggedInUser) {
         this.loggedInUser = await this.$store.dispatch("getLoggedInUser");
       }
+    },
+    toggle(el) {
+      if (el === 'offer'){
+        this.offerShow = !this.offerShow;
+        this.messageShow = false;
+      }
+      if (el === 'message'){
+        this.offerShow = false;
+        this.messageShow = !this.messageShow;
+      } 
     }
   },
   computed: {
@@ -40,7 +54,8 @@ export default {
   },
   components: {
     dashBoard,
-    // offerList
+    offerList,
+    messageList
   }
 };
 //add to created(){}

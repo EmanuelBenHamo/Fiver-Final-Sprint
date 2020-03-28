@@ -3,16 +3,16 @@
     <div class="dashboard-image-container" v-if="this.loggedInUser">
       <img :src="this.loggedInUser.photos[0].url" alt="dash-avatar" class="dash-avatar" />
     </div>
-    <div class="dash-stats">
-      <p>{{this.fullName}}</p>
-      <!-- <p>menFollowers:{{this.loggedInUser.menFollowers}}</p>
-      <p>menFollowers{{this.loggedInUser.womenFollowers}}</p>-->
-    </div>
     <div v-if="loggedInUser" class="dashboard-socials-info">
-      <ul class="social-info clean-list" v-for="(social, idx) in loggedInUser.socials" :key="idx">
-        <li><span :class="`fa fa-${social.type}`"></span>men:{{social.menFollowers}}</li>
-        <li><span :class="`fa fa-${social.type}`"></span>women{{social.womenFollowers}}</li>
+      <h1>{{this.fullName}}</h1>
+      <ul class="clean-list" v-for="(social, idx) in loggedInUser.socials" :key="idx">
+        <li><span>{{social.type}} followers: </span>{{social.menFollowers + social.womenFollowers}}</li>
       </ul>
+    <div class="dash-stats">
+      <ul class="clean-list tags" >
+        <li class="influencer-tag" v-for="(tag, idx) in loggedInUser.tags" :key="idx">{{tag}}</li>
+      </ul>
+    </div>
     </div>
   </section>
 </template>

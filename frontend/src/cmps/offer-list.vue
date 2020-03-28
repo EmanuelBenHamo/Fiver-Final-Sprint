@@ -1,14 +1,13 @@
 <template>
-  <transition name="fade">
     <section class="offer-list-container" v-if="offers">
-      <div class="offers-topbar">
-        <span class="offer-list-title">Product</span>
-        <span class="offer-list-title">Dates</span>
-        <span class="offer-list-title">Status</span>
-      </div>
+      <h2 v-if="!offers">No offers so far</h2>
+        <div class="offers-topbar">
+          <span class="offer-list-title">Product</span>
+          <span class="offer-list-title">Dates</span>
+          <span class="offer-list-title">Status</span>
+        </div>
       <offer-preview v-for="offer in offers" :key="offer._id" :offer="offer" />
     </section>
-  </transition>
 </template>
 <script>
 import offerPreview from "./offer-preview.vue";
