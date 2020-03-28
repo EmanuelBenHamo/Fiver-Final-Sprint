@@ -14,26 +14,32 @@
       class="influencer-details-socials"
       :socials="currInfluencer.socials"
     />
+    <div v-if="isMakingOffer" @click="onMakeOffer" class="screen"></div>
+    <campaign-list v-if="isMakingOffer" @close="onMakeOffer" @sendOffer="sendOffer" />
   </section>
 </template>
 
 <script>
 import moment from "moment";
+import { eventBus } from "../services/event.bus.service.js";
 import influencerDetailsHeader from "../cmps/influencer-details-header";
 import influencerPhotosCarousel from "../cmps/influencer-photos-carousel";
 import influencerDetailsFooter from "../cmps/influencer-details-footer";
 import influencerDetailsSocials from "../cmps/influencer-details-socials";
+import campaignList from "../cmps/campaign-list.vue";
 export default {
   name: "influencer-details-new",
   data() {
     return {
       influencerId: null,
-      currInfluencer: null
+      currInfluencer: null,
+      isMakingOffer: false
     };
   },
   created() {
     this.influencerId = this.$route.params.id;
     this.getInfluencerById();
+    eventBus.$on("makeOffer", this.onMakeOffer);
   },
   computed: {
     fullName() {
@@ -53,6 +59,9 @@ export default {
         return currPhoto.regular;
       });
     },
+    onMakeOffer() {
+      this.isMakingOffer = !this.isMakingOffer;
+    },
     async getInfluencerById() {
       const influencer = await this.$store.dispatch({
         type: "getInfluencerById",
@@ -67,7 +76,6 @@ export default {
         influencer: this.currInfluencer
       });
       console.log("Offer Sent", sentOffer);
-      // alert('Your offer has been sent');
       eventBus.$emit("showMsg", { txt: "Your offer has been sent" });
     }
   },
@@ -75,7 +83,8 @@ export default {
     influencerDetailsHeader,
     influencerPhotosCarousel,
     influencerDetailsFooter,
-    influencerDetailsSocials
+    influencerDetailsSocials,
+    campaignList
   }
 };
 </script>

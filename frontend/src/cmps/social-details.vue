@@ -60,7 +60,6 @@ export default {
   },
   methods: {
     setIconType() {
-      debugger;
       if (this.social.type === "instagram" || this.social.type === "snapchat") {
         this.isClassIcon = true;
         this.iconClass = `fa fa-${this.social.type}`;

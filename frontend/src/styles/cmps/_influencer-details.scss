@@ -27,3 +27,12 @@
   grid-column: 2 / 3;
   grid-row: 2 / 3;
 }
+
+.screen {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba($color: #000000, $alpha: 0.5);
+}
