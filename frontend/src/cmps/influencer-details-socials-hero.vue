@@ -9,7 +9,10 @@
       <span>With more than</span>
       <span class="socials-count">{{activeSocialsCount}}</span>
     </div>
-    <button class="show-more-social-details-btn">Watch full details</button>
+    <button
+      class="show-more-social-details-btn"
+      @click="toggleExpandedDetails"
+    >{{fullDetailsBtnText}}</button>
   </section>
 </template>
 
@@ -17,9 +20,17 @@
 export default {
   name: "influencer-details-socials-header",
   props: {
-    socials: Array
+    socials: Array,
+    isExpandedDetailsShown: Boolean
   },
   computed: {
+    fullDetailsBtnText() {
+      if (this.isExpandedDetailsShown) {
+        return "Close full details";
+      } else {
+        return "Watch full details";
+      }
+    },
     activeSocialsNames() {
       let socialsNames = this.socials
         .slice(0, 2)
@@ -33,6 +44,11 @@ export default {
       let leadingSocialFollowersCount =
         this.socials[0].menFollowers + this.socials[0].womenFollowers;
       return ` ${Math.floor(leadingSocialFollowersCount / 1000)}k followers`;
+    }
+  },
+  methods: {
+    toggleExpandedDetails() {
+      this.$emit("toggleExpandedDetails");
     }
   }
 };

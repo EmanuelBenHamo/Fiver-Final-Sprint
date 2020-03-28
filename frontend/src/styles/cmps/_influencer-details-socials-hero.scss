@@ -15,10 +15,12 @@
 }
 
 .show-more-social-details-btn {
+  min-width: 11rem;
+  padding: 0.2rem 0.5rem;
   text-transform: capitalize;
+  text-align: center;
   background-color: #2a2e2d;
   color: white;
-  padding: 0.2rem 0.5rem;
   &:hover {
     cursor: pointer;
   }

@@ -1,9 +1,18 @@
 <template>
   <section class="influencer-details-socials-container">
-    <influencer-details-socials-hero class="influencer-details-socials-hero" :socials="sortedSocials" />
+    <influencer-details-socials-hero
+      class="influencer-details-socials-hero"
+      @toggleExpandedDetails="toggleDetails"
+      :socials="sortedSocials"
+      :isExpandedDetailsShown="isExpandedDetailsShown"
+    />
     <influencerDetailsSocialsExpanded
       :socials="sortedSocials"
-      class="influencer-details-socials-expanded flex align-center justify-center"
+      :class="{
+        'influencer-details-socials-expanded':true,
+        flex:true,
+        'show-details': isExpandedDetailsShown
+       }"
     />
     <section class="send-offer-container flex justify-center">
       <button class="send-offer-btn">make an offer</button>
@@ -18,6 +27,11 @@ export default {
   name: "influencer-details-socials",
   props: {
     socials: Array
+  },
+  data() {
+    return {
+      isExpandedDetailsShown: false
+    };
   },
   components: {
     influencerDetailsSocialsHero,
@@ -38,6 +52,9 @@ export default {
         secondSocial.menFollowers + secondSocial.womenFollowers;
 
       return secondSocialFollowersCount - firstSocialFollowersCount;
+    },
+    toggleDetails() {
+      this.isExpandedDetailsShown = !this.isExpandedDetailsShown;
     }
   }
 };
