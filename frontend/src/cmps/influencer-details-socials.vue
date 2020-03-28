@@ -1,6 +1,6 @@
 <template>
   <section class="influencer-details-socials-container">
-    <section class="influencer-details-socials-hero flex column align-center justify-center">
+    <section class="influencer-details-socials-hero flex column align-center">
       <div class="active-socials-names-text">
         <span>Active in</span>
         <span class="social-names">{{activeSocialsNames}}</span>
@@ -13,9 +13,11 @@
       <button class="show-more-social-details-btn">Watch full details</button>
     </section>
     <section class="influencer-details-socials-details flex align-center justify-center">socials</section>
-    <section class="send-offer-container flex align-center justify-center">
+    
+    <section class="send-offer-container flex justify-center">
       <button class="send-offer-btn">make an offer</button>
     </section>
+    
   </section>
 </template>
 
