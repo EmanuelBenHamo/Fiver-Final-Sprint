@@ -8,7 +8,6 @@ const session = require('express-session')
 const app = express()
 const http = require('http').createServer(app);
 const io = require('socket.io')(http);
-
 //route imports
 const authRoutes = require('./api/auth/auth.routes')
 const influencerRoutes = require('./api/influencer/influencer.routes')
@@ -46,6 +45,7 @@ connectSockets(io)
 
 const logger = require('./services/logger.service')
 const port = process.env.PORT || 3030;
+
 http.listen(port, () => {
     logger.info('Server is running on port: ' + port)
 });

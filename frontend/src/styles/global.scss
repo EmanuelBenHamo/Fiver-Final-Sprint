@@ -6,12 +6,10 @@
 @import "./basics/helpers";
 @import "./basics/layout";
 @import "./basics/buttons";
-
 // VIEWS
 @import "./views/signup-page";
 @import "./views/home-page";
 @import "./views/app-header";
-
 // CMPS
 @import "./cmps/campaign-details";
 @import "./cmps/campaign-create";
@@ -29,7 +27,7 @@
 @import "./cmps/carousel-nav";
 @import "./cmps/influencer-socials-list";
 @import "./cmps/influencer-social-preview";
-
+@import "./cmps/chat-window";
 @import './cmps/influencer-filter';
 @import './cmps/simple-filter';
 @import "./cmps/advance-filter-tabs";

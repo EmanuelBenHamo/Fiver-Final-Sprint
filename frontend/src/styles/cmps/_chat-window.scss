@@ -1,0 +1,45 @@
+/* Button used to open the chat form - fixed at the bottom of the page */
+
+.chat-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    cursor: pointer;
+    width: 40px;
+    padding: 16px 20px;
+    height: 28px;
+    background-color: $clr3;
+    border-radius: 4px;
+}
+
+.chat-btn:after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    right: 10px;
+    bottom: -10px;
+    border-left: 10px solid transparent;
+    border-right: 2px solid transparent;
+    border-top: 10px solid $clr3;
+}
+
+.chat-popup {
+    background-color: #fff;
+    position: fixed;
+    bottom: 0;
+    right: 15px;
+    border: 3px solid $clr4;
+    z-index: 9;
+}
+
+.form-container {
+    max-width: 300px;
+    padding: 10px;
+    background-color: white;
+    .btn:hover,
+    .open-button:hover {
+        opacity: 1;
+    }
+}
