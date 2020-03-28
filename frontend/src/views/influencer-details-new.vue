@@ -1,9 +1,6 @@
 <template>
   <section v-if="currInfluencer" class="influencer-details-container">
-    <header class="influencer-header flex space-between">
-      <div class="influencer-name">{{fullName}}</div>
-      <div class="influencer-age">{{age}}</div>
-    </header>
+    <influencer-details-header class="influencer-header" :fullName="fullName" :age="age" />
     <influencer-photos-carousel
       class="influencer-photos-carousel"
       :photosUrls="getInfluencerPhotosUrls()"
@@ -13,6 +10,7 @@
 
 <script>
 import moment from "moment";
+import influencerDetailsHeader from "./influencer-details-header";
 import influencerPhotosCarousel from "./influencer-photos-carousel";
 export default {
   name: "influencer-details-new",
@@ -63,6 +61,7 @@ export default {
     }
   },
   components: {
+    influencerDetailsHeader,
     influencerPhotosCarousel
   }
 };
