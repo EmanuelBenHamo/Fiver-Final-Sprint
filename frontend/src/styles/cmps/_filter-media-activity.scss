@@ -1,0 +1,24 @@
+.filter-media-activity {
+    position: absolute;
+    left:40%;
+    padding: 40px;
+    transform: translateX(-50%);
+    background-color: #fff;
+    z-index: 10;
+    min-width: 40%;
+    margin-top: 10px;
+    box-shadow: 0 0 10px $clr2;
+
+    & >:first-child {
+        margin-right: 10px;
+    }
+
+    .filter-posts, .filter-stories {
+
+        input.media-activity {
+            width: 100%;
+            margin: 0;
+        }
+    }
+
+}

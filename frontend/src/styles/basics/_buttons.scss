@@ -52,3 +52,11 @@ input:checked + span {
         color: $clr4
     }
 }
+
+.filter-tab-btn {
+    cursor: pointer;
+
+    &:focus {
+        box-shadow: inset 0px -4px $clr4;
+    }
+}
