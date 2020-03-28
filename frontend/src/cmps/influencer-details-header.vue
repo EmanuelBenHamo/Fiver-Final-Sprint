@@ -1,7 +1,7 @@
 <template>
   <header class="influencer-details-header-container flex space-between">
     <div class="influencer-name">{{fullName}}</div>
-    <div class="influencer-age">{{age}}</div>
+    <div class="influencer-age" title="Age">{{age}}</div>
   </header>
 </template>
 

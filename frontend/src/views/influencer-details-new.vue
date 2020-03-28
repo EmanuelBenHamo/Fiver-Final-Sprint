@@ -5,13 +5,19 @@
       class="influencer-photos-carousel"
       :photosUrls="getInfluencerPhotosUrls()"
     />
+    <influencer-details-footer
+      class="influencer-details-footer"
+      :followersInterests="currInfluencer.tags"
+      :pricePerPost="currInfluencer.pricePerPost"
+    />
   </section>
 </template>
 
 <script>
 import moment from "moment";
-import influencerDetailsHeader from "./influencer-details-header";
-import influencerPhotosCarousel from "./influencer-photos-carousel";
+import influencerDetailsHeader from "../cmps/influencer-details-header";
+import influencerPhotosCarousel from "../cmps/influencer-photos-carousel";
+import influencerDetailsFooter from "../cmps/influencer-details-footer";
 export default {
   name: "influencer-details-new",
   data() {
@@ -62,7 +68,8 @@ export default {
   },
   components: {
     influencerDetailsHeader,
-    influencerPhotosCarousel
+    influencerPhotosCarousel,
+    influencerDetailsFooter
   }
 };
 </script>
