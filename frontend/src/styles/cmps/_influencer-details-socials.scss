@@ -9,38 +9,9 @@
   grid-column: 1 / 2;
 }
 
-.influencer-details-socials-details {
+.influencer-details-socials-expanded {
   grid-row: 2 / -1;
   grid-column: 1 / -1;
-}
-
-.influencer-details-socials-hero {
-  font-size: 1.3rem;
-}
-
-.active-socials-names-text {
-}
-
-.social-names {
-  font-family: Quicksand-Bold;
-}
-
-.active-socials-count-text {
-  margin-block-end: 1rem;
-}
-
-.socials-count {
-  font-family: Quicksand-Bold;
-}
-
-.show-more-social-details-btn {
-    text-transform: capitalize;
-    background-color: #2A2E2D;
-    color: white;
-    padding: 0.2rem 0.5rem ;
-  &:hover {
-    cursor: pointer;
-  }
 }
 
 .send-offer-container {
