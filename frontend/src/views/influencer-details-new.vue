@@ -1,10 +1,18 @@
 <template>
-  <section>
-    <influencer-photos-carousel v-if="currInfluencer" :photosUrls="getInfluencerPhotosUrls()" />
+  <section v-if="currInfluencer" class="influencer-details-container">
+    <header class="influencer-header flex space-between">
+      <div class="influencer-name">{{fullName}}</div>
+      <div class="influencer-age">{{age}}</div>
+    </header>
+    <influencer-photos-carousel
+      class="influencer-photos-carousel"
+      :photosUrls="getInfluencerPhotosUrls()"
+    />
   </section>
 </template>
 
 <script>
+import moment from "moment";
 import influencerPhotosCarousel from "./influencer-photos-carousel";
 export default {
   name: "influencer-details-new",
@@ -17,6 +25,18 @@ export default {
   created() {
     this.influencerId = this.$route.params.id;
     this.getInfluencerById();
+  },
+  computed: {
+    fullName() {
+      return `${this.currInfluencer.firstName} ${this.currInfluencer.lastName}`;
+    },
+    age() {
+      return moment().diff(
+        new Date(+this.currInfluencer.dateOfBirth * 1000),
+        "years",
+        false
+      );
+    }
   },
   methods: {
     getInfluencerPhotosUrls() {

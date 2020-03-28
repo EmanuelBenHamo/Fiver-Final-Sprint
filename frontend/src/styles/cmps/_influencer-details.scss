@@ -1,10 +1,23 @@
 .influencer-details-container {
-  .screen {
-    position: fixed;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.7);
-  }
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 1fr 7.5fr 1.5fr;
+  column-gap: 0.5fr;
+  margin-block-start: 0.5rem;
+}
+
+.influencer-header {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  margin-block-end: 0.5rem;
+  font-size: 2rem;
+}
+
+.influencer-name {
+  text-transform: capitalize;
+}
+
+.influencer-photos-carousel {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
 }
