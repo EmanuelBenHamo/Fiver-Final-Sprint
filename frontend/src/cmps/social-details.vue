@@ -1,8 +1,9 @@
 <template>
-  <section class="social-details-container">
-    <section class="social-details-header">
+  <section v-if="social" class="social-details-container">
+    <section class="social-details-header flex space-between align-center">
       <div class="social-name">{{social.type}}</div>
-      <div class="social-icon"></div>
+      <div v-if="isClassIcon" :class="[socialIcon, iconClass]" />
+      <img v-if="isImgIcon" class="social-icon-img" :src="iconImgSrc" />
     </section>
 
     <section class="social-details-body">
@@ -44,6 +45,30 @@
 export default {
   props: {
     social: Object
+  },
+  data() {
+    return {
+      socialIcon: "social-icon",
+      isClassIcon: false,
+      iconClass: null,
+      isImgIcon: false,
+      iconImgSrc: null
+    };
+  },
+  created() {
+    this.setIconType();
+  },
+  methods: {
+    setIconType() {
+      debugger;
+      if (this.social.type === "instagram" || this.social.type === "snapchat") {
+        this.isClassIcon = true;
+        this.iconClass = `fa fa-${this.social.type}`;
+      } else if (this.social.type === "tiktok") {
+        this.iconImgSrc = require("../assets/icons/tiktok.svg");
+        this.isImgIcon = true;
+      }
+    }
   }
 };
 </script>
