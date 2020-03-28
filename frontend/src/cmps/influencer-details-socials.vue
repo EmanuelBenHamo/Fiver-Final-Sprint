@@ -1,15 +1,10 @@
 <template>
   <section class="influencer-details-socials-container">
-      <section class="influencer-details-socials-hero">
-
-      </section>
-      <section class="influencer-details-socials-details">
-
-      </section>
-      <button class="send-offer-btn">
-
-      </button>
-
+    <section class="influencer-details-socials-hero flex align-center justify-center">hero</section>
+    <section class="influencer-details-socials-details flex align-center justify-center">socilas</section>
+    <section class="send-offer-container flex align-center justify-center">
+      <button class="send-offer-btn">make an offer</button>
+    </section>
   </section>
 </template>
 
