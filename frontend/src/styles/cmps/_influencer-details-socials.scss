@@ -1,0 +1,20 @@
+.influencer-details-socials-container {
+  display: grid;
+  grid-template-rows: 1fr 2fr;
+  grid-template-columns: 3fr 1fr;
+}
+
+.influencer-details-socials-hero {
+  grid-row: 1 / 2;
+  grid-column: 1 / 2;
+}
+
+.influencer-details-socials-details {
+  grid-row: 2 / -1;
+  grid-column: 1 / -1;
+}
+
+.send-offer-btn {
+  grid-row: 1 / 2;
+  grid-column: 2 / -1;
+}

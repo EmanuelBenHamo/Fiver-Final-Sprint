@@ -10,6 +10,10 @@
       :followersInterests="currInfluencer.tags"
       :pricePerPost="currInfluencer.pricePerPost"
     />
+    <influencer-details-socials
+      class="influencer-details-socials"
+      :socials="currInfluencer.socials"
+    />
   </section>
 </template>
 
@@ -18,6 +22,7 @@ import moment from "moment";
 import influencerDetailsHeader from "../cmps/influencer-details-header";
 import influencerPhotosCarousel from "../cmps/influencer-photos-carousel";
 import influencerDetailsFooter from "../cmps/influencer-details-footer";
+import influencerDetailsSocials from "../cmps/influencer-details-socials";
 export default {
   name: "influencer-details-new",
   data() {
@@ -69,7 +74,8 @@ export default {
   components: {
     influencerDetailsHeader,
     influencerPhotosCarousel,
-    influencerDetailsFooter
+    influencerDetailsFooter,
+    influencerDetailsSocials
   }
 };
 </script>
