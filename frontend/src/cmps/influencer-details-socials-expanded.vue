@@ -1,5 +1,5 @@
 <template>
-  <section v-if="socials" class="influencer-details-socials-expanded-container flex wrap ">
+  <section v-if="socials" class="influencer-details-socials-expanded-container flex  wrap ">
     <social-details class="social-details" v-for="(social,index) in socials" :key="index" :social="social"/>
   </section>
 </template>
