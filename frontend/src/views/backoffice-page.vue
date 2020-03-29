@@ -36,14 +36,14 @@ export default {
       }
     },
     toggle(el) {
-      if (el === 'offer'){
+      if (el === "offer") {
         this.offerShow = !this.offerShow;
         this.messageShow = false;
       }
-      if (el === 'message'){
+      if (el === "message") {
         this.offerShow = false;
         this.messageShow = !this.messageShow;
-      } 
+      }
     }
   },
   computed: {

@@ -12,6 +12,9 @@ export default {
         loggedInUser(state) {
             return state.loggedInUser;
         },
+        demoInfluencer(state) {
+            return state.demoInfluencer
+        }
     },
     mutations: {
         setLoggedInUser(state, payload) {
@@ -24,9 +27,7 @@ export default {
             state.influencerList = payload.influencerList;
         },
         demoLogin(state, payload) {
-            console.log(payload)
-            state.demoInfluencer = payload.influencer;
-            console.log(state.demoInfluencer)
+            state.demoInfluencer = payload.credentials;
         }
     },
     actions: {
@@ -42,10 +43,12 @@ export default {
             });
             return loggedInUser;
         },
-        demoLogin(context, payload) {
-            console.log(payload)
+        async demoLogin(context, payload) {
+            const credentials = payload.credentials;
+            console.log(credentials)
             context.commit({
                 type: 'demoLogin',
+                credentials
             })
         },
         async logout(context) {
