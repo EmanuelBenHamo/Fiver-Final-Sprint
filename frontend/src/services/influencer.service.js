@@ -16,11 +16,11 @@ function _getInfluencersFromStorage() {
     return influencers;
 }
 async function query(filterBy) {
-    // if (!filterBy) return await gInfluencers;
-    // const influencersToShow = _filterInfluencers(filterBy);
-    // return await influencersToShow;
+    if (!filterBy) return await gInfluencers;
+    const influencersToShow = _filterInfluencers(filterBy);
+    return await influencersToShow;
     // const params = new URLSearchParams(creterea);
-    return HttpService.get(`influencer`)
+    // return HttpService.get(`influencer`)
 }
 
 async function getById(id) {

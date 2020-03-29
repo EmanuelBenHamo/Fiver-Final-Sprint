@@ -7,9 +7,9 @@
         <router-link class="nav-btn" to="/login">Login</router-link>
         <router-link class="nav-btn" to="/signup">Signup</router-link>
       </div>
-      <div>
-        <router-link class="demo-login-btn" to="" @click.native="login">influencer login</router-link>
-      </div> 
+      <div class="demo-login-btn">
+        <router-link to @click.native="login">influencer login</router-link>
+      </div>
     </nav>
   </section>
 </template>
@@ -22,15 +22,15 @@ export default {
       loggedInUser: null,
       demoUser: {
         credentials: {
-          username: "abrisco7",
-          password: "fgVbJO"
+          username: "vsmorthiti",
+          password: "KOMFvSj0iwWq"
         }
       }
     };
   },
-    // "userType": "influencer",
-    //         "username": "abrisco7",
-    //         "password": "fgVbJO"
+  // "userType": "influencer",
+  //         "username": "abrisco7",
+  //         "password": "fgVbJO"
   methods: {
     login() {
       this.loggedInUser = this.$store.dispatch({

@@ -4,6 +4,8 @@ import campaignService from '../../services/campaign.service.js';
 export default {
     state: {
         loggedInUser: null,
+        demoInfluencer: null,
+        demoBrand: null,
         influencerList: null
     },
     getters: {

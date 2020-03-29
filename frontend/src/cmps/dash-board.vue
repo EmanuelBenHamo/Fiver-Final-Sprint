@@ -1,18 +1,21 @@
 <template>
   <section v-if="loggedInUser" class="dashboard">
     <div class="dashboard-image-container" v-if="this.loggedInUser">
-      <img :src="this.loggedInUser.photos[0].url" alt="dash-avatar" class="dash-avatar" />
+      <img :src="this.loggedInUser.profilePhoto.regular" alt="dash-avatar" class="dash-avatar" />
     </div>
     <div v-if="loggedInUser" class="dashboard-socials-info">
       <h1>{{this.fullName}}</h1>
       <ul class="clean-list" v-for="(social, idx) in loggedInUser.socials" :key="idx">
-        <li><span>{{social.type}} followers: </span>{{social.menFollowers + social.womenFollowers}}</li>
+        <li>
+          <span>{{social.type}} followers:</span>
+          {{social.menFollowers + social.womenFollowers}}
+        </li>
       </ul>
-    <div class="dash-stats">
-      <ul class="clean-list tags" >
-        <li class="influencer-tag" v-for="(tag, idx) in loggedInUser.tags" :key="idx">{{tag}}</li>
-      </ul>
-    </div>
+      <div class="dash-stats">
+        <ul class="clean-list tags">
+          <li class="influencer-tag" v-for="(tag, idx) in loggedInUser.tags" :key="idx">{{tag}}</li>
+        </ul>
+      </div>
     </div>
   </section>
 </template>
@@ -59,8 +62,7 @@ export default {
       }
     }
   },
-  components: {
-  }
+  components: {}
 };
 </script>
 
