@@ -5,15 +5,21 @@
       class="influencer-photos-carousel"
       :photosUrls="getInfluencerPhotosUrls()"
     />
-    <influencer-details-footer
-      class="influencer-details-footer"
-      :followersInterests="currInfluencer.tags"
-      :pricePerPost="currInfluencer.pricePerPost"
-    />
     <influencer-details-socials
       class="influencer-details-socials"
       :socials="currInfluencer.socials"
     />
+    <section class="influencer-details-right-side-bar">
+      <influencer-details-footer
+        class="influencer-details-footer"
+        :followersInterests="currInfluencer.tags"
+        :pricePerPost="currInfluencer.pricePerPost"
+      />
+      <section class="send-offer-container flex justify-center">
+        <button class="send-offer-btn" @click="onMakeOffer">make an offer</button>
+      </section>
+    </section>
+
     <div v-if="isMakingOffer" @click="onMakeOffer" class="screen"></div>
     <campaign-list v-if="isMakingOffer" @close="onMakeOffer" @sendOffer="sendOffer" />
   </section>
@@ -21,7 +27,6 @@
 
 <script>
 import moment from "moment";
-import { eventBus } from "../services/event.bus.service.js";
 import influencerDetailsHeader from "../cmps/influencer-details-header";
 import influencerPhotosCarousel from "../cmps/influencer-photos-carousel";
 import influencerDetailsFooter from "../cmps/influencer-details-footer";
@@ -39,7 +44,6 @@ export default {
   created() {
     this.influencerId = this.$route.params.id;
     this.getInfluencerById();
-    eventBus.$on("makeOffer", this.onMakeOffer);
   },
   computed: {
     fullName() {

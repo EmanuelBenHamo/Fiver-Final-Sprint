@@ -1,3 +1,5 @@
-.social-details {
-  margin-block-end: 1rem;
+.influencer-details-socials-expanded-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+  gap: 1rem;
 }

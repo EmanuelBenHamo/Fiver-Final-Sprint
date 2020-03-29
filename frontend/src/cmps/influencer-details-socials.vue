@@ -9,16 +9,12 @@
       :socials="sortedSocials"
       class="influencer-details-socials-expanded flex"
     />
-    <section class="send-offer-container flex justify-center">
-      <button class="send-offer-btn" @click="onMakeOffer">make an offer</button>
-    </section>
   </section>
 </template>
 
 <script>
 import influencerDetailsSocialsHero from "./influencer-details-socials-hero";
 import influencerDetailsSocialsExpanded from "./influencer-details-socials-expanded";
-import { eventBus } from "../services/event.bus.service.js";
 export default {
   name: "influencer-details-socials",
   props: {
@@ -43,9 +39,6 @@ export default {
         secondSocial.menFollowers + secondSocial.womenFollowers;
 
       return secondSocialFollowersCount - firstSocialFollowersCount;
-    },
-    onMakeOffer() {
-      eventBus.$emit("makeOffer");
     }
   }
 };

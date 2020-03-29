@@ -1,10 +1,10 @@
 <template>
-  <section v-if="socials" class="influencer-details-socials-expanded-container space-between align-end flex wrap">
+  <section v-if="socials" class="influencer-details-socials-expanded-container">
     <social-details
       class="social-details"
       v-for="(social,index) in socials"
       :key="index"
-      :social="social"
+      :social="social" 
     />
   </section>
 </template>

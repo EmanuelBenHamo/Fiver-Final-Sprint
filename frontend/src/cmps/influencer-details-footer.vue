@@ -40,7 +40,7 @@ export default {
       return this.followersInterests
         .slice(0, 4) // will return new array
         .sort() // will sort the array and return sorted array (can't sort first, because can't mutate props)
-        .join(" | ");
+        .join(", ");
     },
     price() {
       return new Intl.NumberFormat("en-US", {
