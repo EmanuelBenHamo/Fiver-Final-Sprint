@@ -114,8 +114,6 @@ function _filterInfluencers(filterBy) {
     .filter(influencer => {  // FILTER BY SOCIAL NETWORK
       if (!filterBy.socials || !filterBy.socials.types || !filterBy.socials.types.length){
         influencer.filteredSocialMap = influencer.socials
-        console.log(':((((');
-        
         return influencer
       }
       const filteredSocialMap = influencer.socials.filter(social => { 
