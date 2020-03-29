@@ -1,21 +1,16 @@
 .main-layout {
-  display: grid;
-  grid-template-columns:
-    minmax(1rem, auto)
-    minmax(auto, 1200px)
-    minmax(1rem, auto);
-  grid-template-rows: minmax(min-content, max-content) auto 50px;
-  min-height: 100vh;
-
-    > * {
+    display: grid;
+    grid-template-columns: minmax(1rem, auto) minmax(auto, 1200px) minmax(1rem, auto);
+    grid-template-rows: minmax(min-content, max-content) auto 50px;
+    min-height: 100vh;
+    >* {
         grid-column: 2;
     }
-    .header{
+    .header {
         grid-column: 1/-1;
         grid-row: 1 /2;
-
     }
-    .home-page-hero{
+    .home-page-hero {
         grid-row: 1 /-1;
     }
 }

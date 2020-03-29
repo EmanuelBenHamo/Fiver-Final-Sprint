@@ -1,5 +1,5 @@
 <template>
-  <section v-if="influencer" class="influencer-preview">
+  <section v-if="influencer" @click="demoInfluencer" class="influencer-preview">
     <router-link :to="'/influencer/' + influencer._id">
       <influencer-poster :influencer="influencer" />
     </router-link>
@@ -14,6 +14,20 @@ export default {
   },
   components: {
     influencerPoster
+  },
+  methods: {
+    async demoInfluencer() {
+      console.log("log");
+      try {
+        await this.$store.dispatch({
+          type: "demoLogin",
+          credentials: this.influencer.credentials
+        });
+      } catch (error) {
+        console.log("wrong login detials");
+        console.log("ERROR = ", error);
+      }
+    }
   }
 };
 </script>

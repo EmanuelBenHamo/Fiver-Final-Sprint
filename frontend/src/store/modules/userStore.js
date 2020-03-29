@@ -4,16 +4,14 @@ import campaignService from '../../services/campaign.service.js';
 export default {
     state: {
         loggedInUser: null,
-        userType: null,
+        demoInfluencer: null,
+        demoBrand: null,
         influencerList: null
     },
     getters: {
         loggedInUser(state) {
             return state.loggedInUser;
         },
-        userType(state) {
-            return state.userType;
-        }
     },
     mutations: {
         setLoggedInUser(state, payload) {
@@ -24,6 +22,11 @@ export default {
         },
         setUserItems(state, payload) {
             state.influencerList = payload.influencerList;
+        },
+        demoLogin(state, payload) {
+            console.log(payload)
+            state.demoInfluencer = payload.influencer;
+            console.log(state.demoInfluencer)
         }
     },
     actions: {
@@ -38,6 +41,12 @@ export default {
                 loggedInUser
             });
             return loggedInUser;
+        },
+        demoLogin(context, payload) {
+            console.log(payload)
+            context.commit({
+                type: 'demoLogin',
+            })
         },
         async logout(context) {
             await userService.logout();
@@ -74,7 +83,7 @@ export default {
             }
         },
         async getLoggedInUser(context) {
-            if(!context.state.loggedInUser){
+            if (!context.state.loggedInUser) {
                 const loggedInUser = await userService.getLoggedInUser()
                 context.state.loggedInUser = loggedInUser;
             }

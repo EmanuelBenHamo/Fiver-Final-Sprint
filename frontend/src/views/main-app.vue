@@ -1,6 +1,5 @@
 <template>
   <section class='main-app'>
-    <!-- <user-msg></user-msg> -->
     <influencer-list
       v-if='influencerList'
       :influencers='influencerList'
@@ -12,7 +11,6 @@
 import influencerService from '../services/influencer.service.js';
 import campaignService from '../services/campaign.service.js';
 import influencerList from '../cmps/influencer-list.vue';
-// import userMsg from '../cmps/user-msg-modal.vue'
 export default {
   name: 'main-app',
   data() {
@@ -23,9 +21,9 @@ export default {
   },
   async created() {
     await this.getLoggetInUser();
-    this.loadInfluencers();
-    this.loadBrands();
-    this.loadCampaigns();
+    await this.loadInfluencers();
+    await this.loadBrands();
+    await this.loadCampaigns();
   },
   methods: {
     async loadBrands() {

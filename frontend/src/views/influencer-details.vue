@@ -32,6 +32,7 @@ import influencerPhotosCarousel from "../cmps/influencer-photos-carousel";
 import influencerDetailsFooter from "../cmps/influencer-details-footer";
 import influencerDetailsSocials from "../cmps/influencer-details-socials";
 import campaignList from "../cmps/campaign-list.vue";
+import { eventBus } from "../services/event.bus.service.js";
 export default {
   name: "influencer-details",
   data() {
