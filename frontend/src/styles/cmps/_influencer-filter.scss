@@ -20,7 +20,9 @@
     }
 
     .filter-modal {
-        opacity: 0
+        opacity: 0;
+        z-index:-1000
+
     }
     .filter-modal.active {
         opacity:1;
