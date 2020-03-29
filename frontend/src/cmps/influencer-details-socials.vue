@@ -3,7 +3,6 @@
     <influencer-details-socials-hero
       class="influencer-details-socials-hero"
       :socials="sortedSocials"
-      :isExpandedDetailsShown="isExpandedDetailsShown"
     />
     <influencerDetailsSocialsExpanded
       :socials="sortedSocials"
