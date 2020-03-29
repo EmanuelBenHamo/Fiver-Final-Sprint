@@ -1,27 +1,16 @@
 <template>
-  <section>
-    <form
-      class="login-form-container flex column"
-      v-if="credentials.userType"
-      @submit.prevent="login"
-    >
-      <div class="login-type-btns">
-        <button class="btn" @click="credentials.userType='influencer'">I am an influencer</button>
-        <button class="btn" @click="credentials.userType='brand'">I am a brand</button>
-      </div>
-      <span
-        class="login-type-txt"
-        v-if="credentials.userType"
-      >You are about to login as {{credentials.userType}}</span>
-      <div class="login-input">
-        <input type="password" placeholder="password" />
-      </div>
-      <div class="login-input">
-        <input type="text" placeholder="username" />
-      </div>
-      <div class="login-btn">
-        <button class="btn login-btn" type="submit">Sign In</button>
-      </div>
+  <section >
+    <span v-if="credentials.userType">Login as {{credentials.userType}}</span>
+    <form v-if="credentials.userType" @submit.prevent="login" class="login-page-form flex column">
+      <label>
+        username:
+        <input type="text" placeholder="username" v-model="credentials.username" />
+      </label>
+      <label>
+        password:
+        <input type="password" placeholder="password" v-model="credentials.password" />
+      </label>
+      <button class="btn" type="submit">Sign In</button>
     </form>
   </section>
 </template>
@@ -34,7 +23,7 @@ export default {
   data() {
     return {
       credentials: {
-        userType: null,
+        userType: 'brand',
         username: null,
         password: null
       }
@@ -56,6 +45,3 @@ export default {
   }
 };
 </script>
-
-<style>
-</style>
