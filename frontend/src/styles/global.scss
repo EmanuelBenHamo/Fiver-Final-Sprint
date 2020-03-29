@@ -17,29 +17,41 @@
 @import "./cmps/campaign-create";
 @import "./cmps/campaign-list";
 @import "./cmps/campaign-preview";
+
 @import "./cmps/brand-list";
 @import "./cmps/brand-preview";
+
 @import "./cmps/influencers-list";
 @import "./cmps/influencer-preview";
 @import "./cmps/influencer-poster";
 @import "./cmps/influencer-poster-data";
 @import "./cmps/influencer-details";
+@import "./cmps/influencer-filter";
+
 @import "./cmps/user-msg-modal";
-@import "./cmps/carousel-dots-bar";
-@import "./cmps/carousel-nav";
+
+@import "./cmps/filter-gender";
+@import "./cmps/filter-socials";
+@import "./cmps/filter-age";
+@import "./cmps/filter-price";
+@import "./cmps/filter-tags";
+@import "./cmps/filter-media-activity";
+@import "./cmps/filter-followers";
+@import "./cmps/filter-followers-age";
+@import "./cmps/simple-filter";
+@import "./cmps/advance-filter";
+@import "./cmps/filter-followers-count";
+@import "./cmps/filter-followers-percentage";
+@import "./cmps/advance-filter-tabs";
+
 @import "./cmps/influencer-socials-list";
 @import "./cmps/influencer-social-preview";
-
-@import './cmps/influencer-filter';
-@import './cmps/simple-filter';
-@import "./cmps/advance-filter-tabs";
-@import './cmps/filter-socials';
-@import './cmps/filter-age';
-@import './cmps/filter-price';
-@import './cmps/filter-tags';
-@import './cmps/filter-gender';
-@import './cmps/filter-media-activity';
-@import './cmps/filter-followers';
-@import './cmps/filter-followers-count';
-@import './cmps/filter-followers-percentage';
-@import './cmps/filter-followers-age';
+@import "./cmps/influencer-photos-carousel";
+@import "./cmps/influencer-details-header";
+@import "./cmps/influencer-details-footer";
+@import "./cmps/influencer-details-socials";
+@import "./cmps/influencer-details-socials-hero";
+@import "./cmps/influencer-details-socials-expanded";
+@import "./cmps/social-details";
+@import "./cmps/influencer-socials-list";
+@import "./cmps/influencer-social-preview";

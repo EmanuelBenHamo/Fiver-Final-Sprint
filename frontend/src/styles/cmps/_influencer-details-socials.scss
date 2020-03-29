@@ -1,0 +1,14 @@
+.influencer-details-socials-container {
+  display: grid;
+  grid-template-rows: 1fr 5fr;
+}
+
+.influencer-details-socials-hero {
+  grid-row: 1 / 2;
+}
+
+.influencer-details-socials-expanded {
+  grid-row: 2 / -1;
+  padding-inline-start: 1rem;
+  height: 100%;
+}

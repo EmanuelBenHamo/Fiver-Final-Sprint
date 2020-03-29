@@ -3,14 +3,12 @@ import App from "./App.vue";
 import "./registerServiceWorker";
 import router from "./router";
 import store from "./store";
-import './filters/filters.js'
+import './filters/filters.js';
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 Vue.use(ElementUI);
 
-import './styles/global.scss'
-// const brandService = require('./services/brand.service.js');
-// window.query = brandService.query;
+import './styles/global.scss';
 
 Vue.config.productionTip = false;
 
