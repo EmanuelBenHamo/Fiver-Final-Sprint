@@ -1,0 +1,15 @@
+.offer-list-container {
+    margin: 0 auto;
+    text-align: -webkit-center;
+}
+
+.offer-list-title {
+    margin: 0 auto;
+}
+
+.offers-topbar {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 10px;
+    margin-bottom: 5px;
+}

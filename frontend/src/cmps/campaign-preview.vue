@@ -10,7 +10,6 @@
           </button>
         </td>
     </tr>
-  
 </template>
 <script>
   export default {
@@ -19,16 +18,5 @@
       type: Object
     }
   },
-  data(){
-    return {
-     
-    }
-  },
-  created(){
-   
-  },
-  methods: {
-    
-  }
 };
 </script>

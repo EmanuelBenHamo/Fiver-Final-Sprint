@@ -1,23 +1,32 @@
 import offerService from '../../services/offer.service.js';
 
 export default {
-    state:{
+    state: {
         offers: null
     },
-    getters:{
-        
+    getters: {
+        offer(state) {
+            return state.offers;
+        }
     },
-    mutations:{
-        setOffers(state, {offers}){
+    mutations: {
+        setOffers(state, { offers }) {
             state.offers = offers
+        },
+        updateOffer(state, { offerStatus }) {
+
         }
     },
     actions: {
-        async sendOffer(context ,payload){
+        async updateOffer(context, payload) {
+            console.log(payload)
+            return await offerService.update(payload)
+        },
+        async sendOffer(context, payload) {
             return await offerService.add(payload)
         },
-        async loadOffers(context){
-            const offers = await offerService.query();
+        async loadOffers(context, { influencerId }) {
+            const offers = await offerService.query({ influencerId });
             context.commit({
                 type: 'setOffers',
                 offers

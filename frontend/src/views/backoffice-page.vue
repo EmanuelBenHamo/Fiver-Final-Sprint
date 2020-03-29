@@ -1,36 +1,72 @@
 <template>
   <section class="backoffice-page-container">
-      <h1>Welcome to the Back Office</h1>
-      <div class="backoffice-navbar">
-          <router-link to="dashboard" class="dashboard">Dashboard</router-link> |
-          <router-link to="offer" class="offers">Offers</router-link> |
-          <router-link to="dashCampaign" class="campaign">Campaigns</router-link> |
-          <router-link to="message" class="message">Messages</router-link>
-      </div>
-      <router-view></router-view>
+    <!-- <h1>Back Office</h1> -->
+    <dash-board :user="loggedInUser"></dash-board>
+    <div class="backoffice-navbar">
+      <button class="btn" @click="toggle('offer')">offers</button>
+      <button class="btn" @click="toggle('message')">messeges</button>
+      <offer-list v-if="offerShow" :user="this.loggedInUser"></offer-list>
+      <message-list v-if="messageShow"></message-list>
+    </div>
+    <router-view></router-view>
   </section>
 </template>
-
 <script>
-
+import { eventBus } from "../services/event.bus.service.js";
+import dashBoard from "../cmps/dash-board.vue";
+import offerList from "../cmps/offer-list.vue";
+import messageList from "../cmps/message-list.vue";
 export default {
-    name: 'backoffice-page',
-    data(){
-        return{
-            userType:null
-        }
-    },
-          created() {
-    // this.loggedInUser = this.$store.getters.loggedInUser;
-    this.userType = this.$store.getters.userType;
-    console.log(this.userType)
-    // this.loadInfluencers();
-    // this.loadBrands();
-    // this.loadCampaigns();
+  name: "backoffice-page",
+  data() {
+    return {
+      loggedInUser: null,
+      offerShow: false,
+      messageShow: false
+    };
   },
-}
+  async created() {
+    await this.getLoggetInUser();
+  },
+  methods: {
+    async getLoggetInUser() {
+      this.loggedInUser = this.$store.getters.loggedInUser;
+      if (!this.loggedInUser) {
+        this.loggedInUser = await this.$store.dispatch("getLoggedInUser");
+      }
+    },
+    toggle(el) {
+      if (el === 'offer'){
+        this.offerShow = !this.offerShow;
+        this.messageShow = false;
+      }
+      if (el === 'message'){
+        this.offerShow = false;
+        this.messageShow = !this.messageShow;
+      } 
+    }
+  },
+  computed: {
+    userId() {
+      if (this.loggedInUser) return this.loggedInUser._id;
+      else return " ";
+    }
+  },
+  components: {
+    dashBoard,
+    offerList,
+    messageList
+  }
+};
+//add to created(){}
+//change offer status by clicking the
+//offer toggle button.
+//event bus catches the offerStatusChange
+//even and changes the relavent offer to its new status
+// eventBus.$on("offerStatusChange", offerData => {
+//   this.$store.dispatch({ type: "updateOffer", offerData });
+// });
+// this.$router.push("/dashboard/" + this.loggedInUser._id);
 </script>
 
-<style>
 
-</style>
