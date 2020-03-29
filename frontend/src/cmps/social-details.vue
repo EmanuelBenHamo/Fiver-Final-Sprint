@@ -60,7 +60,11 @@ export default {
   },
   methods: {
     setIconType() {
-      if (this.social.type === "instagram" || this.social.type === "snapchat") {
+      if (
+        this.social.type === "instagram" ||
+        this.social.type === "snapchat" ||
+        this.social.type === "facebook"
+      ) {
         this.isClassIcon = true;
         this.iconClass = `fa fa-${this.social.type}`;
       } else if (this.social.type === "tiktok") {
