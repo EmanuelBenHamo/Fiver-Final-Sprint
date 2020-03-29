@@ -1,0 +1,45 @@
+.followers-interests-container {
+  border-block-end: 1px solid black;
+  padding-block-end: 1rem;
+  margin-block-end: 1rem;
+}
+
+.followers-interests-title-container {
+  margin-block-end: 0.5rem;
+}
+
+.followers-interests-icon {
+  height: 2rem;
+  width: 2rem;
+  margin-inline-end: 1rem;
+}
+
+.followers-interests-title {
+  font-size: 1.2rem;
+  font-family: "Quicksand-Bold";
+}
+
+.followers-interests {
+  font-size: 1.2rem;
+  text-transform: capitalize;
+  text-align: center;
+}
+
+.price-per-post-title-container {
+  margin-block-end: 0.5rem;
+}
+
+.price-icon {
+  height: 2rem;
+  width: 2rem;
+  margin-inline-end: 1rem;
+}
+
+.price-per-post-title {
+  font-family: "Quicksand-Bold";
+  font-size: 1.2rem;
+}
+
+.price {
+  font-size: 1.2rem;
+}
