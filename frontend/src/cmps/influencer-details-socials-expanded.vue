@@ -1,6 +1,11 @@
 <template>
-  <section v-if="socials" class="influencer-details-socials-expanded-container flex  wrap ">
-    <social-details class="social-details" v-for="(social,index) in socials" :key="index" :social="social"/>
+  <section v-if="socials" class="influencer-details-socials-expanded-container space-between align-end flex wrap">
+    <social-details
+      class="social-details"
+      v-for="(social,index) in socials"
+      :key="index"
+      :social="social"
+    />
   </section>
 </template>
 

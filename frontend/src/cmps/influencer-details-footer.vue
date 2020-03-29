@@ -1,22 +1,28 @@
 <template>
   <section class="influencer-details-footer-container">
-    <section class="followers-interests-container flex align-center space-between">
-      <img
-        class="followers-interests-icon"
-        src="../assets/icons/interests.svg"
-        alt="Followers interests"
-        title="Followers interests"
-      />
+    <section class="followers-interests-container flex column">
+      <div class="followers-interests-title-container flex align-center justify-center">
+        <img
+          class="followers-interests-icon"
+          src="../assets/icons/interests.svg"
+          alt="Followers interests"
+          title="Followers interests"
+        />
+        <div class="followers-interests-title">Followers interests</div>
+      </div>
       <div class="followers-interests">{{interests}}</div>
     </section>
 
-    <section class="price-per-post-container flex align-center space-between">
-      <img
-        class="price-icon"
-        src="../assets/icons/price.svg"
-        alt="Price per post"
-        title="Price per post"
-      />
+    <section class="price-per-post-container flex column align-center space-between">
+      <div class="price-per-post-title-container flex align-center justify-center">
+        <img
+          class="price-icon"
+          src="../assets/icons/price.svg"
+          alt="Price per post"
+          title="Price per post"
+        />
+        <div class="price-per-post-title">Price per post</div>
+      </div>
       <div class="price">{{price}}</div>
     </section>
   </section>
