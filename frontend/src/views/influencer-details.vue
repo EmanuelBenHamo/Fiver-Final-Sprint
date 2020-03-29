@@ -19,9 +19,6 @@
         <button class="send-offer-btn" @click="onMakeOffer">make an offer</button>
       </section>
     </section>
-
-    <div v-if="isMakingOffer" @click="onMakeOffer" class="screen"></div>
-    <campaign-list v-if="isMakingOffer" @close="onMakeOffer" @sendOffer="sendOffer" />
   </section>
 </template>
 
@@ -31,7 +28,6 @@ import influencerDetailsHeader from "../cmps/influencer-details-header";
 import influencerPhotosCarousel from "../cmps/influencer-photos-carousel";
 import influencerDetailsFooter from "../cmps/influencer-details-footer";
 import influencerDetailsSocials from "../cmps/influencer-details-socials";
-import campaignList from "../cmps/campaign-list.vue";
 import { eventBus } from "../services/event.bus.service.js";
 export default {
   name: "influencer-details",
@@ -66,6 +62,10 @@ export default {
     },
     onMakeOffer() {
       this.isMakingOffer = !this.isMakingOffer;
+      eventBus.$emit(
+        "showMsg",
+        `Offer has been sent to ${this.currInfluencer.firstName} ${this.currInfluencer.lastName}`
+      );
     },
     async getInfluencerById() {
       const influencer = await this.$store.dispatch({
@@ -88,8 +88,7 @@ export default {
     influencerDetailsHeader,
     influencerPhotosCarousel,
     influencerDetailsFooter,
-    influencerDetailsSocials,
-    campaignList
+    influencerDetailsSocials
   }
 };
 </script>
