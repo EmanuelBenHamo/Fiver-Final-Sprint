@@ -1,22 +1,9 @@
-.login-form-container {
-    text-align: center;
-    margin: 0 auto;
-    .login-input {
-        margin: 10px;
-        >* {
-            width: 60%;
-        }
-    }
-    .login-btn {
-        display: block;
-        margin: 0 auto;
-    }
-}
+.login-page-form{
+    font-size: 1.25rem;
+    padding: 20px;
+    margin: 10px;
 
-.login-type-btns {
-    text-align: center;
-}
-
-.login-type-txt {
-    margin-left: 20px;
+   label{
+        margin-bottom: 1.5rem;
+    }
 }

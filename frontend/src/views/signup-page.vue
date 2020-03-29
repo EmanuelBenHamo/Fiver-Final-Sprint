@@ -1,9 +1,7 @@
 <template>
 <section class="signup-container">
-    <h1>signup</h1>
-    signup as 
-    <button class="btn" @click="setUsesrType('influencer')">Influencer</button>
-    <button class="btn" @click="setUsesrType('brand')">Brand</button>
+    signup as {{userType}}
+    <!-- <button class="btn" @click="setUsesrType('brand')">Brand</button> -->
         <component v-if="userType" :is="`${userType}Create`" class="user-signup"></component>
 </section>
 </template>
@@ -15,7 +13,7 @@ export default {
     name: 'signup-page',
     data(){
         return{
-            userType: null
+            userType: 'brand'
         }
     },
     methods:{
