@@ -22,6 +22,11 @@ export default {
         },
         setUserItems(state, payload) {
             state.influencerList = payload.influencerList;
+        },
+        demoLogin(state, payload) {
+            console.log(payload)
+            state.demoInfluencer = payload.influencer;
+            console.log(state.demoInfluencer)
         }
     },
     actions: {
@@ -36,6 +41,12 @@ export default {
                 loggedInUser
             });
             return loggedInUser;
+        },
+        demoLogin(context, payload) {
+            console.log(payload)
+            context.commit({
+                type: 'demoLogin',
+            })
         },
         async logout(context) {
             await userService.logout();
