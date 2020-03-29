@@ -62,10 +62,9 @@ export default {
     },
     onMakeOffer() {
       this.isMakingOffer = !this.isMakingOffer;
-      eventBus.$emit(
-        "showMsg",
-        `Offer has been sent to ${this.currInfluencer.firstName} ${this.currInfluencer.lastName}`
-      );
+      eventBus.$emit("showMsg", {
+        txt: `Offer has been sent to ${this.currInfluencer.firstName} ${this.currInfluencer.lastName}`
+      });
     },
     async getInfluencerById() {
       const influencer = await this.$store.dispatch({

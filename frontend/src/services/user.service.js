@@ -5,6 +5,8 @@ const USER_KEY = 'loggedInUser';
 
 var gUsers = _loadUsers();
 var gLoggedInUser;
+// var gLoggedInInfluencer;
+// var gLoggedInBrand;
 
 async function query({ userType }) {
     return gUsers.filter(user => user.credentials.userType === userType);

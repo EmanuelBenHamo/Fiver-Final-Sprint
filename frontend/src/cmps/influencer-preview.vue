@@ -17,15 +17,15 @@ export default {
   },
   methods: {
     async demoInfluencer() {
-      console.log("log");
+      let credentials = this.influencer.credentials;
       try {
         await this.$store.dispatch({
           type: "demoLogin",
-          credentials: this.influencer.credentials
+          credentials
         });
       } catch (error) {
-        console.log("wrong login detials");
-        console.log("ERROR = ", error);
+        // console.log("wrong login detials");
+        // console.log("ERROR = ", error);
       }
     }
   }
