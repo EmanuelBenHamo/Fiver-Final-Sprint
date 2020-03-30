@@ -74,7 +74,11 @@ export default {
           from: this.loggedInUser._id,
           to: this.currInfluencer._id,
           timeSent: Date.now(),
-          type: "offer"
+          type: "offer",
+          subject: "offer from" + " " + this.loggedInUser.name,
+          content: `${this.loggedInUser.name} wants to promote their campaign with you. 
+          watch their full details and contact the sender to make it happen.
+          `
         };
         socket.emit("PRIVATE_MESSAGE", offer);
       }

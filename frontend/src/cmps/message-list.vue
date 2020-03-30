@@ -1,10 +1,10 @@
 <template>
   <section class="message-container">
-    <h2>No Messages to Show</h2>
+    <!-- <h2>No Messages to Show</h2> -->
     <!-- <h2 v-if="!messages">No Messages to Show</!-->
     <!-- <ul v-if="messages" class="message-list clean-list"> -->
     <ul class="message-list clean-list">
-      <li v-for="(message, idx) in msgs" class="message-preview-container" :key="idx">
+      <li v-for="(message, idx) in messages" class="message-preview-container" :key="idx">
         <message-preview :message="message"></message-preview>
       </li>
     </ul>
@@ -12,6 +12,7 @@
 </template>
 <script>
 import messagePreview from "./message-preview.vue";
+import socket from "../services/socket.service.js";
 export default {
   props: ["user"],
   components: {
@@ -19,25 +20,20 @@ export default {
   },
   data() {
     return {
-      // messagesToDisplay: this.messages,
-      messagesForDisplay: [{ txt: "msg1" }, { txt: "msg2" }],
-      clickedMessage: null
+      messagesForDisplay: [],
+      clickedMessage: null,
+      loggedInUser: null
     };
   },
   created() {
-    console.log(this.user);
     socket.setup();
-    // socket.emit("GET_USER_MESSAGES" loggedInUser._id);
-    socket.on("USER_INBOX", this.addMsg);
-
-    socket.on("chat addMsg", this.addMsg);
+    socket.emit("GET_USER_MESSAGES", this.user._id);
+    socket.on("USER_MESSAGES", messages => {
+      this.messagesForDisplay = JSON.parse(JSON.stringify(messages));
+    });
   },
-  // destroyed() {
-  //   socket.off("chat addMsg", this.addMsg);
-  //   socket.terminate();
-  // },
   computed: {
-    msgs() {
+    messages() {
       return this.messagesForDisplay;
     }
   },

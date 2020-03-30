@@ -1,18 +1,17 @@
 <template>
-  <section class="message-preview">{{message.txt}}</section>
+  <section class="message-preview">
+    <pre>{{message}}</pre>
+  </section>
 </template>
 <script>
 export default {
   props: ["message"],
-
   data() {
     return {
       elPreview: null
     };
   },
-  created() {
-    console.log(this.message);
-  }
+  created() {}
 };
 </script>
 
