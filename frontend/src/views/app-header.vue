@@ -16,7 +16,7 @@
           class="screen">
           </div>
 
-        <div @click="isShowen = !isShowen" :class="{showen: isShowen}" class="navbar-btns flex space-between">
+        <div @click="isShowen = !isShowen" :class="{showen: isShowen}" class="navbar-btns flex align-center space-between">
           <div class="navbar-routings">
             <router-link class="home-page-btn nav-btn" to="/">Home</router-link>
             <router-link class="nav-btn" to="/login">Login</router-link>
