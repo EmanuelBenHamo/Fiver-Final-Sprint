@@ -19,7 +19,6 @@ export default {
     },
     actions: {
         async updateOffer(context, payload) {
-            console.log(payload)
             return await offerService.update(payload)
         },
         async sendOffer(context, payload) {

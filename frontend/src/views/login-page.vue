@@ -31,11 +31,13 @@ export default {
   },
   methods: {
     async login() {
+      
       try {
         let loggedInUser = await this.$store.dispatch({
           type: "login",
           credentials: this.credentials
         });
+        
         this.$router.push("/app");
       } catch (error) {
         console.log("wrong login detials");

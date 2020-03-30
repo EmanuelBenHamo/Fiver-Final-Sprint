@@ -35,12 +35,15 @@ export default {
     return {
       influencerId: null,
       currInfluencer: null,
-      isMakingOffer: false
+      isMakingOffer: false,
+      loggedInUser: null
     };
   },
   created() {
     this.influencerId = this.$route.params.id;
     this.getInfluencerById();
+    this.loggedInUser = this.$store.getters.loggedInUser;
+
   },
   computed: {
     fullName() {
@@ -60,7 +63,8 @@ export default {
         return currPhoto.regular;
       });
     },
-    onMakeOffer() {
+  onMakeOffer() {
+      console.log('HEREREEE');
       this.isMakingOffer = !this.isMakingOffer;
       eventBus.$emit("showMsg", {
         txt: `Offer has been sent to ${this.currInfluencer.firstName} ${this.currInfluencer.lastName}`
@@ -73,14 +77,16 @@ export default {
       });
       this.currInfluencer = influencer;
     },
-    async sendOffer(campaign) {
+    async sendOffer() {
+      
       const sentOffer = await this.$store.dispatch({
         type: "sendOffer",
-        campaign,
-        influencer: this.currInfluencer
+        influencer: this.currInfluencer,
+        brand: this.loggedInUser
       });
       console.log("Offer Sent", sentOffer);
       eventBus.$emit("showMsg", { txt: "Your offer has been sent" });
+      
     }
   },
   components: {
