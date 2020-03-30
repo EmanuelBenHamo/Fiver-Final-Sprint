@@ -4,7 +4,7 @@
     <!-- <h2 v-if="!messages">No Messages to Show</!-->
     <!-- <ul v-if="messages" class="message-list clean-list"> -->
     <ul class="message-list clean-list">
-      <li v-for="(message, idx) in messages" class="message-preview-container" :key="idx">
+      <li v-for="(message, idx) in messages" class="message-preview" :key="idx">
         <message-preview :message="message"></message-preview>
       </li>
     </ul>

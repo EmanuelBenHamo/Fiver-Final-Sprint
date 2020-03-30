@@ -1,0 +1,42 @@
+.message-container-wrapper {
+    flex-direction: column;
+    padding: 1rem 0;
+    border-bottom: 1px solid red;
+
+    .message-preview-container {
+        padding: 1rem 0;
+        .message-time {
+        }
+
+        .message-subject {
+            font-family: "Quicksand-Bold";
+            text-transform: capitalize;
+            text-align: start;
+            min-width: 10rem;
+        }
+
+        .action-btns {
+        }
+
+        .action-btn {
+            padding: 0 0.5rem;
+
+            &:hover {
+                cursor: pointer;
+                font-family: "Quicksand-Bold";
+            }
+        }
+
+        .accept-btn {
+            color: green;
+        }
+
+        .decline-btn {
+            color: red;
+        }
+    }
+
+    .message-content {
+        
+    }
+}
