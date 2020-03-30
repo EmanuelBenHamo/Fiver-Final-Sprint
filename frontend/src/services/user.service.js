@@ -4,6 +4,8 @@ import storageService from './storage.service.js';
 const USER_KEY = 'loggedInUser';
 
 var gLoggedInUser;
+// var gLoggedInInfluencer;
+// var gLoggedInBrand;
 
 async function signUp(user) {
     const { username, password, userType } = user.credentials;

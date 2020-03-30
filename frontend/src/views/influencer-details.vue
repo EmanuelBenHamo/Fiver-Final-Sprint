@@ -19,8 +19,6 @@
         <button class="send-offer-btn" @click="onMakeOffer">make an offer</button>
       </section>
     </section>
-
-    <div v-if="isMakingOffer" @click="onMakeOffer" class="screen"></div>
   </section>
 </template>
 
@@ -68,7 +66,9 @@ export default {
   onMakeOffer() {
       console.log('HEREREEE');
       this.isMakingOffer = !this.isMakingOffer;
-      this.sendOffer()
+      eventBus.$emit("showMsg", {
+        txt: `Offer has been sent to ${this.currInfluencer.firstName} ${this.currInfluencer.lastName}`
+      });
     },
     async getInfluencerById() {
       const influencer = await this.$store.dispatch({
@@ -93,7 +93,7 @@ export default {
     influencerDetailsHeader,
     influencerPhotosCarousel,
     influencerDetailsFooter,
-    influencerDetailsSocials,
+    influencerDetailsSocials
   }
 };
 </script>
