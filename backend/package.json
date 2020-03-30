@@ -4,6 +4,7 @@
     "description": "A production ready server including REST, Session, Sockets, Mongo and more",
     "main": "server.js",
     "scripts": {
+        "statr": "node server.js",
         "server:dev": "nodemon server.js",
         "server:prod": "nodemon server.js"
     },
