@@ -6,7 +6,7 @@
       <button class="btn" @click="toggle('offer')">offers</button>
       <button class="btn" @click="toggle('message')">messeges</button>
       <offer-list v-if="offerShow" :user="this.loggedInUser"></offer-list>
-      <message-list v-if="messageShow"></message-list>
+      <message-list :user="loggedInUser" v-if="messageShow"></message-list>
     </div>
     <router-view></router-view>
   </section>

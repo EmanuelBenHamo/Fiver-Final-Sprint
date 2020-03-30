@@ -29,21 +29,23 @@ import influencerPhotosCarousel from "../cmps/influencer-photos-carousel";
 import influencerDetailsFooter from "../cmps/influencer-details-footer";
 import influencerDetailsSocials from "../cmps/influencer-details-socials";
 import { eventBus } from "../services/event.bus.service.js";
+import socket from "../services/socket.service.js";
 export default {
   name: "influencer-details",
   data() {
     return {
       influencerId: null,
       currInfluencer: null,
-      isMakingOffer: false,
       loggedInUser: null
     };
   },
   created() {
     this.influencerId = this.$route.params.id;
-    this.getInfluencerById();
     this.loggedInUser = this.$store.getters.loggedInUser;
-
+    this.getInfluencerById();
+    socket.setup();
+    // socket.emit("chat topic", this.topic);
+    // socket.on("chat addMsg", this.addMsg);
   },
   computed: {
     fullName() {
@@ -63,12 +65,23 @@ export default {
         return currPhoto.regular;
       });
     },
-  onMakeOffer() {
-      console.log('HEREREEE');
-      this.isMakingOffer = !this.isMakingOffer;
+    onMakeOffer() {
       eventBus.$emit("showMsg", {
         txt: `Offer has been sent to ${this.currInfluencer.firstName} ${this.currInfluencer.lastName}`
       });
+      if (this.loggedInUser) {
+        let offer = {
+          from: this.loggedInUser._id,
+          to: this.currInfluencer._id,
+          timeSent: Date.now(),
+          type: "offer",
+          subject: "offer from" + " " + this.loggedInUser.name,
+          content: `${this.loggedInUser.name} wants to promote their campaign with you. 
+          watch their full details and contact the sender to make it happen.
+          `
+        };
+        socket.emit("PRIVATE_MESSAGE", offer);
+      }
     },
     async getInfluencerById() {
       const influencer = await this.$store.dispatch({
@@ -76,17 +89,6 @@ export default {
         influencerId: this.influencerId
       });
       this.currInfluencer = influencer;
-    },
-    async sendOffer() {
-      
-      const sentOffer = await this.$store.dispatch({
-        type: "sendOffer",
-        influencer: this.currInfluencer,
-        brand: this.loggedInUser
-      });
-      console.log("Offer Sent", sentOffer);
-      eventBus.$emit("showMsg", { txt: "Your offer has been sent" });
-      
     }
   },
   components: {

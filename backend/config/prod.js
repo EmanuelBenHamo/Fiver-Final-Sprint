@@ -1,3 +1,6 @@
+const USER_NAME = 'cajan2020';
+const PASSWORD = 'uvQISLwHAHqqgWlX'
+
 module.exports = {
-    "dbURL": "mongodb+srv://vova:pk5tyAIQZvNXGo5V@cluster0-j6k82.mongodb.net/test?retryWrites=true&w=majority",
+    "dbURL": `mongodb+srv://${USER_NAME}:${PASSWORD}@cluster0-py2lu.mongodb.net/test?retryWrites=true&w=majority`,
 }
