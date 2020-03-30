@@ -16,17 +16,16 @@ async function signUp(user) {
 }
 
 async function login(credentials) {
-    try{
-        const user = await httpService.post('auth/login', credentials)   
+    try {
+        const user = await httpService.post('auth/login', credentials)
         gLoggedInUser = user;
         return gLoggedInUser;
-    }
-    catch{
+    } catch {
         if (!user) {
             throw new Error(`wrong login details`); // didn't find user with that username
         } else if (user.credentials.password !== password) {
             throw new Error(`wrong login pasword details`); // password is incorrect
-        }   
+        }
     }
 }
 
@@ -60,4 +59,3 @@ export default {
     update,
     remove
 }
-

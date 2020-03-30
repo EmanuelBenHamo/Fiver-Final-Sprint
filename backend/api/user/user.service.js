@@ -1,4 +1,3 @@
-
 const dbService = require('../../services/db.service')
 const ObjectId = require('mongodb').ObjectId
 
@@ -12,17 +11,14 @@ module.exports = {
 }
 
 async function getByUsername(username, userType) {
-    console.log('Trying to loggg');
     var collection;
-    if(userType === 'influencer'){
-        
+    if (userType === 'influencer') {
         collection = await dbService.getCollection('influencer')
     } else {
         collection = await dbService.getCollection('brand')
     }
-    
     try {
-        const user = await collection.findOne({"credentials.username":username})
+        const user = await collection.findOne({ "credentials.username": username })
         return user
     } catch (err) {
         console.log(`ERROR: while finding user ${username}`)
@@ -33,7 +29,7 @@ async function getByUsername(username, userType) {
 async function remove(userId) {
     const collection = await dbService.getCollection('user')
     try {
-        await collection.deleteOne({"_id":ObjectId(userId)})
+        await collection.deleteOne({ "_id": ObjectId(userId) })
     } catch (err) {
         console.log(`ERROR: cannot remove user ${userId}`)
         throw err;
@@ -45,7 +41,7 @@ async function update(user) {
     user._id = ObjectId(user._id);
 
     try {
-        await collection.replaceOne({"_id":user._id}, {$set : user})
+        await collection.replaceOne({ "_id": user._id }, { $set: user })
         return user
     } catch (err) {
         console.log(`ERROR: cannot update user ${user._id}`)
@@ -70,9 +66,7 @@ function _buildCriteria(filterBy) {
         criteria.username = filterBy.txt
     }
     if (filterBy.minBalance) {
-        criteria.balance = {$gte : +filterBy.minBalance}
+        criteria.balance = { $gte: +filterBy.minBalance }
     }
     return criteria;
 }
-
-
