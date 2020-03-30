@@ -60,7 +60,7 @@
         font-size: 1.5rem;
         padding: 20px;
         box-shadow: 2px 2px 2px $clr1;
-        transform: translateY(-200%);
+        transform: translateX(200%);
         transition:transform .8s;
         
         .navbar-routings{
@@ -71,7 +71,7 @@
         }
     }
     .navbar-btns.showen {
-        transform: translateY(0);
+        transform: translateX(0);
     }
 
     .header .screen.showen {
