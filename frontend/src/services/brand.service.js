@@ -1,55 +1,26 @@
-// const fs = require('fs');
+import httpService from "./httpService.js";
 
-import storageService from './storage.service.js';
-
-const KEY = 'Brands'
-
-var gBrands = _getBrandsFromStorage();
-
-function _getBrandsFromStorage() {
-    var brands = storageService.load(KEY);
-    if (!brands) {
-        brands = require('../../data/brands.json');
-        storageService.store(KEY, brands)
-    }
-    return brands
-}
-function query() {
-    return Promise.resolve(gBrands);
+async function query() {
+    return await httpService.get('brand')
 }
 
-function getById(id) {
-    const brand = gBrands.find(brand => brand._id === id);
-    return brand;
+async function getById(id) {
+    return await httpService.get(`brand/${id}`)
 }
 
-function remove(id) {
-    const idx = gBrands.findIndex(brand => brand._id === id);
-
-    gBrands.splice(idx, 1);
-    storageService.store(KEY, gBrands)
-    return Promise.resolve();
+async function remove(id) {
+return await httpService.delete(`brand/${id}`,id)
 }
 
 async function add(brand) {
-    brand._id = _randomInt(10000, 10000000)
     brand.createdAt = Date.now();
     brand = _setBrandInfo(brand)
-    
-    gBrands.unshift(brand);
-    storageService.store(KEY, gBrands)
-
-    return await brand;
+    return await httpService.post(`brand`,brand)
 }
 
-function update(brand) {
-    const idx = gBrands.findIndex(currBrand => currBrand._id === brand._id);
-
+async function update(brand) {
     brand.updatedAt = Date.now();
-    gBrands.splice(idx, 1, brand);
-    storageService.store(KEY, gBrands)
-
-    return Promise.resolve(brand);
+    return await httpService.put(`brand/${brand._id}`,brand)    
 }
 
 export default {

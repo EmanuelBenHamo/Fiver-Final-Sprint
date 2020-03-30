@@ -17,6 +17,7 @@ export default {
     actions: {
         async loadInfluencers(context, {filterBy}) {
             const influencers = await influencerService.query(filterBy)
+
             context.commit({ type: 'setInfluencers', influencers })
         },
 

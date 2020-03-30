@@ -2,8 +2,6 @@
   <section class="offer-preview-container">
     <!-- <h1>Offer Preview</h1> -->
     <div class="offers-preview">
-      <p >{{offer.miniCampaign.product}}</p>
-      <p class="offer-duration">{{offer.miniCampaign.startDate | date}} - {{offer.miniCampaign.endDate | date}}</p>
       <div class="offer-status-container">
         <label class="offer-status" v-bind:class="{ selected: pending }">
           Pending

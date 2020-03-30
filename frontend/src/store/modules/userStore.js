@@ -1,5 +1,4 @@
 import userService from '../../services/user.service.js';
-import campaignService from '../../services/campaign.service.js';
 
 export default {
     state: {
@@ -39,6 +38,7 @@ export default {
             await context.commit(payload);
         },
         async login(context, payload) {
+
             const credentials = payload.credentials;
             const loggedInUser = await userService.login(credentials);
             context.commit({
@@ -71,32 +71,7 @@ export default {
             });
             return loggedInUser;
         },
-        async getUserMessages(context, { user }) {
-            let messageList = await userService.userMessages(user);
-            context.commit({
-                type: 'setUserMessages',
-                // influencerList: 
-                messageList
-            });
-        },
-        async getUserItems(context, payload) {
-            if (context.state.loggedInUser.credentials.userType === "influencer") {
-                let campaignsList = await campaignService.query();
-                context.commit({
-                    type: 'setUserItems',
-                    influencerList: campaignsList
-                });
-                return campaignsList;
 
-            } else if (context.state.loggedInUser.credentials.userType === "brand") {
-                let influencersList = await userService.query({ userType: "influencer" });
-                context.commit({
-                    type: 'setUserItems',
-                    influencerList: influencersList
-                });
-                return influencersList;
-            }
-        },
         async getLoggedInUser(context) {
             if (!context.state.loggedInUser) {
                 const loggedInUser = await userService.getLoggedInUser()

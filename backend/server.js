@@ -14,7 +14,6 @@ const authRoutes = require('./api/auth/auth.routes')
 const influencerRoutes = require('./api/influencer/influencer.routes')
 const brandRoutes = require('./api/brand/brand.routes')
 const offerRoutes = require('./api/offer/offer.routes')
-const campaignRoutes = require('./api/campaign/campaign.routes')
 const connectSockets = require('./api/socket/socket.routes')
 
 app.use(cookieParser())
@@ -30,7 +29,7 @@ if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.resolve(__dirname, 'public')));
 } else {
     const corsOptions = {
-        origin: ['http://127.0.0.1:8080', 'http://localhost:8080', 'http://127.0.0.1:3030', 'http://localhost:3030'],
+        origin: ['http://127.0.0.1:8080', 'http://localhost:8081','http://127.0.0.1:8081', 'http://localhost:8080', 'http://127.0.0.1:3030', 'http://localhost:3030'],
         credentials: true
     };
     app.use(cors(corsOptions));
@@ -40,7 +39,6 @@ if (process.env.NODE_ENV === 'production') {
 app.use('/api/influencer', influencerRoutes)
 app.use('/api/brand', brandRoutes)
 app.use('/api/offer', offerRoutes)
-app.use('/api/campaign', campaignRoutes)
 app.use('/api/auth', authRoutes)
 connectSockets(io)
 

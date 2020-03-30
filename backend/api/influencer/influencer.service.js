@@ -22,7 +22,6 @@ async function query(filterBy = {}) {
             const criteria = await mongoDBCriteria.buildCriteria(filterBy);
             influencers = await collection.find(criteria).toArray();
         }
-        // console.log(influencers);
 
         return influencers;
     } catch (err) {
@@ -54,6 +53,7 @@ async function remove(influencerId) {
 }
 
 async function update(influencer) {
+    influencer.updatedAt = Date.now();
     const collection = await dbService.getCollection("influencer");
     influencer._id = ObjectId(influencer._id);
     try {
@@ -67,6 +67,8 @@ async function update(influencer) {
 
 async function add(influencer) {
     console.log(influencer);
+    influencer.createdAt = Date.now();
+    influencer = _setSocialInfo(influencer)
     const collection = await dbService.getCollection("influencer");
     try {
         await collection.insertOne(influencer);
@@ -75,4 +77,20 @@ async function add(influencer) {
         console.log(`ERROR: cannot insert influencer`);
         throw err;
     }
+}
+
+
+function _setSocialInfo(influencer) {
+    influencer.socials = influencer.socials.map(social => {
+        var currSocial = {
+            type: social,
+            menFollowers: _randomInt(10000, 10000000),
+            womenFollowers: _randomInt(10000, 10000000),
+            posts: _randomInt(1000, 1000000),
+            stories: _randomInt(1000, 1000000),
+            followersAvgAge: _randomInt(16, 50)
+        };
+        return currSocial;
+    });
+    return influencer;
 }

@@ -9,7 +9,6 @@
 </template>
 <script>
 import influencerService from '../services/influencer.service.js';
-import campaignService from '../services/campaign.service.js';
 import influencerList from '../cmps/influencer-list.vue';
 export default {
   name: 'main-app',
@@ -23,7 +22,6 @@ export default {
     await this.getLoggetInUser();
     await this.loadInfluencers();
     await this.loadBrands();
-    await this.loadCampaigns();
   },
   methods: {
     async loadBrands() {
@@ -35,12 +33,6 @@ export default {
         filterBy
         });
       this.influencerList = this.$store.getters.influencers;
-    },
-    async loadCampaigns() {
-      await this.$store.dispatch({ 
-        type: "loadCampaigns",
-        filterBy: {userId: this.loggedInUser._id}
-        });
     },
     async getLoggetInUser(){
       this.loggedInUser = this.$store.getters.loggedInUser;

@@ -1,15 +1,15 @@
 
 function store(key, any) {
-    localStorage[key] = JSON.stringify(any);
+    sessionStorage[key] = JSON.stringify(any);
 }
 
 function load(key) {
-    var str = localStorage[key] || 'null';
+    var str = sessionStorage[key] || 'null';
     return JSON.parse(str);
 }
 
 function clear(key) {
-    localStorage.removeItem(key);
+    sessionStorage.removeItem(key);
 }
 
 module.exports = {
