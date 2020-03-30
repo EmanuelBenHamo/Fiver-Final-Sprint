@@ -14,7 +14,6 @@ const authRoutes = require('./api/auth/auth.routes')
 const influencerRoutes = require('./api/influencer/influencer.routes')
 const brandRoutes = require('./api/brand/brand.routes')
 const offerRoutes = require('./api/offer/offer.routes')
-const campaignRoutes = require('./api/campaign/campaign.routes')
 const connectSockets = require('./api/socket/socket.routes')
 
 app.use(cookieParser())
@@ -40,7 +39,6 @@ if (process.env.NODE_ENV === 'production') {
 app.use('/api/influencer', influencerRoutes)
 app.use('/api/brand', brandRoutes)
 app.use('/api/offer', offerRoutes)
-app.use('/api/campaign', campaignRoutes)
 app.use('/api/auth', authRoutes)
 connectSockets(io)
 

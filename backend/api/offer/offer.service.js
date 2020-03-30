@@ -12,8 +12,13 @@ module.exports = {
 async function query(filterBy = {}) {
     const criteria = _buildCriteria(filterBy)
     const collection = await dbService.getCollection('offer')
+    console.log('ddsdsfsdsfsdsdfdfsfd',filterBy);
+    
     try {
         let offers = await collection.find(criteria).toArray();
+        // let offers = await collection.find({"miniInfluencer.id": filterBy.id}).toArray();
+        console.log('OFFER', offers);
+        
         return offers
     } catch (err) {
         console.log('ERROR: cannot find offers')
@@ -66,9 +71,10 @@ async function add(offer) {
 }
 
 function _buildCriteria(filterBy) {
-    const criteria = {};
-    if (filterBy.txt) {
-        criteria.description = filterBy.txt
+    
+    var criteria = {};
+    if (filterBy && filterBy.id) {
+        criteria = {"miniInfluencer.id" : filterBy.id}
     }
     return criteria;
 }

@@ -74,10 +74,9 @@ export default {
       });
       this.currInfluencer = influencer;
     },
-    async sendOffer(campaign) {
+    async sendOffer() {
       const sentOffer = await this.$store.dispatch({
         type: "sendOffer",
-        campaign,
         influencer: this.currInfluencer
       });
       console.log("Offer Sent", sentOffer);

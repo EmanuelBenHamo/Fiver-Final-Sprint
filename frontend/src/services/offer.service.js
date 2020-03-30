@@ -1,74 +1,41 @@
 const fs = require('fs');
-
-import storageService from './storage.service.js';
-
-const KEY = 'offers';
-
-var gOffers = _getOffersFromStorage();
-
-
-function _getOffersFromStorage() {
-    var offers = storageService.load(KEY);
-    if (!offers) {
-        offers = require('../../data/offers.json');
-        storageService.store(KEY, offers)
-    }
-    return offers
-}
+import httpService from "./httpService.js";
 
 async function query(filterBy = {}) {
-    let filteredOffers = gOffers.filter(offer => offer.miniInfluencer.id === filterBy.influencerId)
-    return await filteredOffers;
+    var queryParams = new URLSearchParams();
+    queryParams.append(filterBy._id)
+    return await httpService.get(`offer?${queryParams}`);
 }
 
-function getById(id) {
-    const offer = gOffers.find(offer => offer._id === id);
-
-    return offer;
+async function getById(id) {
+    return await httpService.get(`offer/${id}`);
 }
 
-function remove(id) {
-    const idx = gOffers.findIndex(offer => offer._id === id);
-
-    gOffers.splice(idx, 1);
-    storageService.store(KEY, gOffers)
-    return Promise.resolve();
+async function remove(id) {
+    return await httpService.delete(`offer/${id}`, id);
 }
 
-async function add(payload) {
-
-    var offer = await _createOffer(payload)
-    gOffers.unshift(offer);
-    storageService.store(KEY, gOffers)
-
-    return await offer;
+async function add(influencer) {
+    var offer = await _createOffer(influencer)
+    return await httpService.post(`offer`, offer)
 }
 
-function update({ offerData }) {
-    console.log(offerData)
-    const idx = gOffers.findIndex(currOffer => currOffer._id === offerData.id);
-    console.log(idx)
-        // offer.updatedAt = Date.now();
-        // gOffers.splice(idx, 1, offer);
-        // storageService.store(KEY, gOffers);
-        // return Promise.resolve(offer);
+async function update({ offerData }) {
+    return await httpService.put(`offer/${offer._id}`, offerData)
 }
 
-async function _createOffer({ campaign, influencer }) {
+function _createOffer(influencer) {
     const newOffer = {
         _id: Math.floor(Math.random() * 1000000 + 10000),
         status: 'pending',
-        description: campaign.description,
-        miniCampaign: {
-            id: campaign._id,
-            product: campaign.product,
-            startDate: campaign.startDate,
-            endDate: campaign.endDate,
-        },
         miniInfluencer: {
             id: influencer._id,
             firstName: influencer.firstName,
             lastName: influencer.lastName
+        },
+        miniBrand: {
+            id: brand._id,
+            name:brand.name
         },
         createdAt: Date.now()
     };
@@ -82,7 +49,3 @@ export default {
     add,
     update,
 }
-
-// function _saveOffersToFile() {
-//     fs.writeFileSync('data/offers.json', JSON.stringify(gOffers, null, 2));
-// }

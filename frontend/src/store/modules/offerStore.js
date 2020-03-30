@@ -19,11 +19,10 @@ export default {
     },
     actions: {
         async updateOffer(context, payload) {
-            console.log(payload)
             return await offerService.update(payload)
         },
-        async sendOffer(context, payload) {
-            return await offerService.add(payload)
+        async sendOffer(context, {influencer}) {
+            return await offerService.add(influencer)
         },
         async loadOffers(context, { influencerId }) {
             const offers = await offerService.query({ influencerId });

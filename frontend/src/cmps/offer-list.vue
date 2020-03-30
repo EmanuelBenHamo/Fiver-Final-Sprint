@@ -14,7 +14,9 @@ import offerPreview from "./offer-preview.vue";
 import offerService from "../services/offer.service.js";
 export default {
   name: "offer-list",
-  props: ["user"],
+  props: {
+    user: Object
+  },
   data() {
     return {
       loggedInUser: null,

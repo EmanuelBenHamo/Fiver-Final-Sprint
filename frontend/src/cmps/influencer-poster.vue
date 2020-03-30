@@ -16,6 +16,8 @@ export default {
   },
   computed: {
     photo() {
+      
+      
       // TODO: optimization - load the small image when created and replace the thumb image with
       // the small image when this loaded
       return this.influencer.profilePhoto.thumb;
