@@ -8,8 +8,8 @@ var gLoggedInUser;
 // var gLoggedInBrand;
 
 async function signUp(user) {
-    const { username, password, userType } = user.credentials;
-    user = await httpService.post('auth/signup', userCred)
+    // const { username, password, userType } = user.credentials;
+    user = await httpService.post('auth/signup', user.credentials)
     gLoggedInUser = user;
     storageService.store(USER_KEY, gLoggedInUser)
     return gLoggedInUser;
