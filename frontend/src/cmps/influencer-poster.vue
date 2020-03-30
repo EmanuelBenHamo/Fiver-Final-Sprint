@@ -14,11 +14,28 @@ export default {
   props: {
     influencer: Object
   },
+  data() {
+    return {
+      imageUrl: null,
+      highQualityImage: null
+    };
+  },
+  created() {
+    this.loadImages();
+  },
   computed: {
     photo() {
-      // TODO: optimization - load the small image when created and replace the thumb image with
-      // the small image when this loaded
-      return this.influencer.profilePhoto.thumb;
+      return this.imageUrl;
+    }
+  },
+  methods: {
+    loadImages() {
+      this.imageUrl = this.influencer.profilePhoto.thumb;
+      this.highQualityImage = new Image();
+      this.highQualityImage.onload = () => {
+        this.imageUrl = this.highQualityImage.src;
+      };
+      this.highQualityImage.src = this.influencer.profilePhoto.small;
     }
   },
   components: {
