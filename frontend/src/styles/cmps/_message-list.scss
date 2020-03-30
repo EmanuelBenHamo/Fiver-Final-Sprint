@@ -1,0 +1,11 @@
+.message-preview {
+    &:nth-child(even) {
+        background-color: #f1f3f4;
+    }
+    &:nth-child(odd) {
+        background-color: #ededed;
+    }
+    &:not(:last-of-type){
+        margin-block-end: 1rem;
+    }
+}

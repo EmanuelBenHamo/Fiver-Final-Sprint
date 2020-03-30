@@ -3,7 +3,7 @@
 
   <section class="home-page-hero flex align-center space-between">
     <div class="home-page-content flex column justify-end">
-      <h1>Get Influenced</h1>
+      <h1>Get Promoted</h1>
       <div class="sub-content flex column ">
         <p>Find the right influencer to promote your Brand</p>
         <button class="go-btn btn" @click="redirect('brand')">Lets Go</button>

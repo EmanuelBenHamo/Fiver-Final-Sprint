@@ -1,7 +1,5 @@
 .influencer-details-container {
   display: grid;
-  // grid-template-columns: 1fr 2fr;
-  // grid-template-rows: 1fr 8fr 2fr;
   grid-template-columns: 3fr 5fr 2fr;
   grid-template-rows: 1fr 9fr;
   column-gap: 0.5fr;
@@ -17,7 +15,6 @@
 .influencer-photos-carousel {
   grid-column: 1 / 2;
   grid-row: 2 / 3;
-  // margin-block-end: 1rem;
 }
 
 .influencer-details-socials {
@@ -29,16 +26,16 @@
   grid-column: 3 / 4;
   grid-row: 2 / 3;
   display: grid;
-  grid-template-rows: 1fr 5fr;
+  grid-template-rows:  1fr 2fr;
 }
 
 .influencer-details-footer {
-  grid-row: 2 / 3;
+  grid-row: 1 / 2;
   padding-inline-start: 1rem;
 }
 
 .send-offer-container {
-  grid-row: 1 / 2;
+  grid-row: 2 / 3;
 }
 
 .send-offer-btn {
