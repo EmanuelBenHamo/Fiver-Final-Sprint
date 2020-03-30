@@ -12,11 +12,9 @@ module.exports = {
 async function query(filterBy = {}) {
     const criteria = _buildCriteria(filterBy)
     const collection = await dbService.getCollection('offer')
-    console.log('ddsdsfsdsfsdsdfdfsfd',filterBy);
     
     try {
         let offers = await collection.find(criteria).toArray();
-        // let offers = await collection.find({"miniInfluencer.id": filterBy.id}).toArray();
         console.log('OFFER', offers);
         
         return offers

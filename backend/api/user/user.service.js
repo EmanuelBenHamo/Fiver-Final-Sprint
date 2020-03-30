@@ -4,30 +4,13 @@ const ObjectId = require('mongodb').ObjectId
 
 module.exports = {
     // query,
-    getById,
     getByUsername,
     remove,
     update,
     add
+
 }
 
-
-
-async function getById(userId) {
-    // const collection = await dbService.getCollection('user')
-    try {
-        // const user = await collection.findOne({"_id":ObjectId(userId)})
-        // delete user.password
-
-        // }
-
-        // return user
-
-    } catch (err) {
-        console.log(`ERROR: while finding user ${userId}`)
-        throw err;
-    }
-}
 async function getByUsername(username, userType) {
     console.log('Trying to loggg');
     var collection;

@@ -21,8 +21,8 @@ export default {
         async updateOffer(context, payload) {
             return await offerService.update(payload)
         },
-        async sendOffer(context, {influencer}) {
-            return await offerService.add(influencer)
+        async sendOffer(context, payload) {
+            return await offerService.add(payload)
         },
         async loadOffers(context, { influencerId }) {
             const offers = await offerService.query({ influencerId });

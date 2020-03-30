@@ -21,7 +21,6 @@
     </section>
 
     <div v-if="isMakingOffer" @click="onMakeOffer" class="screen"></div>
-    <campaign-list v-if="isMakingOffer" @close="onMakeOffer" @sendOffer="sendOffer" />
   </section>
 </template>
 
@@ -31,7 +30,6 @@ import influencerDetailsHeader from "../cmps/influencer-details-header";
 import influencerPhotosCarousel from "../cmps/influencer-photos-carousel";
 import influencerDetailsFooter from "../cmps/influencer-details-footer";
 import influencerDetailsSocials from "../cmps/influencer-details-socials";
-import campaignList from "../cmps/campaign-list.vue";
 import { eventBus } from "../services/event.bus.service.js";
 export default {
   name: "influencer-details",
@@ -39,12 +37,15 @@ export default {
     return {
       influencerId: null,
       currInfluencer: null,
-      isMakingOffer: false
+      isMakingOffer: false,
+      loggedInUser: null
     };
   },
   created() {
     this.influencerId = this.$route.params.id;
     this.getInfluencerById();
+    this.loggedInUser = this.$store.getters.loggedInUser;
+
   },
   computed: {
     fullName() {
@@ -64,8 +65,10 @@ export default {
         return currPhoto.regular;
       });
     },
-    onMakeOffer() {
+  onMakeOffer() {
+      console.log('HEREREEE');
       this.isMakingOffer = !this.isMakingOffer;
+      this.sendOffer()
     },
     async getInfluencerById() {
       const influencer = await this.$store.dispatch({
@@ -75,12 +78,15 @@ export default {
       this.currInfluencer = influencer;
     },
     async sendOffer() {
+      
       const sentOffer = await this.$store.dispatch({
         type: "sendOffer",
-        influencer: this.currInfluencer
+        influencer: this.currInfluencer,
+        brand: this.loggedInUser
       });
       console.log("Offer Sent", sentOffer);
       eventBus.$emit("showMsg", { txt: "Your offer has been sent" });
+      
     }
   },
   components: {
@@ -88,7 +94,6 @@ export default {
     influencerPhotosCarousel,
     influencerDetailsFooter,
     influencerDetailsSocials,
-    campaignList
   }
 };
 </script>

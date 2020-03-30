@@ -15,18 +15,18 @@ async function remove(id) {
     return await httpService.delete(`offer/${id}`, id);
 }
 
-async function add(influencer) {
-    var offer = await _createOffer(influencer)
-    return await httpService.post(`offer`, offer)
+async function add(payload) {
+    var offer = await _createOffer(payload)
+    await httpService.post(`offer`, offer)
+    return offer    
 }
 
 async function update({ offerData }) {
     return await httpService.put(`offer/${offer._id}`, offerData)
 }
 
-function _createOffer(influencer) {
+function _createOffer({influencer, brand}) {
     const newOffer = {
-        _id: Math.floor(Math.random() * 1000000 + 10000),
         status: 'pending',
         miniInfluencer: {
             id: influencer._id,
