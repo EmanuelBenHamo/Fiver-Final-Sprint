@@ -26,7 +26,6 @@ async function signUp(user) {
 }
 
 async function login(credentials) {
-    console.log(credentials)
     const { username, password } = credentials;
     const user = gUsers.find(user => user.credentials.username === username);
 

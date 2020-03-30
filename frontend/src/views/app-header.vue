@@ -34,7 +34,6 @@ export default {
   methods: {
     login() {
       this.demoUser = this.$store.getters.demoInfluencer;
-      console.log(this.demoUser);
       this.loggedInUser = this.$store.dispatch({
         type: "login",
         credentials: this.demoUser

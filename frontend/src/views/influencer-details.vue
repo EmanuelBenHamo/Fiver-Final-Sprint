@@ -29,18 +29,23 @@ import influencerPhotosCarousel from "../cmps/influencer-photos-carousel";
 import influencerDetailsFooter from "../cmps/influencer-details-footer";
 import influencerDetailsSocials from "../cmps/influencer-details-socials";
 import { eventBus } from "../services/event.bus.service.js";
+import socket from "../services/socket.service.js";
 export default {
   name: "influencer-details",
   data() {
     return {
       influencerId: null,
       currInfluencer: null,
-      isMakingOffer: false
+      loggedInUser: null
     };
   },
   created() {
     this.influencerId = this.$route.params.id;
+    this.loggedInUser = this.$store.getters.loggedInUser;
     this.getInfluencerById();
+    socket.setup();
+    // socket.emit("chat topic", this.topic);
+    // socket.on("chat addMsg", this.addMsg);
   },
   computed: {
     fullName() {
@@ -61,10 +66,18 @@ export default {
       });
     },
     onMakeOffer() {
-      this.isMakingOffer = !this.isMakingOffer;
       eventBus.$emit("showMsg", {
         txt: `Offer has been sent to ${this.currInfluencer.firstName} ${this.currInfluencer.lastName}`
       });
+      if (this.loggedInUser) {
+        let offer = {
+          from: this.loggedInUser._id,
+          to: this.currInfluencer._id,
+          timeSent: Date.now(),
+          type: "offer"
+        };
+        socket.emit("PRIVATE_MESSAGE", offer);
+      }
     },
     async getInfluencerById() {
       const influencer = await this.$store.dispatch({
@@ -72,15 +85,6 @@ export default {
         influencerId: this.influencerId
       });
       this.currInfluencer = influencer;
-    },
-    async sendOffer(campaign) {
-      const sentOffer = await this.$store.dispatch({
-        type: "sendOffer",
-        campaign,
-        influencer: this.currInfluencer
-      });
-      console.log("Offer Sent", sentOffer);
-      eventBus.$emit("showMsg", { txt: "Your offer has been sent" });
     }
   },
   components: {

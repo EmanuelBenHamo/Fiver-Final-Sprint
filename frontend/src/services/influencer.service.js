@@ -16,11 +16,11 @@ function _getInfluencersFromStorage() {
     return influencers;
 }
 async function query(filterBy) {
-    if (!filterBy) return await gInfluencers;
-    const influencersToShow = _filterInfluencers(filterBy);
-    return await influencersToShow;
+    // if (!filterBy) return await gInfluencers;
+    // const influencersToShow = _filterInfluencers(filterBy);
+    // return await influencersToShow;
     // const params = new URLSearchParams(creterea);
-    // return HttpService.get(`influencer`)
+    return HttpService.get(`influencer`)
 }
 
 async function getById(id) {
@@ -82,8 +82,6 @@ function _setSocialInfo(influencer) {
 }
 
 function _filterInfluencers(filterBy) {
-    console.log('IN SERVICE', filterBy);
-
     var name = new RegExp(filterBy.name, 'i');
     var influencersToShow = gInfluencers.filter(influencer => { // FILTER BY NAME
             if (!filterBy.name) return influencer
@@ -116,8 +114,6 @@ function _filterInfluencers(filterBy) {
         .filter(influencer => { // FILTER BY SOCIAL NETWORK
             if (!filterBy.socials || !filterBy.socials.types || !filterBy.socials.types.length) {
                 influencer.filteredSocialMap = influencer.socials
-                console.log(':((((');
-
                 return influencer
             }
             const filteredSocialMap = influencer.socials.filter(social => {

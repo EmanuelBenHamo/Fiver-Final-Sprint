@@ -1,7 +1,5 @@
 <template>
-  <section class="message-preview">
-
-  </section>
+  <section class="message-preview">{{message.txt}}</section>
 </template>
 <script>
 export default {
@@ -12,6 +10,9 @@ export default {
       elPreview: null
     };
   },
+  created() {
+    console.log(this.message);
+  }
 };
 </script>
 
