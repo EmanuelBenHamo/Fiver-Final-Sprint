@@ -16,6 +16,7 @@ import { eventBus } from "../services/event.bus.service.js";
 import dashBoard from "../cmps/dash-board.vue";
 import offerList from "../cmps/offer-list.vue";
 import messageList from "../cmps/message-list.vue";
+import socket from "../services/socket.service.js";
 export default {
   name: "backoffice-page",
   data() {
@@ -25,8 +26,9 @@ export default {
       messageShow: false
     };
   },
-  async created() {
-    await this.getLoggetInUser();
+  created() {
+    socket.setup();
+    this.getLoggetInUser();
   },
   methods: {
     async getLoggetInUser() {

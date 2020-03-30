@@ -13,7 +13,10 @@ export default {
             return state.loggedInUser;
         },
         demoInfluencer(state) {
-            return state.demoInfluencer
+            return state.demoInfluencer;
+        },
+        getUserMesseges(state) {
+            return state.userMessages;
         }
     },
     mutations: {
@@ -29,11 +32,17 @@ export default {
         demoLogin(state, payload) {
             state.demoInfluencer = payload.credentials;
         },
-        setUserMessages(state, payload) {
-            state.userMessages = payload.messageList;
+        setUserMessages(state, { payload }) {
+            state.userMessages = payload;
         }
     },
     actions: {
+        setUserMessages(context, payload) {
+            context.commit({
+                type: 'setUserMessages',
+                payload
+            })
+        },
         async setUserType(context, payload) {
             await context.commit(payload);
         },
@@ -63,7 +72,6 @@ export default {
             return;
         },
         async signup(context, payload) {
-            console.log(payload)
             const loggedInUser = await userService.signUp();
             context.commit({
                 type: 'setLoggedInUser',

@@ -44,8 +44,7 @@ export default {
     this.loggedInUser = this.$store.getters.loggedInUser;
     this.getInfluencerById();
     socket.setup();
-    // socket.emit("chat topic", this.topic);
-    // socket.on("chat addMsg", this.addMsg);
+    socket.emit("MESSAGE_SESSION", this.influencerId);
   },
   computed: {
     fullName() {
@@ -80,7 +79,8 @@ export default {
           watch their full details and contact the sender to make it happen.
           `
         };
-        socket.emit("PRIVATE_MESSAGE", offer);
+        console.log("check");
+        socket.emit("ADD_MESSAGE", offer);
       }
     },
     async getInfluencerById() {
@@ -90,6 +90,10 @@ export default {
       });
       this.currInfluencer = influencer;
     }
+  },
+  destroyed() {
+    socket.off("ADD_MESSAGE", this.addMsg);
+    // socket.terminate();
   },
   components: {
     influencerDetailsHeader,
