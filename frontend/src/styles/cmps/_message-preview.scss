@@ -1,9 +1,10 @@
 .message-container-wrapper {
     flex-direction: column;
     padding: 1rem 0;
-    border-bottom: 1px solid red;
-
+    cursor: pointer;
+    
     .message-preview-container {
+        
         padding: 1rem 0;
         .message-time {
         }
@@ -34,9 +35,5 @@
         .decline-btn {
             color: red;
         }
-    }
-
-    .message-content {
-        
     }
 }
