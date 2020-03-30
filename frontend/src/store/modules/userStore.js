@@ -4,6 +4,7 @@ export default {
     state: {
         loggedInUser: null,
         demoInfluencer: null,
+        userMessages: [],
         demoBrand: null,
         influencerList: null
     },
@@ -27,6 +28,9 @@ export default {
         },
         demoLogin(state, payload) {
             state.demoInfluencer = payload.credentials;
+        },
+        setUserMessages(state, payload) {
+            state.userMessages = payload.messageList;
         }
     },
     actions: {
@@ -34,7 +38,7 @@ export default {
             await context.commit(payload);
         },
         async login(context, payload) {
-            
+
             const credentials = payload.credentials;
             const loggedInUser = await userService.login(credentials);
             context.commit({
@@ -45,7 +49,6 @@ export default {
         },
         async demoLogin(context, payload) {
             const credentials = payload.credentials;
-            console.log(credentials)
             context.commit({
                 type: 'demoLogin',
                 credentials
@@ -59,15 +62,16 @@ export default {
             });
             return;
         },
-        async signup(context, { user }) {
-            const loggedInUser = await userService.signUp(user);
+        async signup(context, payload) {
+            console.log(payload)
+            const loggedInUser = await userService.signUp();
             context.commit({
                 type: 'setLoggedInUser',
                 loggedInUser
             });
             return loggedInUser;
         },
-        
+
         async getLoggedInUser(context) {
             if (!context.state.loggedInUser) {
                 const loggedInUser = await userService.getLoggedInUser()
