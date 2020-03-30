@@ -4,9 +4,8 @@
     "description": "A production ready server including REST, Session, Sockets, Mongo and more",
     "main": "server.js",
     "scripts": {
-        "statr": "node server.js",
-        "server:dev": "nodemon server.js",
-        "server:prod": "nodemon server.js"
+        "start": "node server.js",
+        "start-dev": "nodemon server.js"
     },
     "author": "Coding Academy",
     "license": "ISC",
