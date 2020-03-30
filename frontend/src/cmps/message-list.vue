@@ -27,9 +27,11 @@ export default {
   },
   created() {
     socket.setup();
+    socket.emit("MESSAGE_SESSION", this.user._id); //====
     socket.emit("GET_USER_MESSAGES", this.user._id);
     socket.on("USER_MESSAGES", messages => {
-      this.messagesForDisplay = JSON.parse(JSON.stringify(messages));
+      this.$store.dispatch("setUserMessages", messages);
+      this.messagesForDisplay = messages;
     });
   },
   computed: {
@@ -45,6 +47,10 @@ export default {
       });
       this.currInfluencer = influencer;
     }
+  },
+  destroyed() {
+    socket.off("ADD_MESSAGE", this.addMsg);
+    // socket.terminate();
   }
 };
 </script>

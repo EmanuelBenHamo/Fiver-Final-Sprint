@@ -17,7 +17,7 @@ export default {
   },
   created() {
     eventBus.$on("showMsg", msg => {
-      console.log(msg);
+      // console.log(msg);
       this.msg = msg;
       this.isShown = true;
       setTimeout(() => {
