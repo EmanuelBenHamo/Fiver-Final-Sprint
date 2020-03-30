@@ -1,5 +1,5 @@
 const dbService = require("../../services/db.service");
-// const mongoDBCriteria = require('./mongoDB.criteria.js')
+const mongoDBCriteria = require('./mongoDB.criteria.js')
 
 
 module.exports = {
@@ -15,14 +15,8 @@ async function query(filterBy = {}) {
     const collection = await dbService.getCollection("message");
     try {
         let messages;
-        // if (filterBy.topRated) {
-        //     const topRated = await mongoDBCriteria.getTopRated(filterBy);
-        //     messages = await collection.find(topRated).limit(+filterBy.topRated).toArray();
-        // } else {
-        // }
-        // const criteria = await mongoDBCriteria.buildCriteria(filterBy);
+        const criteria = { to: filterBy.userId };
         messages = await collection.find(criteria).toArray();
-        // console.log(messages);
         return messages;
     } catch (err) {
         console.log("ERROR: cannot find messages");
@@ -55,7 +49,6 @@ async function update(message) {
 
 async function add(message) {
     gMessages.push(message);
-    // console.log(gMessages);
     const collection = await dbService.getCollection("message");
     try {
         await collection.insertOne(message);
