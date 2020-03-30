@@ -25,6 +25,10 @@
 
 .demo-login-btn {
     color: #00af97;
+    padding: 0.6rem;
+    &:hover {
+        box-shadow: inset 0px -4px $clr2;
+    }
 }
 
 .select-btns {
