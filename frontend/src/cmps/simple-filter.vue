@@ -1,12 +1,12 @@
 <template>
   <div class="filter-container-simple flex space-between">
-    <filter-name @setName="setName"/>
+    <filter-name @setName="setName" class="filter-name" />
     
         <div class="border-line"></div>
 
     <filter-gender @setGender="setGender"/>
 
-        <div class="border-line"></div>
+        <div class="border-line border-2"></div>
 
     <filter-socials @setTypes="setTypes"/>
     <slot></slot>

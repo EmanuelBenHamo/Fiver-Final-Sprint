@@ -2,6 +2,19 @@
     margin-block-start: 1rem;
     margin-block-end: 1rem;
     display: grid;
-    grid-template-columns: repeat(5, minmax(0.6rem, auto));
+    grid-template-columns: repeat(auto-fit, 200px);
+    justify-content: center;
     gap: 1rem;  
+}
+
+
+@media (max-width: 780px) {
+    .influencers-list{
+        grid-template-columns: repeat(auto-fit, 250px);
+    }
+}
+@media (max-width: 565px) {
+    .influencers-list{
+        grid-template-columns: 1fr;
+    }
 }

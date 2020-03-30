@@ -14,3 +14,12 @@
         grid-row: 1 /-1;
     }
 }
+
+@media (max-width: 665px) {
+    .main-layout {
+        >* {
+            grid-column: 1/-1;
+            
+        }
+    }
+}
