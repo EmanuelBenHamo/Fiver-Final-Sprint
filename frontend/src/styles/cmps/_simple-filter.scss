@@ -1,8 +1,40 @@
 .filter-container-simple {
-
+  
     .border-line {
         width: 2px;
         background-color: lighten($clr1, 45%);
         opacity: 0.3;
+    }
+}
+
+@media (max-width: 665px) {
+    .filter-container-simple{
+        flex-direction: column;
+        .filterBy-name{
+            
+            input.filter-name-input{
+                height: 40px;
+                font-size: 1.2rem;
+            }
+        } 
+
+        >.select-btns {
+            justify-content: space-around;
+            font-size: 2rem;
+        }
+    }
+    .gender-radio-btn {
+        margin: 1.2rem 0;
+        .radio-all span {
+            font-size: 2rem;
+        }
+    }
+    .social-checkbox-btn {
+        margin-bottom: 1.4rem;
+
+    }
+    .filter-btn {
+        max-width: 80%;
+        text-align: center;
     }
 }

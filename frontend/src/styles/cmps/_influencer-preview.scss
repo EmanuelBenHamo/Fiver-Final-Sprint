@@ -1,3 +1,9 @@
 .influencer-preview {
   border: 1px solid #737d7b;
 }
+
+@media (max-width: 540px) {
+  .influencer-preview {
+    width: 95vw
+  }
+}
