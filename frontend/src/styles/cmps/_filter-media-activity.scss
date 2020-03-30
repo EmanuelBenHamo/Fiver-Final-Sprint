@@ -22,3 +22,10 @@
     }
 
 }
+@media (max-width: 600px) {
+    .filter-modal.filter-media-activity {
+        transform: translateX(0);
+        left: 2%;
+        min-width: 95%;
+    }
+}

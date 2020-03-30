@@ -12,9 +12,22 @@
     margin-top: 10px;
     box-shadow: 0 0 10px $clr2;
     padding: 10px;
-
-        .checkbox-container{
-            margin: 10px 12px;
-        }
     
+    .checkbox-container{
+        margin: 10px 12px;
+    }
+    
+}
+
+@media (max-width: 600px) {
+    .filter-modal.filter-tags-container {
+        margin-left: 0;
+        transform: translateX(0);
+        left: 2%;
+        max-width: 95%;
+        width: 95%;
+        grid-template-columns: repeat(3, 1fr);
+        font-size: 1.3rem;
+        text-align: center;
+    }
 }

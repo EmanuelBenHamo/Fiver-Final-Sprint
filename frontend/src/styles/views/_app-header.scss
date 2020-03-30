@@ -20,6 +20,10 @@
     .hamburger-btn {
         font-size: 1.5rem;
         display: none;
+
+        &:hover {
+            cursor: pointer;
+        }
     }
     .screen {
         position: fixed;
@@ -39,16 +43,20 @@
         display: flex;
         
     }
+    .navbar {
+        justify-content: flex-end;
+    }
     .navbar-btns {
         z-index: 1000;
         position: fixed;
         top:0;
-        left: 0;
+        right: 0;
         max-width: 70vw;
         flex-direction: column;
         height: 60vh;
         background-color: white;
         justify-content: flex-end;
+        align-items: center;
         font-size: 1.5rem;
         padding: 20px;
         box-shadow: 2px 2px 2px $clr1;

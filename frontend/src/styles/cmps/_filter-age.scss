@@ -16,3 +16,11 @@
         margin: auto;
     }
 }
+
+@media (max-width: 600px) {
+    .filter-influencer-age {
+        left: 2%;
+        width: 95%;
+        transform: translateX(0);
+    }
+}
