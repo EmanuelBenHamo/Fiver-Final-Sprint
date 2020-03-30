@@ -12,7 +12,62 @@
             cursor: pointer;
         }
     }
-    .demo-login-btn {
-        margin-top: 20px;
+    .navbar, .navbar-btns {
+        width: 100%;
+        opacity: 1;
+    }
+
+    .hamburger-btn {
+        font-size: 1.5rem;
+        display: none;
+    }
+    .screen {
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        background-color: rgba($color: #000000, $alpha: 0.5);
+        z-index: -1000;
+        opacity:0;
+      }
+}
+
+@media (max-width: 665px) {
+    .header .hamburger-btn {
+        display: flex;
+        
+    }
+    .navbar-btns {
+        z-index: 1000;
+        position: fixed;
+        top:0;
+        left: 0;
+        max-width: 70vw;
+        flex-direction: column;
+        height: 60vh;
+        background-color: white;
+        justify-content: flex-end;
+        font-size: 1.5rem;
+        padding: 20px;
+        box-shadow: 2px 2px 2px $clr1;
+        transform: translateY(-200%);
+        transition:transform .8s;
+        
+        .navbar-routings{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            height: 100%;
+        }
+    }
+    .navbar-btns.showen {
+        transform: translateY(0);
+    }
+
+    .screen.showen {
+        transition:transform 1.2s;
+        opacity: 1;
+        z-index: 900;
     }
 }

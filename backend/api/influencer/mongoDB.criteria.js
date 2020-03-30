@@ -197,7 +197,6 @@ async function getTopRated(filterBy){
         return ObjectId(id._id);
       });
       topRated._id = { $in: objectsIds };
-      console.log('IDS*****************88', topRated);
       
   
     return topRated;

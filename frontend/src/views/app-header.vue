@@ -1,15 +1,36 @@
 <template>
   <section class="header">
-    <nav class="navbar flex space-between">
-      <div>
+    <nav class="navbar-container flex row flex-start ">
+      
         <label @click="$router.push('/').catch(err => {})">Trendzly</label>
-        <router-link class="home-page-btn nav-btn" to="/">Home</router-link>
-        <router-link class="nav-btn" to="/login">Login</router-link>
-        <router-link class="nav-btn" to="/signup">Signup</router-link>
+
+      <div class="navbar flex  align-center">
+        <div 
+        @click="isShowen = !isShowen"
+        class="hamburger-btn fa fa-bars"></div>
+
+
+          <div 
+           :class="{showen: isShowen}"
+          @click="isShowen = !isShowen"
+          class="screen">
+          </div>
+
+        <div @click="isShowen = !isShowen" :class="{showen: isShowen}" class="navbar-btns flex space-between">
+          <div class="navbar-routings">
+            <router-link class="home-page-btn nav-btn" to="/">Home</router-link>
+            <router-link class="nav-btn" to="/login">Login</router-link>
+            <router-link class="nav-btn" to="/signup">Signup</router-link>
+          </div>
+          <router-link to @click.native="login" class="demo-login-btn">influencer login</router-link>
+
+        </div>
       </div>
-      <div class="demo-login-btn">
-        <router-link to @click.native="login">influencer login</router-link>
-      </div>
+
+
+
+
+     
     </nav>
   </section>
 </template>
@@ -25,7 +46,8 @@ export default {
           username: "vsmorthiti",
           password: "KOMFvSj0iwWq"
         }
-      }
+      },
+      isShowen: false
     };
   },
   // "userType": "influencer",
