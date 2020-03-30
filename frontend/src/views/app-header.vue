@@ -2,7 +2,7 @@
   <section class="header">
     <nav class="navbar flex space-between">
       <div>
-        <label @click="$router.push('/')">Trendzly</label>
+        <label @click="$router.push('/').catch(err => {})">Trendzly</label>
         <router-link class="home-page-btn nav-btn" to="/">Home</router-link>
         <router-link class="nav-btn" to="/login">Login</router-link>
         <router-link class="nav-btn" to="/signup">Signup</router-link>

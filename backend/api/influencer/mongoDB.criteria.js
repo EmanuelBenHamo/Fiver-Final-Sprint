@@ -117,7 +117,6 @@ async function _getFilteredIdsFromSocials(filterBy) {
       }
     ])
     .toArray();
-    console.log('SOCIALS IDDDSSSSS', socialId);
     
   return socialId;
 }
@@ -198,6 +197,8 @@ async function getTopRated(filterBy){
         return ObjectId(id._id);
       });
       topRated._id = { $in: objectsIds };
+      console.log('IDS*****************88', topRated);
+      
   
     return topRated;
 }
