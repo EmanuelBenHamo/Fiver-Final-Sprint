@@ -27,12 +27,15 @@ export default {
   },
   created() {
     socket.setup();
-    socket.emit("MESSAGE_SESSION", this.user._id); //====
-    socket.emit("GET_USER_MESSAGES", this.user._id);
     socket.on("USER_MESSAGES", messages => {
       this.$store.dispatch("setUserMessages", messages);
       this.messagesForDisplay = messages;
     });
+    socket.on("USER_NEW_MESSAGE", newMessage => {
+      this.messagesForDisplay.unshift(newMessage); // latest message on top of the list
+    });
+    socket.emit("MSG_TOPIC", this.user._id);
+    socket.emit("GET_USER_MESSAGES", this.user._id);
   },
   computed: {
     messages() {
@@ -49,8 +52,8 @@ export default {
     }
   },
   destroyed() {
-    socket.off("ADD_MESSAGE", this.addMsg);
-    // socket.terminate();
+    socket.off("USER_MESSAGES", this.addMsg);
+    socket.terminate();
   }
 };
 </script>

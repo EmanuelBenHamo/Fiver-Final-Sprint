@@ -1,10 +1,7 @@
 const dbService = require("../../services/db.service");
-const mongoDBCriteria = require('./mongoDB.criteria.js')
-
 
 module.exports = {
     query,
-    // getById,
     remove,
     update,
     add
