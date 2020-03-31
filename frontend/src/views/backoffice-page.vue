@@ -3,10 +3,10 @@
     <!-- <h1>Back Office</h1> -->
     <dash-board :user="loggedInUser"></dash-board>
     <div class="backoffice-navbar">
-      <button class="btn" @click="toggle('offer')">offers</button>
-      <button class="btn" @click="toggle('message')">messeges</button>
-      <offer-list v-if="offerShow" :user="this.loggedInUser"></offer-list>
-      <message-list :user="loggedInUser" v-if="messageShow"></message-list>
+      <!-- <button class="btn" @click="toggle('offer')">offers</button> -->
+      <!-- <button class="btn" @click="toggle('message')">messeges</button> -->
+      <!-- <offer-list v-if="offerShow" :user="this.loggedInUser"></offer-list> -->
+      <message-list :user="loggedInUser"></message-list>
     </div>
     <router-view></router-view>
   </section>
@@ -14,7 +14,7 @@
 <script>
 import { eventBus } from "../services/event.bus.service.js";
 import dashBoard from "../cmps/dash-board.vue";
-import offerList from "../cmps/offer-list.vue";
+// import offerList from "../cmps/offer-list.vue";
 import messageList from "../cmps/message-list.vue";
 import socket from "../services/socket.service.js";
 export default {
@@ -56,7 +56,7 @@ export default {
   },
   components: {
     dashBoard,
-    offerList,
+    // offerList,
     messageList
   }
 };
