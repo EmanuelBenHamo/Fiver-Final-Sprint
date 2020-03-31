@@ -1,6 +1,6 @@
 <template>
   <section class="message-container">
-    <h2 v-if="messagesToShow === 0">No Messages to Show</h2>
+    <h2 v-if="messagesForDisplay === 0">No Messages to Show</h2>
     <ul class="message-list clean-list">
       <li v-for="(message, idx) in messages" class="message-preview" :key="idx">
         <message-preview :message="message"></message-preview>
