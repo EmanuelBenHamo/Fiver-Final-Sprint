@@ -1,8 +1,6 @@
 <template>
   <section class="message-container">
-    <!-- <h2>No Messages to Show</h2> -->
-    <!-- <h2 v-if="!messages">No Messages to Show</!-->
-    <!-- <ul v-if="messages" class="message-list clean-list"> -->
+    <h2 v-if="messagesToShow === 0">No Messages to Show</h2>
     <ul class="message-list clean-list">
       <li v-for="(message, idx) in messages" class="message-preview" :key="idx">
         <message-preview :message="message"></message-preview>
@@ -29,7 +27,7 @@ export default {
     socket.setup();
     socket.on("USER_MESSAGES", messages => {
       this.$store.dispatch("setUserMessages", messages);
-      this.messagesForDisplay = messages;
+      this.messagesForDisplay = messages.reverse();
     });
     socket.on("USER_NEW_MESSAGE", newMessage => {
       this.messagesForDisplay.unshift(newMessage); // latest message on top of the list
