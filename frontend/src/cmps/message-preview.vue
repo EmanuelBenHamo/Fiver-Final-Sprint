@@ -35,7 +35,8 @@ export default {
       this.showExpandedContent = !this.showExpandedContent;
     },
     acceptOffer() {
-      console.log("offer accepted");
+      this.message.type = "message";
+      console.log("offer accepted",this.message);
     },
     declineOffer() {
       console.log("offer rejected");

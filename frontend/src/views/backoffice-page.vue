@@ -2,8 +2,8 @@
   <section v-if="loggedInUser" class="backoffice-page-container">
     <dash-board  :user="loggedInUser"></dash-board>
     <div class="backoffice-navbar">
-      <button class="btn" @click="toggle('offer')">offers</button>
-      <button class="btn" @click="toggle('message')">messeges</button>
+      <!-- <button class="btn" @click="toggle('offer')">offers</button>
+      <button class="btn" @click="toggle('message')">messeges</button> -->
       <offer-list v-if="offerShow" :user="loggedInUser"></offer-list>
       <message-list  v-if="messageShow" :user="loggedInUser"></message-list>
     </div>

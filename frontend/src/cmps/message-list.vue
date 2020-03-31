@@ -11,6 +11,7 @@
 <script>
 import messagePreview from "./message-preview.vue";
 import socket from "../services/socket.service.js";
+import { eventBus } from "../services/event.bus.service.js";
 export default {
   props: ["user"],
   components: {
@@ -31,6 +32,9 @@ export default {
     });
     socket.on("USER_NEW_MESSAGE", newMessage => {
       this.messagesForDisplay.unshift(newMessage); // latest message on top of the list
+       eventBus.$emit("showMsg", {
+        txt: 'You have a new message'
+      });
     });
     socket.emit("MSG_TOPIC", this.user._id);
     socket.emit("GET_USER_MESSAGES", this.user._id);

@@ -22,7 +22,7 @@ export default {
       this.isShown = true;
       setTimeout(() => {
         this.isShown = false;
-      }, 1000);
+      }, 2000);
     });
   }
 };

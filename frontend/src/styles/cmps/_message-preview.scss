@@ -1,13 +1,12 @@
 .message-container-wrapper {
     flex-direction: column;
-    padding: 1rem 0;
+    padding: 1rem;
     cursor: pointer;
     
     .message-preview-container {
         
         padding: 1rem 0;
-        .message-time {
-        }
+    
 
         .message-subject {
             font-family: "Quicksand-Bold";
@@ -16,8 +15,7 @@
             min-width: 10rem;
         }
 
-        .action-btns {
-        }
+
 
         .action-btn {
             padding: 0 0.5rem;

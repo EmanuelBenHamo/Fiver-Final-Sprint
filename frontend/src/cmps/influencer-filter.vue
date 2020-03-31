@@ -18,67 +18,67 @@
             <label 
             class="filter-tab-btn nav-btn"
             @click.stop="onToggle('age')">Age</label>
-            <transition name="fade"> -->
+            <!-- <transition name="fade"> -->
                 <keep-alive>
                     <filter-age
                     :class="{active:activeFilter === 'age'}"
                     class="filter-modal" 
                     @setAge="setAge"/>
                 </keep-alive>
-            </transition>    
+            <!-- </transition>     -->
         </div>
         
         <!-- MEADIA ACTIVITY -->
         <div >
             <label class="filter-tab-btn nav-btn"
             @click.stop="onToggle('media')">Media Activity</label>
-            <transition name="fade">
+            <!-- <transition name="fade"> -->
                 <keep-alive>
                     <filter-media-activity
                     :class="{active:activeFilter === 'media'}"
                     class="filter-modal"
                     @setMediaActivity="setMediaActivity" />
                 </keep-alive>
-            </transition>
+            <!-- </transition> -->
         </div>
         <!-- PRICE -->  
         <div >
             <label class="filter-tab-btn nav-btn"
              @click.stop="onToggle('price')">Price</label>
-            <transition name="fade">
+            <!-- <transition name="fade"> -->
                 <keep-alive>
                     <filter-price
                     :class="{active:activeFilter === 'price'}"
                     class="filter-modal"
                     @setPrice="setPrice"/>
                 </keep-alive>
-            </transition>
+            <!-- </transition> -->
         </div>
         <!-- TAGS -->
         <div>
             <label class="filter-tab-btn nav-btn"
              @click.stop="onToggle('tags')">Tags</label>
-            <transition name="fade">
+            <!-- <transition name="fade"> -->
                 <keep-alive>
                     <filter-tags
                     :class="{active:activeFilter === 'tags'}"
                     class="filter-modal"
                     @setTags="setTags" />
                 </keep-alive>
-            </transition>
+            <!-- </transition> -->
         </div>
         <!-- FOLLOWERS -->
         <div>
             <label class="filter-tab-btn nav-btn"
             @click.stop="onToggle('followers')">Followers</label>
-            <transition name="fade">
+           
                 <keep-alive>
                     <filter-followers
                     :class="{active:activeFilter === 'followers'}"
                     class="filter-modal"
                     @setFollowers="setFollowers" />
                 </keep-alive>
-            </transition>
+      
         </div>
     </div>
 </section>
