@@ -44,7 +44,7 @@ export default {
     this.loggedInUser = this.$store.getters.loggedInUser;
     this.getInfluencerById();
     socket.setup();
-    socket.emit("MESSAGE_SESSION", this.influencerId);
+    socket.emit("MSG_TOPIC", this.influencerId);
   },
   computed: {
     fullName() {
@@ -79,7 +79,7 @@ export default {
           watch their full details and contact the sender to make it happen.
           `
         };
-        console.log("check");
+
         socket.emit("ADD_MESSAGE", offer);
       }
     },
@@ -93,7 +93,7 @@ export default {
   },
   destroyed() {
     socket.off("ADD_MESSAGE", this.addMsg);
-    // socket.terminate();
+    socket.terminate();
   },
   components: {
     influencerDetailsHeader,

@@ -1,31 +1,26 @@
 const messageService = require('./message-service')
 const GET_USER_MESSAGES = "GET_USER_MESSAGES";
 const USER_MESSAGES = "USER_MESSAGES";
-
+const USER_NEW_MESSAGE = "USER_NEW_MESSAGE";
 
 module.exports = connectSockets
-
-var messages = []
 
 function connectSockets(io) {
     io.on('connection', socket => {
         socket.on(GET_USER_MESSAGES, async userId => {
             let userInboxMsgs = await messageService.query({ userId });
-            let userMsgs = messages.find(msg => msg.to === userId)
-            socket.emit(USER_MESSAGES, messages)
+            socket.emit(USER_MESSAGES, userInboxMsgs)
         })
         socket.on("ADD_MESSAGE", offer => {
-            // console.log(offer)
             messageService.add(offer);
-            messages.push(offer)
-            io.to(socket.notificationMsg).emit(USER_MESSAGES, offer)
+            io.to(socket.myTopic).emit(USER_NEW_MESSAGE, offer)
         })
-        socket.on('MESSAGE_SESSION', user => {
-            if (socket.notificationMsg) {
-                socket.leave(socket.notificationMsg)
+        socket.on('MSG_TOPIC', topic => {
+            if (socket.myTopic) {
+                socket.leave(socket.myTopic)
             }
-            socket.join(user)
-            socket.notificationMsg = user;
+            socket.join(topic)
+            socket.myTopic = topic;
         })
     })
 }
