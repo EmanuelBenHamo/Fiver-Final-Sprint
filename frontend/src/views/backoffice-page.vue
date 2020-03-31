@@ -1,12 +1,11 @@
 <template>
-  <section class="backoffice-page-container">
-    <!-- <h1>Back Office</h1> -->
-    <dash-board :user="loggedInUser"></dash-board>
+  <section v-if="loggedInUser" class="backoffice-page-container">
+    <dash-board  :user="loggedInUser"></dash-board>
     <div class="backoffice-navbar">
-      <!-- <button class="btn" @click="toggle('offer')">offers</button> -->
-      <!-- <button class="btn" @click="toggle('message')">messeges</button> -->
-      <!-- <offer-list v-if="offerShow" :user="this.loggedInUser"></offer-list> -->
-      <message-list :user="loggedInUser"></message-list>
+      <button class="btn" @click="toggle('offer')">offers</button>
+      <button class="btn" @click="toggle('message')">messeges</button>
+      <offer-list v-if="offerShow" :user="loggedInUser"></offer-list>
+      <message-list  v-if="messageShow" :user="loggedInUser"></message-list>
     </div>
     <router-view></router-view>
   </section>
@@ -14,7 +13,7 @@
 <script>
 import { eventBus } from "../services/event.bus.service.js";
 import dashBoard from "../cmps/dash-board.vue";
-// import offerList from "../cmps/offer-list.vue";
+import offerList from "../cmps/offer-list.vue";
 import messageList from "../cmps/message-list.vue";
 import socket from "../services/socket.service.js";
 export default {
@@ -23,19 +22,25 @@ export default {
     return {
       loggedInUser: null,
       offerShow: false,
-      messageShow: false
+      messageShow: true,
+      credentials: null
     };
   },
   created() {
     socket.setup();
-    this.getLoggetInUser();
+    this.credentials = this.$store.getters.demoInfluencer;
+    
+    this.login()
+    
+
   },
   methods: {
-    async getLoggetInUser() {
-      this.loggedInUser = this.$store.getters.loggedInUser;
-      if (!this.loggedInUser) {
-        this.loggedInUser = await this.$store.dispatch("getLoggedInUser");
-      }
+    async login() {
+      let loggedInUser = await this.$store.dispatch({
+        type: "login",
+          credentials: this.credentials
+        });
+        this.loggedInUser = loggedInUser;
     },
     toggle(el) {
       if (el === "offer") {
@@ -46,7 +51,7 @@ export default {
         this.offerShow = false;
         this.messageShow = !this.messageShow;
       }
-    }
+    },
   },
   computed: {
     userId() {
@@ -56,7 +61,7 @@ export default {
   },
   components: {
     dashBoard,
-    // offerList,
+    offerList,
     messageList
   }
 };

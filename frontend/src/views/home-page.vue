@@ -40,6 +40,7 @@ export default {
     return{
       demoUser:{
         credentials:{
+          userType: 'brand',
           username:'c',
           password:'d'
         }

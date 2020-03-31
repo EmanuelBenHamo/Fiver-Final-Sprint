@@ -22,7 +22,7 @@
             <router-link class="nav-btn" to="/login">Login</router-link>
             <router-link class="nav-btn" to="/signup">Signup</router-link>
           </div>
-          <router-link to @click.native="login" class="demo-login-btn">influencer login</router-link>
+          <button @click="demoInfluencer" class="demo-login-btn">influencer login</button>
 
         </div>
       </div>
@@ -42,27 +42,27 @@ export default {
     return {
       loggedInUser: null,
       demoUser: {
-        credentials: {
-          username: "vsmorthiti",
-          password: "KOMFvSj0iwWq"
-        }
+        
+          userType: "influencer",
+          username: "kianetti8",
+          password: "ij7QdH"
       },
       isShowen: false
     };
   },
-  // "userType": "influencer",
-  //         "username": "abrisco7",
-  //         "password": "fgVbJO"
   methods: {
-    login() {
-      this.demoUser = this.$store.getters.demoInfluencer;
-      console.log(this.demoUser);
-      this.loggedInUser = this.$store.dispatch({
-        type: "login",
-        credentials: this.demoUser
-      });
+
+  async demoInfluencer() {
+    let demoUser = this.$store.getters.demoInfluencer;
+    if(!demoUser) demoUser = this.demoUser;
+      await this.$store.dispatch({
+        type: "demoLogin",
+          credentials: demoUser
+        });
       this.$router.push("/backoffice");
+  
     }
+
   }
 };
 </script>
